@@ -19,9 +19,7 @@ deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
 
 ```java
 ObjectMapper mapper = new ObjectMapper();
-mapper.
-
-registerModule(new ProblemModule());
+mapper.registerModule(new ProblemModule());
 
 Problem problem =
         Problem.builder()
