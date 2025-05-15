@@ -47,7 +47,7 @@ class ProblemDeserializer extends StdDeserializer<Problem> {
           break;
         default:
           if (jsonParser.getCodec() instanceof ObjectMapper mapper) {
-              builder.extension(field, mapper.treeToValue(node.get(field), Object.class));
+            builder.extension(field, mapper.treeToValue(node.get(field), Object.class));
           }
           break;
       }
