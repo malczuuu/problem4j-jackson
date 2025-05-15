@@ -1,18 +1,17 @@
 package io.github.malczuuu.problem4j.jackson;
 
-import com.fasterxml.jackson.databind.module.SimpleDeserializers;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.databind.module.SimpleSerializers;
 import io.github.malczuuu.problem4j.core.Problem;
-import java.util.Collections;
+import java.io.Serial;
 
 public class ProblemModule extends SimpleModule {
 
+  @Serial private static final long serialVersionUID = 1L;
+
   public ProblemModule() {
     super(ProblemModule.class.getSimpleName());
-    setSerializers(new SimpleSerializers(Collections.singletonList(new ProblemSerializer())));
-    setDeserializers(
-        new SimpleDeserializers(
-            Collections.singletonMap(Problem.class, new ProblemDeserializer())));
+
+    addSerializer(Problem.class, new ProblemSerializer());
+    addDeserializer(Problem.class, new ProblemDeserializer());
   }
 }

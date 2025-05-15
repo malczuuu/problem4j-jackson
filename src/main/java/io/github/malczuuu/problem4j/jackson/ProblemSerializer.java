@@ -5,8 +5,11 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import io.github.malczuuu.problem4j.core.Problem;
 import java.io.IOException;
+import java.io.Serial;
 
 class ProblemSerializer extends StdSerializer<Problem> {
+
+  @Serial private static final long serialVersionUID = 1L;
 
   ProblemSerializer() {
     super(Problem.class);
@@ -17,25 +20,33 @@ class ProblemSerializer extends StdSerializer<Problem> {
       throws IOException {
     jsonGenerator.writeStartObject();
     if (problem.getType() != null) {
-      jsonGenerator.writeStringField("type", problem.getType().toString());
+      jsonGenerator.writeStringField(ProblemMember.TYPE, problem.getType().toString());
     } else {
-      jsonGenerator.writeStringField("type", Problem.BLANK_TYPE.toString());
+      jsonGenerator.writeStringField(ProblemMember.TYPE, Problem.BLANK_TYPE.toString());
     }
     if (problem.getTitle() != null) {
-      jsonGenerator.writeStringField("title", problem.getTitle());
+      jsonGenerator.writeStringField(ProblemMember.TITLE, problem.getTitle());
     }
-    jsonGenerator.writeNumberField("status", problem.getStatus());
+    jsonGenerator.writeNumberField(ProblemMember.STATUS, problem.getStatus());
     if (problem.getDetail() != null) {
-      jsonGenerator.writeStringField("detail", problem.getDetail());
+      jsonGenerator.writeStringField(ProblemMember.DETAIL, problem.getDetail());
     }
     if (problem.getInstance() != null) {
-      jsonGenerator.writeStringField("instance", problem.getInstance().toString());
+      jsonGenerator.writeStringField(ProblemMember.INSTANCE, problem.getInstance().toString());
     }
-    for (String k : problem.getExtensions()) {
-      if (k != null && problem.getExtensionValue(k) != null) {
-        jsonGenerator.writeObjectField(k, problem.getExtensionValue(k));
-      }
+    for (String extension : problem.getExtensions().stream().sorted().toList()) {
+      writeExtension(problem, jsonGenerator, extension);
     }
     jsonGenerator.writeEndObject();
+  }
+
+  /** If extension member name overlaps with native problem details members, then it is ignored. */
+  private void writeExtension(Problem problem, JsonGenerator jsonGenerator, String extension)
+      throws IOException {
+    if (extension != null
+        && !ProblemMember.PROBLEM_MEMBERS.contains(extension)
+        && problem.getExtensionValue(extension) != null) {
+      jsonGenerator.writeObjectField(extension, problem.getExtensionValue(extension));
+    }
   }
 }

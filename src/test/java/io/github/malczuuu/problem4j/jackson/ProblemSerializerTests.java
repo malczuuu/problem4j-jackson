@@ -31,7 +31,7 @@ class ProblemSerializerTests {
           .build();
 
   private final String json =
-      "{\"type\":\"http://localhost/FATAL\",\"title\":\"problem\",\"status\":400,\"detail\":\"A serious problem\",\"instance\":\"http://localhost/endpoint/12\",\"userid\":100,\"timestamp\":\"2018-10-01T10:43:21.221Z\"}";
+      "{\"type\":\"http://localhost/FATAL\",\"title\":\"problem\",\"status\":400,\"detail\":\"A serious problem\",\"instance\":\"http://localhost/endpoint/12\",\"timestamp\":\"2018-10-01T10:43:21.221Z\",\"userid\":100}";
 
   private final ObjectMapper mapper = new ObjectMapper();
 

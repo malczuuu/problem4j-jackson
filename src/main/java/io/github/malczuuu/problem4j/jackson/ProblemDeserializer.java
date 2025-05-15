@@ -8,10 +8,13 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import io.github.malczuuu.problem4j.core.Problem;
 import io.github.malczuuu.problem4j.core.ProblemBuilder;
 import java.io.IOException;
+import java.io.Serial;
 import java.net.URI;
 import java.util.Iterator;
 
 class ProblemDeserializer extends StdDeserializer<Problem> {
+
+  @Serial private static final long serialVersionUID = 1L;
 
   ProblemDeserializer() {
     super(Problem.class);
@@ -27,25 +30,24 @@ class ProblemDeserializer extends StdDeserializer<Problem> {
     while (fieldNames.hasNext()) {
       String field = fieldNames.next();
       switch (field) {
-        case "type":
-          builder.type(URI.create(node.get("type").textValue()));
+        case ProblemMember.TYPE:
+          builder.type(URI.create(node.get(ProblemMember.TYPE).textValue()));
           break;
-        case "title":
-          builder.title(node.get("title").textValue());
+        case ProblemMember.TITLE:
+          builder.title(node.get(ProblemMember.TITLE).textValue());
           break;
-        case "status":
-          builder.status(node.get("status").intValue());
+        case ProblemMember.STATUS:
+          builder.status(node.get(ProblemMember.STATUS).intValue());
           break;
-        case "detail":
-          builder.detail(node.get("detail").textValue());
+        case ProblemMember.DETAIL:
+          builder.detail(node.get(ProblemMember.DETAIL).textValue());
           break;
-        case "instance":
-          builder.instance(URI.create(node.get("instance").textValue()));
+        case ProblemMember.INSTANCE:
+          builder.instance(URI.create(node.get(ProblemMember.INSTANCE).textValue()));
           break;
         default:
-          if (jsonParser.getCodec() instanceof ObjectMapper) {
-            ObjectMapper mapper = (ObjectMapper) jsonParser.getCodec();
-            builder.extension(field, mapper.treeToValue(node.get(field), Object.class));
+          if (jsonParser.getCodec() instanceof ObjectMapper mapper) {
+              builder.extension(field, mapper.treeToValue(node.get(field), Object.class));
           }
           break;
       }
