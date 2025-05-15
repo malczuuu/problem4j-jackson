@@ -1,35 +1,35 @@
 plugins {
     id "java-library"
     id "maven-publish"
+    id "com.github.sherter.google-java-format" version "0.9"
 }
 
 group = "com.github.malczuuu"
 version = "3.1.0-SNAPSHOT"
 
-sourceCompatibility = "17"
-targetCompatibility = "17"
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
 
 repositories {
     mavenCentral()
-    maven { url "https://jitpack.io/" }
+    maven {url "https://jitpack.io/"}
 }
 
 dependencies {
-    api("com.fasterxml.jackson.core:jackson-databind:2.14.2")
+    api("com.fasterxml.jackson.core:jackson-databind:2.19.0")
 
-    api("com.github.malczuuu:problem4j-core:3.0.0")
+    api("com.github.malczuuu:problem4j-core:8f7dd91008f1478ac04020d5f6256cd8bb8a4f77")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
-}
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.12.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.12.2")
 
-tasks.named("test") {
-    useJUnitPlatform()
-}
-
-java {
-    withSourcesJar()
-    withJavadocJar()
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.12.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.12.2")
 }
 
 publishing {
@@ -38,4 +38,12 @@ publishing {
             from components.java
         }
     }
+}
+
+googleJavaFormat {
+    toolVersion = "1.26.0"
+}
+
+tasks.named("test") {
+    useJUnitPlatform()
 }
