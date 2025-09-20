@@ -20,20 +20,28 @@ deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
 ## Example
 
 ```java
-ObjectMapper mapper = new ObjectMapper();
-mapper.registerModule(new ProblemModule());
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.malczuuu.problem4j.Problem;
+import io.github.malczuuu.problem4j.jackson.ProblemModule;
 
-Problem problem =
-        Problem.builder()
-                .type("https://example.com/errors/invalid-request")
-                .title("Invalid Request")
-                .status(400)
-                .detail("not a valid json")
-                .instance("https://example.com/instances/1234")
-                .build();
+public class ExampleClass {
+    
+    public void method() {
+        ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
 
-String json = mapper.writeValueAsString(problem);
-Problem parsed = mapper.readValue(json, Problem.class);
+        Problem problem =
+                Problem.builder()
+                        .type("https://example.com/errors/invalid-request")
+                        .title("Invalid Request")
+                        .status(400)
+                        .detail("not a valid json")
+                        .instance("https://example.com/instances/1234")
+                        .build();
+
+        String json = mapper.writeValueAsString(problem);
+        Problem parsed = mapper.readValue(json, Problem.class);
+    }
+}
 ```
 
 ## Usage
@@ -41,20 +49,38 @@ Problem parsed = mapper.readValue(json, Problem.class);
 This library is available through [Jitpack][jitpack] repository. Add it along with repository in your dependency
 manager.
 
-```groovy
-// build.gradle
-
-repositories {
-    // ...
-    maven { url = uri("https://jitpack.io") }
-}
-
-dependencies {
-    // ...
-    implementation("com.github.malczuuu:problem4j-core:<problem4j-core-version>")
-    implementation("com.github.malczuuu:problem4j-jackson:<problem4j-jackson-version>")
-}
-```
+1. Maven:
+   ```xml
+   <repositories>
+       <repository>
+           <id>jitpack.io</id>
+           <url>https://jitpack.io</url>
+       </repository>
+   </repositories>
+   <dependencies>
+       <dependency>
+           <groupId>com.github.malczuuu</groupId>
+           <artifactId>problem4j-core</artifactId>
+           <version>${problem4j-core.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>com.github.malczuuu</groupId>
+           <artifactId>problem4j-jackson</artifactId>
+           <version>${problem4j-jackson.version}</version>
+       </dependency>
+   </dependencies>
+   ```
+2. Gradle (Groovy or Kotlin DSL):
+   ```groovy
+   repositories {
+       maven { url = uri("https://jitpack.io") }
+   }
+   
+   dependencies {
+       implementation("com.github.malczuuu:problem4j-core:${problem4j-core.version}")
+       implementation("com.github.malczuuu:problem4j-core:${problem4j-jackson.version}")
+   }
+    ```
 
 [problem4j]: https://github.com/malczuuu/problem4j
 
