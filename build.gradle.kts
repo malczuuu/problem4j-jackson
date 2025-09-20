@@ -45,7 +45,7 @@ publishing {
 
             pom {
                 name.set(project.name)
-                description.set("Core library implementing RFC7807")
+                description.set("Jackson module for library implementing RFC7807")
                 url.set("https://github.com/malczuuu/${project.name}")
                 licenses {
                     license {
