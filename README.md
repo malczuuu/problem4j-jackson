@@ -87,7 +87,7 @@ manager.
        implementation("com.github.malczuuu:problem4j-core:${problem4j-core.version}")
        implementation("com.github.malczuuu:problem4j-core:${problem4j-jackson.version}")
    }
-    ```
+   ```
 
 ## Other Libraries
 
