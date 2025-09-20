@@ -33,21 +33,21 @@ import io.github.malczuuu.problem4j.jackson.ProblemModule;
 
 public class ExampleClass {
 
-    public void method() {
-        ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
+  public void method() {
+    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
 
-        Problem problem =
-                Problem.builder()
-                        .type("https://example.com/errors/invalid-request")
-                        .title("Invalid Request")
-                        .status(400)
-                        .detail("not a valid json")
-                        .instance("https://example.com/instances/1234")
-                        .build();
+    Problem problem =
+        Problem.builder()
+            .type("https://example.com/errors/invalid-request")
+            .title("Invalid Request")
+            .status(400)
+            .detail("not a valid json")
+            .instance("https://example.com/instances/1234")
+            .build();
 
-        String json = mapper.writeValueAsString(problem);
-        Problem parsed = mapper.readValue(json, Problem.class);
-    }
+    String json = mapper.writeValueAsString(problem);
+    Problem parsed = mapper.readValue(json, Problem.class);
+  }
 }
 ```
 
