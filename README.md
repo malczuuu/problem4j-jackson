@@ -9,6 +9,13 @@
 Jackson integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing and
 deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
 
+## Table of Contents
+
+- [Features](#features)
+- [Example](#example)
+- [Usage](#usage)
+- [Other Libraries](#other-libraries)
+
 ## Features
 
 - ✅ Seamless JSON serialization of `Problem` objects
@@ -25,7 +32,7 @@ import io.github.malczuuu.problem4j.Problem;
 import io.github.malczuuu.problem4j.jackson.ProblemModule;
 
 public class ExampleClass {
-    
+
     public void method() {
         ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
 
@@ -82,10 +89,18 @@ manager.
    }
     ```
 
-[problem4j]: https://github.com/malczuuu/problem4j
+## Other Libraries
 
-[problem4j-core]: https://github.com/malczuuu/problem4j-core
+- [`problem4j-core`][problem4j-core] - Core library defining `Problem` model and `ProblemException`.
+- [`problem4j-spring-web`][problem4j-spring-web] - Spring Web module extending `ResponseEntityExceptionHandler` for
+  handling exceptions and returning `Problem` responses.
 
 [jackson]: https://github.com/FasterXML/jackson
 
 [jitpack]: https://jitpack.io/#malczuuu/problem4j-jackson
+
+[problem4j]: https://github.com/malczuuu/problem4j
+
+[problem4j-core]: https://github.com/malczuuu/problem4j-core
+
+[problem4j-spring-web]: https://github.com/malczuuu/problem4j-spring-web
