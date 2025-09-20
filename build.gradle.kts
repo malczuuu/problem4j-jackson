@@ -60,7 +60,7 @@ publishing {
 
 spotless {
     format("misc") {
-        target("*.gradle.kts", ".gitattributes", ".gitignore")
+        target("**/*.gradle.kts", "**/.gitattributes", "**/.gitignore")
 
         trimTrailingWhitespace()
         leadingTabsToSpaces(4)
