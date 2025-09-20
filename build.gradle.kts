@@ -26,7 +26,7 @@ repositories {
 dependencies {
     api("com.fasterxml.jackson.core:jackson-databind:2.19.2")
 
-    api("com.github.malczuuu:problem4j-core:3.1.0")
+    api("com.github.malczuuu:problem4j-core:3.2.0-rc1")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.4")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.13.4")
