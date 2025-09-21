@@ -78,7 +78,7 @@ manager.
        maven { url = uri("https://jitpack.io") }
    }
    dependencies {
-       implementation("com.github.malczuuu:problem4j-core:${problem4j-jackson.version}")
+       implementation("com.github.malczuuu:problem4j-jackson:${problem4j-jackson.version}")
    }
    ```
 
