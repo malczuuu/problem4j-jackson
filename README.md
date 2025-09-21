@@ -67,11 +67,6 @@ manager.
    <dependencies>
        <dependency>
            <groupId>com.github.malczuuu</groupId>
-           <artifactId>problem4j-core</artifactId>
-           <version>${problem4j-core.version}</version>
-       </dependency>
-       <dependency>
-           <groupId>com.github.malczuuu</groupId>
            <artifactId>problem4j-jackson</artifactId>
            <version>${problem4j-jackson.version}</version>
        </dependency>
@@ -82,9 +77,7 @@ manager.
    repositories {
        maven { url = uri("https://jitpack.io") }
    }
-   
    dependencies {
-       implementation("com.github.malczuuu:problem4j-core:${problem4j-core.version}")
        implementation("com.github.malczuuu:problem4j-core:${problem4j-jackson.version}")
    }
    ```
