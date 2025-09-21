@@ -23,16 +23,21 @@ repositories {
     maven { url = uri("https://jitpack.io/") }
 }
 
+val jacksonDatabindVersion = "2.19.2"
+val problem4jCoreVersion = "3.2.0-rc1"
+val junitJupiterVersion = "5.13.4"
+val junitPlatformVersion = "1.13.4"
+
 dependencies {
-    api("com.fasterxml.jackson.core:jackson-databind:2.19.2")
+    api("com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}")
 
-    api("com.github.malczuuu:problem4j-core:3.2.0-rc1")
+    api("com.github.malczuuu:problem4j-core:${problem4jCoreVersion}")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.4")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.13.4")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}")
 
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.13.4")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.13.4")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
 }
 
 publishing {
