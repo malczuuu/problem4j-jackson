@@ -79,9 +79,9 @@ higher is required to use this library.
 - [`problem4j-spring-web`][problem4j-spring-web] - Spring Web module extending `ResponseEntityExceptionHandler` for
   handling exceptions and returning `Problem` responses.
 
-[maven-central]: https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson
-
 [jackson]: https://github.com/FasterXML/jackson
+
+[maven-central]: https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson
 
 [problem4j]: https://github.com/malczuuu/problem4j
 
