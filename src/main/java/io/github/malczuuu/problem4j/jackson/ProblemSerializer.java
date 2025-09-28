@@ -20,10 +20,8 @@ class ProblemSerializer extends StdSerializer<Problem> {
   public void serialize(Problem problem, JsonGenerator jsonGenerator, SerializerProvider provider)
       throws IOException {
     jsonGenerator.writeStartObject();
-    if (problem.getType() != null) {
+    if (problem.getType() != null && !Problem.BLANK_TYPE.equals(problem.getType())) {
       jsonGenerator.writeStringField(ProblemMember.TYPE, problem.getType().toString());
-    } else {
-      jsonGenerator.writeStringField(ProblemMember.TYPE, Problem.BLANK_TYPE.toString());
     }
     if (problem.getTitle() != null) {
       jsonGenerator.writeStringField(ProblemMember.TITLE, problem.getTitle());

@@ -42,7 +42,7 @@ class ProblemSerializerTests extends AbstractProblemTests {
 
     String problemJson = mapper.writeValueAsString(problem);
 
-    assertEquals("{\"type\":\"about:blank\",\"title\":\"Hello World\",\"status\":99}", problemJson);
+    assertEquals("{\"title\":\"Hello World\",\"status\":99}", problemJson);
   }
 
   @Test
@@ -59,7 +59,7 @@ class ProblemSerializerTests extends AbstractProblemTests {
 
     String problemJson = mapper.writeValueAsString(problem);
 
-    assertEquals("{\"type\":\"about:blank\",\"title\":\"Hello World\",\"status\":99}", problemJson);
+    assertEquals("{\"title\":\"Hello World\",\"status\":99}", problemJson);
   }
 
   @Test
@@ -76,6 +76,6 @@ class ProblemSerializerTests extends AbstractProblemTests {
 
     String problemJson = mapper.writeValueAsString(problem);
 
-    assertEquals("{\"type\":\"about:blank\",\"title\":\"Hello World\",\"status\":99}", problemJson);
+    assertEquals("{\"title\":\"Hello World\",\"status\":99}", problemJson);
   }
 }
