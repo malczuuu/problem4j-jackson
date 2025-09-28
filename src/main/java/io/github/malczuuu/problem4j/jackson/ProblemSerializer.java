@@ -1,15 +1,16 @@
 package io.github.malczuuu.problem4j.jackson;
 
+import static java.util.stream.Collectors.toList;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import io.github.malczuuu.problem4j.core.Problem;
 import java.io.IOException;
-import java.io.Serial;
 
 class ProblemSerializer extends StdSerializer<Problem> {
 
-  @Serial private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   ProblemSerializer() {
     super(Problem.class);
@@ -34,7 +35,7 @@ class ProblemSerializer extends StdSerializer<Problem> {
     if (problem.getInstance() != null) {
       jsonGenerator.writeStringField(ProblemMember.INSTANCE, problem.getInstance().toString());
     }
-    for (String extension : problem.getExtensions().stream().sorted().toList()) {
+    for (String extension : problem.getExtensions().stream().sorted().collect(toList())) {
       writeExtension(problem, jsonGenerator, extension);
     }
     jsonGenerator.writeEndObject();

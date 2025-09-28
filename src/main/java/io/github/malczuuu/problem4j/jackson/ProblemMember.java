@@ -1,5 +1,7 @@
 package io.github.malczuuu.problem4j.jackson;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 class ProblemMember {
@@ -10,5 +12,6 @@ class ProblemMember {
   static final String DETAIL = "detail";
   static final String INSTANCE = "instance";
 
-  static final Set<String> PROBLEM_MEMBERS = Set.of(TYPE, TITLE, STATUS, DETAIL, INSTANCE);
+  static final Set<String> PROBLEM_MEMBERS =
+      new HashSet<>(Arrays.asList(TYPE, TITLE, STATUS, DETAIL, INSTANCE));
 }
