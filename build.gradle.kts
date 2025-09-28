@@ -1,12 +1,14 @@
 import com.diffplug.spotless.LineEnding
 
 plugins {
-    `java-library`
-    `maven-publish`
-    id("com.diffplug.spotless") version "7.2.1"
+    id("java-library")
+    id("maven-publish")
+    id("signing")
+    id("com.diffplug.spotless").version("7.2.1")
+    id("com.gradleup.nmcp.aggregation").version("1.1.0")
 }
 
-group = "com.github.malczuuu"
+group = "io.github.malczuuu.problem4j"
 
 /**
  * In order to avoid hardcoding snapshot versions, we derive the version from the current Git commit hash. For CI/CD add
@@ -28,21 +30,14 @@ repositories {
     mavenCentral()
 }
 
-val jacksonDatabindVersion = "2.19.2"
-val problem4jCoreVersion = "1.0.0-alpha1"
-val junitJupiterVersion = "5.13.4"
-val junitPlatformVersion = "1.13.4"
-
 dependencies {
-    api("com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}")
+    api("io.github.malczuuu.problem4j:problem4j-core:1.0.0-alpha1")
+    api("com.fasterxml.jackson.core:jackson-databind:2.19.2")
 
-    api("io.github.malczuuu.problem4j:problem4j-core:${problem4jCoreVersion}")
+    testImplementation(platform("org.junit:junit-bom:5.13.4"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}")
-
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 publishing {
@@ -55,16 +50,53 @@ publishing {
 
             pom {
                 name = project.name
-                description = "Jackson module for library implementing RFC7807"
+                description = "Jackson integration for library implementing RFC7807"
                 url = "https://github.com/malczuuu/${project.name}"
+                inceptionYear = "2025"
                 licenses {
                     license {
                         name = "MIT License"
                         url = "https://opensource.org/licenses/MIT"
                     }
                 }
+                developers {
+                    developer {
+                        id = "malczuuu"
+                        name = "Damian Malczewski"
+                        url = "https://github.com/malczuuu"
+                    }
+                }
+                issueManagement {
+                    system = "GitHub Issues"
+                    url = "https://github.com/malczuuu/${project.name}/issues"
+                }
+                scm {
+                    connection = "scm:git:git://github.com/malczuuu/${project.name}.git"
+                    developerConnection = "scm:git:git@github.com:malczuuu/${project.name}.git"
+                    url = "https://github.com/malczuuu/${project.name}"
+                }
             }
         }
+    }
+}
+
+nmcpAggregation {
+    centralPortal {
+        username = System.getenv("PUBLISHING_USERNAME")
+        password = System.getenv("PUBLISHING_PASSWORD")
+
+        publishingType = "USER_MANAGED"
+    }
+    publishAllProjectsProbablyBreakingProjectIsolation()
+}
+
+signing {
+    if (project.hasProperty("sign")) {
+        useInMemoryPgpKeys(
+            System.getenv("SIGNING_KEY"),
+            System.getenv("SIGNING_PASSWORD")
+        )
+        sign(publishing.publications["maven"])
     }
 }
 
