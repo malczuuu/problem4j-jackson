@@ -31,13 +31,17 @@ repositories {
 }
 
 dependencies {
+    // Main
     api("io.github.malczuuu.problem4j:problem4j-core:1.0.0-alpha1")
     compileOnly("com.fasterxml.jackson.core:jackson-databind:2.19.2")
 
     testImplementation(platform("org.junit:junit-bom:5.13.4"))
 
+    // Test
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    testImplementation("com.fasterxml.jackson.core:jackson-databind:2.19.0")
 }
 
 publishing {
