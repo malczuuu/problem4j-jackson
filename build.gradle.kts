@@ -4,8 +4,8 @@ plugins {
     id("java-library")
     id("maven-publish")
     id("signing")
-    id("com.diffplug.spotless").version("7.2.1")
-    id("com.gradleup.nmcp.aggregation").version("1.1.0")
+    id("com.diffplug.spotless").version("8.0.0")
+    id("com.gradleup.nmcp.aggregation").version("1.2.0")
 }
 
 group = "io.github.malczuuu.problem4j"
@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
     // Main
-    api("io.github.malczuuu.problem4j:problem4j-core:1.0.0-alpha1")
+    api("io.github.malczuuu.problem4j:problem4j-core:1.0.0")
     compileOnly("com.fasterxml.jackson.core:jackson-databind:2.19.2")
 
     testImplementation(platform("org.junit:junit-bom:5.13.4"))
@@ -118,6 +118,7 @@ spotless {
         target("src/**/*.java")
 
         googleJavaFormat("1.28.0")
+        forbidWildcardImports()
         lineEndings = LineEnding.UNIX
     }
 }
