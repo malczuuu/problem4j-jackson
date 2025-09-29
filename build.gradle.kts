@@ -33,7 +33,7 @@ repositories {
 dependencies {
     // Main
     api("io.github.malczuuu.problem4j:problem4j-core:1.0.0")
-    api("com.fasterxml.jackson.core:jackson-databind:2.14.3")
+    api("com.fasterxml.jackson.core:jackson-databind:2.19.2")
 
     testImplementation(platform("org.junit:junit-bom:5.13.4"))
 
