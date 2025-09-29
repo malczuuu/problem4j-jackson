@@ -56,9 +56,6 @@ public class ExampleClass {
 Add library as dependency to Maven or Gradle. See the actual versions on [Maven Central][maven-central]. **Java 8** or
 higher is required to use this library.
 
-**Note** that `jackson-databind` dependencies must be included alongside `problem4j-jackson`, as the number of
-transitive dependencies was limited.
-
 1. Maven:
    ```xml
    <dependencies>
