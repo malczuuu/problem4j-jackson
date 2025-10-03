@@ -4,8 +4,6 @@
 [![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson)](https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson)
 [![License](https://img.shields.io/github/license/malczuuu/problem4j-jackson)](https://github.com/malczuuu/problem4j-jackson/blob/main/LICENSE)
 
-> Part of [`problem4j`][problem4j] package of libraries.
-
 Jackson integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing and
 deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
 
