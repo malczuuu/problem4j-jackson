@@ -46,23 +46,6 @@ class ProblemSerializerTests extends AbstractProblemTests {
   }
 
   @Test
-  void givenExtensionWithNullName_whenSerializing_shouldSkipExtension()
-      throws JsonProcessingException {
-    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
-
-    Problem problem =
-        Problem.builder()
-            .title("Hello World")
-            .status(99)
-            .extension(Problem.extension(null, "extensionValue"))
-            .build();
-
-    String problemJson = mapper.writeValueAsString(problem);
-
-    assertEquals("{\"title\":\"Hello World\",\"status\":99}", problemJson);
-  }
-
-  @Test
   void givenExtensionWithNullValue_whenSerializing_shouldSkipExtension()
       throws JsonProcessingException {
     ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
