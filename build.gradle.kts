@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
     // Main
-    api("io.github.malczuuu.problem4j:problem4j-core:1.0.1")
+    api("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
 
     compileOnly("com.fasterxml.jackson.core:jackson-databind:2.20.0")
 
