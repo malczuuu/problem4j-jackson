@@ -54,26 +54,38 @@ public class ExampleClass {
 Add library as dependency to Maven or Gradle. See the actual versions on [Maven Central][maven-central]. **Java 8** or
 higher is required to use this library.
 
+The `problem4j-jackson` module does **not** declare `jackson-databind` as a transitive dependency. You should add
+`jackson-databind` explicitly as your main Jackson dependency.
+
+This module serves as an extension to `jackson-databind` and has been verified to work with versions `2.10.0` or
+newer, though it's recommended to use the latest available release.
+
 1. Maven:
    ```xml
    <dependencies>
        <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
-           <artifactId>problem4j-core</artifactId>
-           <version>1.1.0</version>
+           <groupId>com.fasterxml.jackson.core</groupId>
+           <artifactId>jackson-databind</artifactId>
+           <version>2.20.0</version>
        </dependency>
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
            <artifactId>problem4j-jackson</artifactId>
-           <version>1.0.0</version>
+           <version>1.1.0</version>
+       </dependency>
+       <dependency>
+           <groupId>io.github.malczuuu.problem4j</groupId>
+           <artifactId>problem4j-core</artifactId>
+           <version>1.1.0</version>
        </dependency>
    </dependencies>
    ```
 2. Gradle (Groovy or Kotlin DSL):
    ```groovy
    dependencies {
+       implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.1.0")
        implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.0.0")
    }
    ```
 
