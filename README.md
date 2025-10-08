@@ -65,7 +65,7 @@ higher is required to use this library.
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
            <artifactId>problem4j-jackson</artifactId>
-           <version>1.0.0</version>
+           <version>1.1.0</version>
        </dependency>
    </dependencies>
    ```
@@ -73,7 +73,7 @@ higher is required to use this library.
    ```groovy
    dependencies {
        implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.0.0")
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.1.0")
    }
    ```
 
