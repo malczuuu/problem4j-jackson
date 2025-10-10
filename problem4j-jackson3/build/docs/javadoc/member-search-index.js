@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"io.github.malczuuu.problem4j.jackson3","c":"ProblemJacksonModule","l":"ProblemJacksonModule()","u":"%3Cinit%3E()"}];updateSearchResults();

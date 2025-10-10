@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.github.malczuuu.problem4j.jackson3.ProblemSerializerTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-10-10T22:26:14.858Z" hostname="DESKTOP-9A4DLCQ" time="0.031">
+  <properties/>
+  <testcase name="givenOverlappingExtension_whenSerializing_shouldSkipExtension()" classname="io.github.malczuuu.problem4j.jackson3.ProblemSerializerTests" time="0.019"/>
+  <testcase name="givenExtensionWithNullValue_whenSerializing_shouldSkipExtension()" classname="io.github.malczuuu.problem4j.jackson3.ProblemSerializerTests" time="0.002"/>
+  <testcase name="shouldSerializeProblem()" classname="io.github.malczuuu.problem4j.jackson3.ProblemSerializerTests" time="0.008"/>
+  <testcase name="givenManualRegisteredModules_whenSerializing_shouldSerialize()" classname="io.github.malczuuu.problem4j.jackson3.ProblemSerializerTests" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

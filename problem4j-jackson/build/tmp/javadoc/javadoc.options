@@ -1,0 +1,11 @@
+-Xdoclint:none '-quiet'
+-classpath 'C:\\Users\\Damian\\Documents\\repos\\problem4j-jackson\\problem4j-jackson\\build\\classes\\java\\main;C:\\Users\\Damian\\Documents\\repos\\problem4j-jackson\\problem4j-jackson\\build\\resources\\main;C:\\Users\\Damian\\.gradle\\caches\\modules-2\\files-2.1\\io.github.malczuuu.problem4j\\problem4j-core\\1.1.0\\ec4fb4b9f35b7239cbba8e07f5b5e66a48cd3799\\problem4j-core-1.1.0.jar;C:\\Users\\Damian\\.gradle\\caches\\modules-2\\files-2.1\\com.fasterxml.jackson.core\\jackson-core\\2.20.0\\3c97f7fad069f7cfae639d790bd93d6a0b2dff31\\jackson-core-2.20.0.jar;C:\\Users\\Damian\\.gradle\\caches\\modules-2\\files-2.1\\com.fasterxml.jackson.core\\jackson-databind\\2.20.0\\f0a5e62fbd21285e9a5498a60dccb097e1ef793b\\jackson-databind-2.20.0.jar;C:\\Users\\Damian\\.gradle\\caches\\modules-2\\files-2.1\\com.fasterxml.jackson.core\\jackson-annotations\\2.20\\6a5e7291ea3f2b590a7ce400adb7b3aea4d7e12c\\jackson-annotations-2.20.jar'
+-d 'C:\\Users\\Damian\\Documents\\repos\\problem4j-jackson\\problem4j-jackson\\build\\docs\\javadoc'
+-doctitle 'problem4j-jackson d164788 API'
+-notimestamp 
+-quiet 
+-windowtitle 'problem4j-jackson d164788 API'
+'C:\\Users\\Damian\\Documents\\repos\\problem4j-jackson\\problem4j-jackson\\src\\main\\java\\io\\github\\malczuuu\\problem4j\\jackson\\ProblemDeserializer.java'
+'C:\\Users\\Damian\\Documents\\repos\\problem4j-jackson\\problem4j-jackson\\src\\main\\java\\io\\github\\malczuuu\\problem4j\\jackson\\ProblemMember.java'
+'C:\\Users\\Damian\\Documents\\repos\\problem4j-jackson\\problem4j-jackson\\src\\main\\java\\io\\github\\malczuuu\\problem4j\\jackson\\ProblemModule.java'
+'C:\\Users\\Damian\\Documents\\repos\\problem4j-jackson\\problem4j-jackson\\src\\main\\java\\io\\github\\malczuuu\\problem4j\\jackson\\ProblemSerializer.java'

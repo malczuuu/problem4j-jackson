@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.github.malczuuu.problem4j.jackson.ProblemDeserializerTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-10-10T22:26:09.837Z" hostname="DESKTOP-9A4DLCQ" time="0.246">
+  <properties/>
+  <testcase name="[1] type=http://exa mple.com" classname="io.github.malczuuu.problem4j.jackson.ProblemDeserializerTests" time="0.207"/>
+  <testcase name="[2] type=http://example.com/&lt;&gt;" classname="io.github.malczuuu.problem4j.jackson.ProblemDeserializerTests" time="0.002"/>
+  <testcase name="[3] type=http://[::1" classname="io.github.malczuuu.problem4j.jackson.ProblemDeserializerTests" time="0.001"/>
+  <testcase name="[4] type=null" classname="io.github.malczuuu.problem4j.jackson.ProblemDeserializerTests" time="0.001"/>
+  <testcase name="givenManualRegisteredModules_whenDeserializing_shouldDeserialize()" classname="io.github.malczuuu.problem4j.jackson.ProblemDeserializerTests" time="0.024"/>
+  <testcase name="givenAutoRegisteredModules_whenDeserializing_shouldDeserialize()" classname="io.github.malczuuu.problem4j.jackson.ProblemDeserializerTests" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
