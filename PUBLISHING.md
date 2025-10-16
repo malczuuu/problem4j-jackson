@@ -49,11 +49,9 @@ Artifacts are published to Snapshot Repository, using following Gradle task.
    repositories {
        mavenCentral()
    
-       // add snapshot repository (for unpublished or nightly builds)
        maven {
            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
            content {
-               // only include snapshots from this group to avoid conflicts
                includeGroup("io.github.malczuuu.problem4j")
            }
            mavenContent {
@@ -62,16 +60,15 @@ Artifacts are published to Snapshot Repository, using following Gradle task.
        }
    }
    
-   // always refresh "changing" dependencies (e.g., SNAPSHOT versions)
    configurations.all {
        resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
    }
    
    dependencies {
-       // choose the one appropriate for your project setup
-       
        implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.2.0-SNAPSHOT") {
-           // ensures Gradle re-checks for new snapshot versions
+           isChanging = true   
+       }
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.0.0-SNAPSHOT") {
            isChanging = true   
        }
    }
@@ -79,7 +76,8 @@ Artifacts are published to Snapshot Repository, using following Gradle task.
 
 ## Releases
 
-Keep Git tags with `vX.Y.Z-suffix` format. GitHub Actions job will only trigger on such tags and will remove `v` prefix.
+Keep Git tags with `{moduleName}-vX.Y.Z-{suffix}` format. GitHub Actions job will only trigger on such tags and will
+evaluate module and version based on tag format.
 
 See [`gradle-publish-release.yml`](.github/workflows/gradle-publish-release.yml) for whole publishing procedure.
 
