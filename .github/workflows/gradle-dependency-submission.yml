@@ -1,21 +1,31 @@
 name: Dependency Submission
 
+# workflow limited to only files related to gradle dependencies
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "main"
+      - "release/*"
     paths:
+      - "problem4j-spring-*/build.gradle.kts"
       - "build.gradle.kts"
       - "settings.gradle.kts"
+      - "gradle.properties"
       - "gradle/**"
       - "buildSrc/**"
+      - "gradlew"
+      - "gradlew.bat"
+      - ".github/workflows/gradle-dependency-submission.yml"
 
 jobs:
   dependency-submission:
+    name: Dependency Submission
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout
+        uses: actions/checkout@v5
 
       - name: Set up JDK 17
         uses: actions/setup-java@v5

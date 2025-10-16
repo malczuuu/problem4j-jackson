@@ -2,25 +2,33 @@ name: Validate [next_version.txt]
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "main"
+      - "release/*"
     paths:
-      - ".github/utils/next_version.txt"
+      - ".github/utils/next_version/*"
       - ".github/utils/validate_version_file.sh"
       - ".github/workflows/validate-next_version.txt.yml"
   pull_request:
     paths:
-      - ".github/utils/next_version.txt"
+      - ".github/utils/next_version/*"
       - ".github/utils/validate_version_file.sh"
       - ".github/workflows/validate-next_version.txt.yml"
 
 jobs:
   validate:
+    name: Validate SNAPSHOT version files
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Validate next_version.txt file
+      - name: Validate next_version/problem4j-jackson.txt file
         env:
-          FILE: ".github/utils/next_version.txt"
+          FILE: ".github/utils/next_version/problem4j-jackson.txt"
+        run: bash .github/utils/validate_version_file.sh
+
+      - name: Validate next_version/problem4j-jackson3.txt file
+        env:
+          FILE: ".github/utils/next_version/problem4j-jackson3.txt"
         run: bash .github/utils/validate_version_file.sh
