@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import io.github.malczuuu.problem4j.core.Problem;
 import java.io.IOException;
 
+/** Jackson serializer for {@link Problem}. */
 class ProblemSerializer extends StdSerializer<Problem> {
 
   private static final long serialVersionUID = 1L;
@@ -16,6 +17,10 @@ class ProblemSerializer extends StdSerializer<Problem> {
     super(Problem.class);
   }
 
+  /**
+   * Method that serializes {@link Problem} instance into JSON content. It does so by writing
+   * problem details members and extensions into JSON using {@link JsonGenerator}.
+   */
   @Override
   public void serialize(Problem problem, JsonGenerator jsonGenerator, SerializerProvider provider)
       throws IOException {

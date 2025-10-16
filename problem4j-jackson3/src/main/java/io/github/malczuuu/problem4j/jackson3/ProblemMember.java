@@ -1,9 +1,14 @@
-package io.github.malczuuu.problem4j.jackson;
+package io.github.malczuuu.problem4j.jackson3;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Constants for {@code Problem} field names.
+ *
+ * @see io.github.malczuuu.problem4j.core.Problem
+ */
 class ProblemMember {
 
   static final String TYPE = "type";

@@ -4,8 +4,13 @@
 [![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson)](https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson)
 [![License](https://img.shields.io/github/license/malczuuu/problem4j-jackson)](https://github.com/malczuuu/problem4j-jackson/blob/main/LICENSE)
 
-Jackson `2.x` integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing and
-deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
+Jackson `2.x` and `3.x` integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing
+and deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
+
+Project contains two submodules, one for Jackson `2.x` and another for Jackson `3.x`. Both modules have the same API
+and functionality, but are compiled against different versions of Jackson (and by extension against different versions
+of Java). Choose the one that matches the version of Jackson you are using in your project. Separation was done because `jackson-3.x` has different maven `groupId` so it's
+technically not possible to have both versions included in the same project.
 
 ## Table of Contents
 
@@ -25,10 +30,6 @@ deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
 ## Example
 
 ```java
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.malczuuu.problem4j.core.Problem;
-import io.github.malczuuu.problem4j.jackson.ProblemModule;
-
 public class ExampleClass {
 
   public void method() {
@@ -52,7 +53,8 @@ public class ExampleClass {
 ## Usage
 
 Add library as dependency to Maven or Gradle. See the actual versions on [Maven Central][maven-central]. **Java 8** or
-higher is required to use this library.
+higher is required to use `problem4j-jackson` library. **Java 17** or higher is required to use `problem4j-jackson3`
+library.
 
 The `problem4j-jackson` module does **not** declare `jackson-databind` as a transitive dependency. You should add
 `jackson-databind` explicitly as your main Jackson dependency.
@@ -80,7 +82,7 @@ newer, though it's recommended to use the latest available release.
        </dependency>
    </dependencies>
    ```
-2. Gradle (Groovy or Kotlin DSL):
+2. Gradle (Kotlin DSL):
    ```groovy
    dependencies {
        implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")

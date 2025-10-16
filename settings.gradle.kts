@@ -9,3 +9,6 @@ plugins {
 }
 
 rootProject.name = "problem4j-jackson"
+
+include(":problem4j-jackson")
+include(":problem4j-jackson3")

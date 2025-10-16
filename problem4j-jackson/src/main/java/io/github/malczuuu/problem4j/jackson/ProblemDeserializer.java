@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Iterator;
 
+/** Jackson deserializer for {@link Problem}. */
 class ProblemDeserializer extends StdDeserializer<Problem> {
 
   private static final long serialVersionUID = 1L;
@@ -19,6 +20,11 @@ class ProblemDeserializer extends StdDeserializer<Problem> {
     super(Problem.class);
   }
 
+  /**
+   * Method that deserializes JSON content into a {@link Problem} instance. It does so by reading
+   * the JSON content into a {@link JsonNode} and then applying the node fields one by one to a
+   * {@link ProblemBuilder}.
+   */
   @Override
   public Problem deserialize(JsonParser jsonParser, DeserializationContext context)
       throws IOException {
