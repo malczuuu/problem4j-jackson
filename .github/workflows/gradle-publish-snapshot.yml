@@ -14,8 +14,8 @@ jobs:
         if: startsWith(github.ref, 'refs/heads/')
         run: |
           BRANCH="${GITHUB_REF#refs/heads/}"
-          if [[ "$BRANCH" != "main" && "$BRANCH" != "dev" && "$BRANCH" != dev/* && "$BRANCH" != release/* ]]; then
-            echo "::error title=wrong branch selected::this workflow must be run on 'main', 'dev/*' or 'release/*' branches"
+          if [[ "$BRANCH" != "main" && "$BRANCH" != "dev" && "$BRANCH" != dev-* && "$BRANCH" != release-* ]]; then
+            echo "::error title=wrong branch selected::this workflow must be run on 'main', 'dev', 'dev-*' or 'release-*' branches"
             exit 1
           fi
 
@@ -106,6 +106,7 @@ jobs:
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
           PUBLISHING_USERNAME: ${{ secrets.PUBLISHING_USERNAME }}
           PUBLISHING_PASSWORD: ${{ secrets.PUBLISHING_PASSWORD }}
+          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false"
         run: |
           ./gradlew -Pversion="${{ steps.version2.outputs.version }}" problem4j-jackson:publishAllPublicationsToCentralPortalSnapshots
 
@@ -153,5 +154,6 @@ jobs:
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
           PUBLISHING_USERNAME: ${{ secrets.PUBLISHING_USERNAME }}
           PUBLISHING_PASSWORD: ${{ secrets.PUBLISHING_PASSWORD }}
+          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false"
         run: |
           ./gradlew -Pversion="${{ steps.version3.outputs.version }}" problem4j-jackson3:publishAllPublicationsToCentralPortalSnapshots
