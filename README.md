@@ -12,7 +12,8 @@ modules have the same API and functionality, but are compiled against different 
 against different versions of Java). Choose the one that matches the version of Jackson you are using in your project.
 
 Instead of releasing version `2.0`, library was split into two modules, because `jackson-3.x` has different maven
-`groupId` so it's technically possible to have both versions included in the same project:
+`groupId` so it's technically possible to have both versions included in the same project. **Note** that each module is
+versioned independently.
 
 | Module               | Jackson Version                                     | Java Baseline |
 |----------------------|-----------------------------------------------------|---------------|
@@ -39,24 +40,27 @@ Instead of releasing version `2.0`, library was split into two modules, because 
 For `problem4j-jackson` (Jackson `2.x`):
 
 ```java
-public class ExampleClass {
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-  public void method() {
-    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
+ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
 
-    Problem problem =
-        Problem.builder()
-            .type("https://example.com/errors/invalid-request")
-            .title("Invalid Request")
-            .status(400)
-            .detail("not a valid json")
-            .instance("https://example.com/instances/1234")
-            .build();
+Problem problem = Problem.builder().title("Bad Request").status(400).detail("not a valid json").build();
 
-    String json = mapper.writeValueAsString(problem);
-    Problem parsed = mapper.readValue(json, Problem.class);
-  }
-}
+String json = mapper.writeValueAsString(problem);
+Problem parsed = mapper.readValue(json, Problem.class);
+```
+
+For `problem4j-jackson3` (Jackson `3.x`):
+
+```java
+import tools.jackson.databind.json.JsonMapper;
+
+JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
+
+Problem problem = Problem.builder().title("Bad Request").status(400).detail("not a valid json").build();
+
+String json = mapper.writeValueAsString(problem);
+Problem parsed = mapper.readValue(json, Problem.class);
 ```
 
 ## Usage
@@ -65,40 +69,71 @@ Add library as dependency to Maven or Gradle. See the actual versions on [Maven 
 higher is required to use `problem4j-jackson` library. **Java 17** or higher is required to use `problem4j-jackson3`
 library.
 
-The `problem4j-jackson` module does **not** declare `jackson-databind` as a transitive dependency. You should add
+The `problem4j-jackson` modules does **not** declare `jackson-databind` as a transitive dependency. You should add
 `jackson-databind` explicitly as your main Jackson dependency.
 
-This module serves as an extension to `jackson-databind` and has been verified to work with versions `2.10.0` or
-newer, though it's recommended to use the latest available release.
-
-1. Maven:
-   ```xml
-   <dependencies>
-       <dependency>
-           <groupId>com.fasterxml.jackson.core</groupId>
-           <artifactId>jackson-databind</artifactId>
-           <version>2.20.0</version>
-       </dependency>
-       <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
-           <artifactId>problem4j-jackson</artifactId>
-           <version>1.1.0</version>
-       </dependency>
-       <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
-           <artifactId>problem4j-core</artifactId>
-           <version>1.1.0</version>
-       </dependency>
-   </dependencies>
-   ```
-2. Gradle (Kotlin DSL):
-   ```groovy
-   dependencies {
-       implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.1.0")
-       implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
-   }
-   ```
+<table>
+<tr>
+<td align="center"><code>problem4j-jackson</code> (Jackson 2.x)</td>
+<td align="center"><code>problem4j-jackson3</code> (Jackson 3.x)</td>
+</tr>
+<tr>
+<td><pre lang="xml">
+<dependencies>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.20.0</version>
+    </dependency>
+    <dependency>
+        <groupId>io.github.malczuuu.problem4j</groupId>
+        <artifactId>problem4j-jackson</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>io.github.malczuuu.problem4j</groupId>
+        <artifactId>problem4j-core</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+</dependencies>
+</pre></td>
+<td><pre lang="xml">
+<dependencies>
+    <dependency>
+        <groupId>tools.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+    <dependency>
+        <groupId>io.github.malczuuu.problem4j</groupId>
+        <artifactId>problem4j-jackson3</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+    <dependency>
+        <groupId>io.github.malczuuu.problem4j</groupId>
+        <artifactId>problem4j-core</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+</dependencies>
+</pre></td>
+</tr>
+<tr>
+<td><pre lang="kotlin">
+dependencies {
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
+    implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.1.0")
+    implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
+}
+</pre></td>
+<td><pre lang="kotlin">
+dependencies {
+    implementation("tools.jackson.core:jackson-databind:3.0.0")
+    implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.1.0")
+    implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
+}
+</pre></td>
+</tr>
+</table>
 
 For using snapshot versions [**Snapshots** chapter of`PUBLISHING.md`](PUBLISHING.md#snapshots).
 
