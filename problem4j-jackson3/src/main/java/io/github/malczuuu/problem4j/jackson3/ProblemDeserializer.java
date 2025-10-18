@@ -29,7 +29,7 @@ class ProblemDeserializer extends StdDeserializer<Problem> {
     ProblemBuilder builder = Problem.builder();
 
     Collection<String> propertyNames = node.keySet();
-    for (String property : propertyNames) {
+    for (String property : propertyNames.stream().sorted().toList()) {
       if (node.get(property) != null) {
         apply(builder, property, node.get(property), jsonParser);
       }
