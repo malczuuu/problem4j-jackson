@@ -13,6 +13,8 @@ Artifacts are published to Snapshot Repository, using following Gradle task.
 
 ### Accessing SNAPSHOT versions
 
+Add snapshot repositories.
+
 1. Maven:
    ```xml
    <repositories>
@@ -20,8 +22,6 @@ Artifacts are published to Snapshot Repository, using following Gradle task.
            <id>maven-central</id>
            <url>https://repo.maven.apache.org/maven2/</url>
        </repository>
-   
-       <!-- add snapshot repository (for unpublished or nightly builds) -->
        <repository>
            <id>sonatype-snapshots</id>
            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
@@ -30,25 +30,15 @@ Artifacts are published to Snapshot Repository, using following Gradle task.
            </releases>
            <snapshots>
                <enabled>true</enabled>
-               <!-- always check for new snapshots -->
                <updatePolicy>always</updatePolicy>
            </snapshots>
        </repository>
    </repositories>
-   
-   <dependencies>
-   <dependency>
-       <groupId>io.github.malczuuu.problem4j</groupId>
-       <artifactId>problem4j-jackson</artifactId>
-       <version>1.2.0-SNAPSHOT</version>
-   </dependency>
-   </dependencies>
    ```
 2. Gradle (Kotlin DSL):
    ```kotlin
    repositories {
        mavenCentral()
-   
        maven {
            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
            content {
@@ -59,16 +49,48 @@ Artifacts are published to Snapshot Repository, using following Gradle task.
            }
        }
    }
-   
    configurations.all {
        resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
    }
-   
+   ```
+
+For `problem4j-jackson` (**Jackson `2.x`**):
+
+1. Maven:
+   ```xml
+   <dependencies>
+       <dependency>
+           <groupId>io.github.malczuuu.problem4j</groupId>
+           <artifactId>problem4j-jackson</artifactId>
+           <version>1.2.0-SNAPSHOT</version>
+       </dependency>
+   </dependencies>
+   ```
+2. Gradle (Kotlin DSL):
+   ```groovy
    dependencies {
        implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.2.0-SNAPSHOT") {
            isChanging = true   
        }
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.0.0-SNAPSHOT") {
+   }
+   ```
+
+For `problem4j-jackson3` (**Jackson `3.x`**):
+
+1. Maven:
+   ```xml
+   <dependencies>
+       <dependency>
+           <groupId>io.github.malczuuu.problem4j</groupId>
+           <artifactId>problem4j-jackson3</artifactId>
+           <version>1.1.0-SNAPSHOT</version>
+       </dependency>
+   </dependencies>
+   ```
+2. Gradle (Kotlin DSL):
+   ```groovy
+   dependencies {
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.1.0-SNAPSHOT") {
            isChanging = true   
        }
    }

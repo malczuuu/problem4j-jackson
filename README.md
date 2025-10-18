@@ -72,68 +72,67 @@ library.
 The `problem4j-jackson` modules does **not** declare `jackson-databind` as a transitive dependency. You should add
 `jackson-databind` explicitly as your main Jackson dependency.
 
-<table>
-<tr>
-<td align="center"><code>problem4j-jackson</code> (Jackson 2.x)</td>
-<td align="center"><code>problem4j-jackson3</code> (Jackson 3.x)</td>
-</tr>
-<tr>
-<td><pre lang="xml">
-<dependencies>
-    <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>2.20.0</version>
-    </dependency>
-    <dependency>
-        <groupId>io.github.malczuuu.problem4j</groupId>
-        <artifactId>problem4j-jackson</artifactId>
-        <version>1.1.0</version>
-    </dependency>
-    <dependency>
-        <groupId>io.github.malczuuu.problem4j</groupId>
-        <artifactId>problem4j-core</artifactId>
-        <version>1.1.0</version>
-    </dependency>
-</dependencies>
-</pre></td>
-<td><pre lang="xml">
-<dependencies>
-    <dependency>
-        <groupId>tools.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>3.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>io.github.malczuuu.problem4j</groupId>
-        <artifactId>problem4j-jackson3</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>io.github.malczuuu.problem4j</groupId>
-        <artifactId>problem4j-core</artifactId>
-        <version>1.1.0</version>
-    </dependency>
-</dependencies>
-</pre></td>
-</tr>
-<tr>
-<td><pre lang="kotlin">
-dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
-    implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.1.0")
-    implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
-}
-</pre></td>
-<td><pre lang="kotlin">
-dependencies {
-    implementation("tools.jackson.core:jackson-databind:3.0.0")
-    implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.1.0")
-    implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
-}
-</pre></td>
-</tr>
-</table>
+For `problem4j-jackson` (**Jackson `2.x`**):
+
+1. Maven:
+   ```xml
+   <dependencies>
+       <dependency>
+           <groupId>com.fasterxml.jackson.core</groupId>
+           <artifactId>jackson-databind</artifactId>
+           <version>2.20.0</version>
+       </dependency>
+       <dependency>
+           <groupId>io.github.malczuuu.problem4j</groupId>
+           <artifactId>problem4j-jackson</artifactId>
+           <version>1.1.0</version>
+       </dependency>
+       <dependency>
+           <groupId>io.github.malczuuu.problem4j</groupId>
+           <artifactId>problem4j-core</artifactId>
+           <version>1.1.0</version>
+       </dependency>
+   </dependencies>
+   ```
+2. Gradle (Kotlin DSL):
+   ```groovy
+   dependencies {
+       implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.1.0")
+       implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
+   }
+   ```
+
+For `problem4j-jackson3` (**Jackson `3.x`**):
+
+1. Maven:
+   ```xml
+   <dependencies>
+       <dependency>
+           <groupId>tools.jackson.core</groupId>
+           <artifactId>jackson-databind</artifactId>
+           <version>2.20.0</version>
+       </dependency>
+       <dependency>
+           <groupId>io.github.malczuuu.problem4j</groupId>
+           <artifactId>problem4j-jackson3</artifactId>
+           <version>1.0.0</version>
+       </dependency>
+       <dependency>
+           <groupId>io.github.malczuuu.problem4j</groupId>
+           <artifactId>problem4j-core</artifactId>
+           <version>1.1.0</version>
+       </dependency>
+   </dependencies>
+   ```
+2. Gradle (Kotlin DSL):
+   ```groovy
+   dependencies {
+       implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.0.0")
+       implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
+   }
+   ```
 
 For using snapshot versions [**Snapshots** chapter of`PUBLISHING.md`](PUBLISHING.md#snapshots).
 
