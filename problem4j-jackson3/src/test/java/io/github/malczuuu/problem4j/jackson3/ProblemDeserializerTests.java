@@ -60,12 +60,15 @@ class ProblemDeserializerTests extends AbstractProblemTests {
     JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
 
     String json =
-        "{ "
-            + ("\"type\"     : " + quoteIfNotNull(type) + ", ")
-            + ("\"title\"    : \"Hello World\", ")
-            + ("\"status\"   : 99, ")
-            + ("\"instance\" : " + quoteIfNotNull(type))
-            + " }";
+        """
+        {
+            "type"     : %s,
+            "title"    : "Hello World",
+            "status"   : 99,
+            "instance" : %s
+        }
+        """
+            .formatted(quoteIfNotNull(type), quoteIfNotNull(type));
 
     Problem problem = mapper.readValue(json, Problem.class);
     assertEquals(Problem.BLANK_TYPE, problem.getType());
