@@ -15,10 +15,10 @@ dependencies {
     // Main
     api("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
 
-    compileOnly("tools.jackson.core:jackson-databind:3.0.0")
+    compileOnly("tools.jackson.core:jackson-databind:3.0.1")
 
     // Test
-    testImplementation("tools.jackson.core:jackson-databind:3.0.0")
+    testImplementation("tools.jackson.core:jackson-databind:3.0.1")
 
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
