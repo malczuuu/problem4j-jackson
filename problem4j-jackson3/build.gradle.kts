@@ -20,7 +20,7 @@ dependencies {
     // Test
     testImplementation(libs.jackson3.databind)
 
-    testImplementation(platform(libs.junit6.bom))
+    testImplementation(platform(libs.junit.bom))
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)
 }
