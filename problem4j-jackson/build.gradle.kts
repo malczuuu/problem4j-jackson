@@ -13,16 +13,16 @@ java {
 
 dependencies {
     // Main
-    api("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
+    api(libs.problem4j.core)
 
-    compileOnly("com.fasterxml.jackson.core:jackson-databind:2.20.0")
+    compileOnly(libs.jackson2.databind)
 
     // Test
-    testImplementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
+    testImplementation(libs.jackson2.databind)
 
-    testImplementation(platform("org.junit:junit-bom:5.13.4"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(platform(libs.junit5.bom))
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 publishing {

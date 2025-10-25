@@ -1,0 +1,17 @@
+[versions]
+problem4j-core = "1.1.0"
+jackson2 = "2.20.0"
+jackson3 = "3.0.1"
+junit5 = "5.13.4"
+junit6 = "6.0.0"
+
+[libraries]
+problem4j-core = { module = "io.github.malczuuu.problem4j:problem4j-core", version.ref = "problem4j-core" }
+jackson2-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson2" }
+jackson3-databind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson3" }
+junit5-bom = { module = "org.junit:junit-bom", version.ref = "junit5" }
+junit6-bom = { module = "org.junit:junit-bom", version.ref = "junit6" }
+
+# versions managed by junit*-bom
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
