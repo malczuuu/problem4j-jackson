@@ -3,7 +3,7 @@ problem4j-core = "1.1.0"
 jackson2 = "2.20.0"
 jackson3 = "3.0.1"
 junit5 = "5.14.0"
-junit6 = "5.14.0"
+junit6 = "6.0.0"
 
 [libraries]
 problem4j-core = { module = "io.github.malczuuu.problem4j:problem4j-core", version.ref = "problem4j-core" }
