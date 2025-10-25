@@ -113,10 +113,10 @@ tasks.withType<Javadoc>().configureEach {
 /**
  * JUnit 6 requires at least Java 17 to run tests.
  */
-tasks.withType<JavaCompile>().named("compileTestJava") {
+tasks.named<JavaCompile>("compileTestJava") {
     javaCompiler.set(
         javaToolchains.compilerFor {
-            languageVersion.set(JavaLanguageVersion.of(17))
+            languageVersion = JavaLanguageVersion.of(17)
         }
     )
 }
