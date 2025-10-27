@@ -9,7 +9,6 @@ import tools.jackson.core.JsonParser;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.deser.std.StdDeserializer;
-import tools.jackson.databind.exc.InvalidFormatException;
 
 /** Jackson deserializer for {@link Problem}. */
 class ProblemDeserializer extends StdDeserializer<Problem> {
@@ -31,13 +30,13 @@ class ProblemDeserializer extends StdDeserializer<Problem> {
     Collection<String> propertyNames = node.keySet();
     for (String property : propertyNames.stream().sorted().toList()) {
       if (node.get(property) != null) {
-        apply(builder, property, node.get(property), jsonParser);
+        apply(builder, property, node.get(property));
       }
     }
     return builder.build();
   }
 
-  private void apply(ProblemBuilder builder, String property, Object value, JsonParser jsonParser) {
+  private void apply(ProblemBuilder builder, String property, Object value) {
     switch (property) {
       case ProblemMember.TYPE:
         builder.type(parseUri(value));
@@ -46,7 +45,7 @@ class ProblemDeserializer extends StdDeserializer<Problem> {
         builder.title(value.toString());
         break;
       case ProblemMember.STATUS:
-        builder.status(parseStatus(value, jsonParser));
+        builder.status(parseStatus(value));
         break;
       case ProblemMember.DETAIL:
         builder.detail(value.toString());
@@ -72,11 +71,7 @@ class ProblemDeserializer extends StdDeserializer<Problem> {
     }
   }
 
-  private int parseStatus(Object value, JsonParser jsonParser) {
-    if (!(value instanceof Integer || value instanceof Long || value instanceof Short)) {
-      throw new InvalidFormatException(
-          jsonParser, "Problem#status must be integer", value, Integer.class);
-    }
-    return ((Number) value).intValue();
+  private int parseStatus(Object value) {
+    return value instanceof Number number ? number.intValue() : 0;
   }
 }

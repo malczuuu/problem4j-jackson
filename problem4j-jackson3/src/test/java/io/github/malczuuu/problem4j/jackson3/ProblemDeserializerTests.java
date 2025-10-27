@@ -77,6 +77,24 @@ class ProblemDeserializerTests extends AbstractProblemTests {
     assertNull(problem.getInstance());
   }
 
+  @ParameterizedTest
+  @ValueSource(strings = {"\"string\"", "false", "true"})
+  @NullSource
+  void givenInvalidStatus_whenDeserializing_shouldDeserializeToZero(String status) {
+    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
+
+    String json =
+        "{ "
+            + ("\"type\"     : " + quoteIfNotNull("http://example.com/type") + ", ")
+            + ("\"title\"    : \"Hello World\", ")
+            + ("\"status\"   : " + status + ", ")
+            + ("\"instance\" : " + quoteIfNotNull("http://example.com/instance"))
+            + " }";
+
+    Problem problem = mapper.readValue(json, Problem.class);
+    assertEquals(0, problem.getStatus());
+  }
+
   private String quoteIfNotNull(String type) {
     return type != null ? "\"" + type + "\"" : "null";
   }
