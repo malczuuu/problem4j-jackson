@@ -9,17 +9,17 @@ Jackson `2.x` and `3.x` integration module for [`problem4j-core`][problem4j-core
 and deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
 
 Project contains two submodules, `problem4j-jackson` for Jackson `2.x` and `problem4j-jackson3` for Jackson `3.x`. Both
-modules have the same API and functionality, but are compiled against different versions of Jackson (and by extension
+modules have the similar API and functionality, but are compiled against different versions of Jackson (and by extension
 against different versions of Java). Choose the one that matches the version of Jackson you are using in your project.
-
-Instead of releasing version `2.0`, library was split into two modules, because `jackson-3.x` has different maven
-`groupId` so it's technically possible to have both versions included in the same project. **Note** that each module is
-versioned independently.
 
 | Module               | Jackson Version                                     | Java Baseline |
 |----------------------|-----------------------------------------------------|---------------|
 | `problem4j-jackson`  | `com.fasterxml.jackson.core:jackson-databind:2.x.y` | Java 8        |
-| `problem4j-jackson3` | `tools.jackson.core:jackson-databind:3.0.0`         | Java 17       |
+| `problem4j-jackson3` | `tools.jackson.core:jackson-databind:3.x.y`         | Java 17       |
+
+Instead of releasing version `2.0`, library was split into two modules, because `jackson-3.x` has different maven
+`groupId` so it's technically possible to have both versions included in the same project. **Note** that each module is
+versioned independently.
 
 ## Table of Contents
 
@@ -112,7 +112,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
        <dependency>
            <groupId>tools.jackson.core</groupId>
            <artifactId>jackson-databind</artifactId>
-           <version>2.20.0</version>
+           <version>3.0.1</version>
        </dependency>
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
@@ -129,7 +129,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
 2. Gradle (Kotlin DSL):
    ```groovy
    dependencies {
-       implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
+       implementation("tools.jackson.core:jackson-databind:3.0.1")
        implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.0.0")
        implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
    }
