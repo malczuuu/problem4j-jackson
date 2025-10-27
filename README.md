@@ -135,7 +135,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
            <artifactId>problem4j-jackson3</artifactId>
-           <version>1.0.0</version>
+           <version>1.0.1</version>
        </dependency>
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
@@ -148,7 +148,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
    ```groovy
    dependencies {
        implementation("tools.jackson.core:jackson-databind:3.0.1")
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.0.0")
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.0.1")
        implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
    }
    ```
