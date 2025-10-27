@@ -8,7 +8,8 @@ instructions. Workflow requires manual trigger for snapshot build so it's not pu
 Artifacts are published to Snapshot Repository, using following Gradle task.
 
 ```bash
-./gradlew -Pversion=<version> publishAggregationToCentralPortalSnapshots
+./gradlew -Pversion=<version> problem4j-jackson:publishAllPublicationsToCentralPortalSnapshots
+./gradlew -Pversion=<version> problem4j-jackson3:publishAllPublicationsToCentralPortalSnapshots
 ```
 
 ### Accessing SNAPSHOT versions
@@ -118,7 +119,8 @@ SIGNING_PASSWORD=<PGP password>
 Artifacts are published to Maven Central via Sonatype, using following Gradle task.
 
 ```bash
-./gradlew -Pversion=<version> -Psign publishAllPublicationsToCentralPortal
+./gradlew -Pversion=<version> -Psign problem4j-jackson:publishAllPublicationsToCentralPortal
+./gradlew -Pversion=<version> -Psign problem4j-jackson3:publishAllPublicationsToCentralPortal
 ```
 
 This command uses `nmcp` Gradle plugin - [link](https://github.com/GradleUp/nmcp).
