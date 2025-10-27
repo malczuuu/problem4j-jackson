@@ -51,6 +51,15 @@ String json = mapper.writeValueAsString(problem);
 Problem parsed = mapper.readValue(json, Problem.class);
 ```
 
+Module is included in [`com.fasterxml.jackson.databind.Module`][com.fasterxml.jackson.databind.Module] for automatic
+service discovery. Registration can also be done with `findAndRegisterModules()` method.
+
+```java
+ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+```
+
+---
+
 For `problem4j-jackson3` (Jackson `3.x`):
 
 ```java
@@ -62,6 +71,13 @@ Problem problem = Problem.builder().title("Bad Request").status(400).detail("not
 
 String json = mapper.writeValueAsString(problem);
 Problem parsed = mapper.readValue(json, Problem.class);
+```
+
+Module is included in [`tools.jackson.databind.JacksonModule`][tools.jackson.databind.JacksonModule] for automatic
+service discovery. Registration can also be done with `findAndAddModules()` method.
+
+```java
+JsonMapper mapper = JsonMapper.builder().findAndAddModules().build();
 ```
 
 ## Usage
@@ -103,6 +119,8 @@ For `problem4j-jackson` (**Jackson `2.x`**):
        implementation("io.github.malczuuu.problem4j:problem4j-core:1.1.0")
    }
    ```
+
+---
 
 For `problem4j-jackson3` (**Jackson `3.x`**):
 
@@ -153,3 +171,7 @@ For using snapshot versions [**Snapshots** chapter of`PUBLISHING.md`](PUBLISHING
 [problem4j-jackson]: https://github.com/malczuuu/problem4j-jackson
 
 [problem4j-spring]: https://github.com/malczuuu/problem4j-spring
+
+[com.fasterxml.jackson.databind.Module]: problem4j-jackson/src/main/resources/META-INF/services/com.fasterxml.jackson.databind.Module
+
+[tools.jackson.databind.JacksonModule]: problem4j-jackson3/src/main/resources/META-INF/services/tools.jackson.databind.JacksonModule
