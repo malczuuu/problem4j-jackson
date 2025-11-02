@@ -91,7 +91,7 @@ signing {
     if (project.hasProperty("sign")) {
         useInMemoryPgpKeys(
             System.getenv("SIGNING_KEY"),
-            System.getenv("SIGNING_PASSWORD")
+            System.getenv("SIGNING_PASSWORD"),
         )
         sign(publishing.publications["maven"])
     }
@@ -117,7 +117,7 @@ tasks.named<JavaCompile>("compileTestJava") {
     javaCompiler.set(
         javaToolchains.compilerFor {
             languageVersion = JavaLanguageVersion.of(17)
-        }
+        },
     )
 }
 
@@ -128,7 +128,7 @@ tasks.withType<Test>().configureEach {
     javaLauncher.set(
         javaToolchains.launcherFor {
             languageVersion = JavaLanguageVersion.of(17)
-        }
+        },
     )
     useJUnitPlatform()
 }
