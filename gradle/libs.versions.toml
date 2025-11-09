@@ -1,7 +1,7 @@
 [versions]
 problem4j-core = "1.1.1"
 jackson2 = "2.20.1"
-jackson3 = "3.0.1"
+jackson3 = "3.0.2"
 junit = "6.0.1"
 
 [libraries]
