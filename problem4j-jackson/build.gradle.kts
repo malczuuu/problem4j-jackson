@@ -125,21 +125,15 @@ tasks.withType<Javadoc>().configureEach {
  * JUnit 6 requires at least Java 17 to run tests.
  */
 tasks.named<JavaCompile>("compileTestJava") {
-    javaCompiler.set(
-        javaToolchains.compilerFor {
-            languageVersion = JavaLanguageVersion.of(17)
-        },
-    )
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(17) }
 }
 
 /**
  * JUnit 6 requires at least Java 17 to run tests.
  */
 tasks.withType<Test>().configureEach {
-    javaLauncher.set(
-        javaToolchains.launcherFor {
-            languageVersion = JavaLanguageVersion.of(17)
-        },
-    )
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(17) }
     useJUnitPlatform()
+    systemProperty("user.language", "en")
+    systemProperty("user.country", "US")
 }
