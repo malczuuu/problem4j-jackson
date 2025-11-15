@@ -15,7 +15,7 @@ plugins {
     id("java-library")
     id("maven-publish")
     id("signing")
-    id("com.gradleup.nmcp").version("1.2.0")
+    id("com.gradleup.nmcp").version("1.2.1")
 }
 
 java {
