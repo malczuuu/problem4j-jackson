@@ -27,6 +27,7 @@ versioned independently.
 - [Example](#example)
 - [Usage](#usage)
 - [Problem4J Links](#problem4j-links)
+- [Building from source](#building-from-source)
 
 ## Features
 
@@ -153,7 +154,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
    }
    ```
 
-For using snapshot versions [**Snapshots** chapter of`PUBLISHING.md`](PUBLISHING.md#snapshots).
+For using snapshot versions [**Snapshots** chapter of`PUBLISHING.md`](RELEASING.md#sonatype-snapshots).
 
 ## Problem4J Links
 
@@ -161,6 +162,38 @@ For using snapshot versions [**Snapshots** chapter of`PUBLISHING.md`](PUBLISHING
 - [`problem4j-jackson`][problem4j-jackson] - Jackson module for serializing and deserializing `Problem` objects.
 - [`problem4j-spring`][problem4j-spring] - Spring modules extending `ResponseEntityExceptionHandler` for handling
   exceptions and returning `Problem` responses.
+
+## Building from source
+
+<details>
+<summary><b>Expand...</b></summary>
+
+To build the project from source you need **Java 17+**, because this is required by Gradle itself.
+
+- Module `problem4j-jackson` is compiled using a **Java 8 toolchain**, so the produced artifacts are compatible with
+  **Java 8**.
+- Module `problem4j-jackson3` is compiled using a **Java 17 toolchain**, so the produced artifacts are compatible with
+  **Java 17**.
+
+```bash
+./gradlew clean build
+```
+
+To format the code according to the style defined in [`build.gradle.kts`](./build.gradle.kts) rules use `spotlessApply`
+task.
+
+```bash
+./gradlew spotlessApply
+```
+
+To publish the built artifacts to local Maven repository, run following command, replacing `XXXX` with the desired
+version. By default, the version is derived from git commit hash.
+
+```bash
+./gradlew -Pversion=XXXX clean build publishToMavenLocal
+```
+
+</details>
 
 [jackson]: https://github.com/FasterXML/jackson
 
