@@ -51,6 +51,7 @@ spotless {
         target("**/src/**/*.java")
 
         googleJavaFormat("1.28.0")
+        endWithNewline()
         forbidWildcardImports()
         lineEndings = LineEnding.UNIX
     }
