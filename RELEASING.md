@@ -1,6 +1,6 @@
 # Publishing
 
-## Snapshots
+## Sonatype Snapshots
 
 See [`gradle-publish-snapshot.yml`](.github/workflows/gradle-publish-snapshot.yml) for publishing snapshot version
 instructions. Workflow requires manual trigger for snapshot build so it's not published regularly.
@@ -12,17 +12,13 @@ Artifacts are published to Snapshot Repository, using following Gradle task.
 ./gradlew -Pversion=<version> problem4j-jackson3:publishAllPublicationsToCentralPortalSnapshots
 ```
 
-### Accessing SNAPSHOT versions
+### Accessing packages from Sonatype Snapshots
 
 Add snapshot repositories.
 
 1. Maven:
    ```xml
    <repositories>
-       <repository>
-           <id>maven-central</id>
-           <url>https://repo.maven.apache.org/maven2/</url>
-       </repository>
        <repository>
            <id>sonatype-snapshots</id>
            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
@@ -39,7 +35,6 @@ Add snapshot repositories.
 2. Gradle (Kotlin DSL):
    ```kotlin
    repositories {
-       mavenCentral()
        maven {
            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
            content {
@@ -49,9 +44,6 @@ Add snapshot repositories.
                snapshotsOnly()
            }
        }
-   }
-   configurations.all {
-       resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
    }
    ```
 
@@ -70,9 +62,7 @@ For `problem4j-jackson` (**Jackson `2.x`**):
 2. Gradle (Kotlin DSL):
    ```groovy
    dependencies {
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.2.0-SNAPSHOT") {
-           isChanging = true   
-       }
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.2.0-SNAPSHOT")
    }
    ```
 
@@ -91,16 +81,18 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
 2. Gradle (Kotlin DSL):
    ```groovy
    dependencies {
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.1.0-SNAPSHOT") {
-           isChanging = true   
-       }
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.1.0-SNAPSHOT")
    }
    ```
 
-## Releases
+## Maven Central
 
-Keep Git tags with `{moduleName}-vX.Y.Z-{suffix}` format. GitHub Actions job will only trigger on such tags and will
-evaluate module and version based on tag format.
+1. Keep Git tags with `{moduleName}-vX.Y.Z-{suffix}` format. GitHub Actions job will only trigger on such tags and will
+   evaluate module and version based on tag format.
+2. After publishing a release, update proper file in [`next_version/`](.github/utils/next_version) for snapshot builds
+   automation.
+3. The releasing procedure only uploads the artifacts to Sonatype repository. You need to manually log in to Sonatype to
+   push the artifacts to Maven Central.
 
 See [`gradle-publish-release.yml`](.github/workflows/gradle-publish-release.yml) for whole publishing procedure.
 
@@ -124,6 +116,3 @@ Artifacts are published to Maven Central via Sonatype, using following Gradle ta
 ```
 
 This command uses `nmcp` Gradle plugin - [link](https://github.com/GradleUp/nmcp).
-
-**Note** that this only uploads the artifacts to Sonatype repository. You need to manually log in to Sonatype to push
-the artifacts to Maven Central.
