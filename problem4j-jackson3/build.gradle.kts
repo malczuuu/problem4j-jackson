@@ -2,7 +2,7 @@ plugins {
     id("java-library")
     id("maven-publish")
     id("signing")
-    id("com.gradleup.nmcp").version("1.3.0")
+    alias(libs.plugins.nmcp)
 }
 
 java {

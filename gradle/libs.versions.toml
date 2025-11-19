@@ -3,6 +3,12 @@ problem4j-core = "1.1.1"
 jackson2 = "2.20.1"
 jackson3 = "3.0.2"
 junit = "6.0.1"
+nmcp = "1.3.0"
+spotless = "8.0.0"
+
+[plugins]
+nmcp = { id = "com.gradleup.nmcp", version.ref = "nmcp" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 
 [libraries]
 problem4j-core = { module = "io.github.malczuuu.problem4j:problem4j-core", version.ref = "problem4j-core" }

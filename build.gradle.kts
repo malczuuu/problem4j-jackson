@@ -1,7 +1,7 @@
 import com.diffplug.spotless.LineEnding
 
 plugins {
-    id("com.diffplug.spotless").version("8.0.0")
+    alias(libs.plugins.spotless)
 }
 
 subprojects {
