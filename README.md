@@ -98,17 +98,17 @@ For `problem4j-jackson` (**Jackson `2.x`**):
        <dependency>
            <groupId>com.fasterxml.jackson.core</groupId>
            <artifactId>jackson-databind</artifactId>
-           <version>2.20.0</version>
+           <version>2.20.1</version>
        </dependency>
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
            <artifactId>problem4j-jackson</artifactId>
-           <version>1.1.1</version>
+           <version>1.2.0</version>
        </dependency>
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
            <artifactId>problem4j-core</artifactId>
-           <version>1.1.1</version>
+           <version>1.2.0</version>
        </dependency>
    </dependencies>
    ```
