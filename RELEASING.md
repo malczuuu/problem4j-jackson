@@ -74,14 +74,14 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
            <artifactId>problem4j-jackson3</artifactId>
-           <version>1.1.0-SNAPSHOT</version>
+           <version>1.2.0-SNAPSHOT</version>
        </dependency>
    </dependencies>
    ```
 2. Gradle (Kotlin DSL):
    ```groovy
    dependencies {
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.1.0-SNAPSHOT")
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.2.0-SNAPSHOT")
    }
    ```
 
