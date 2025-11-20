@@ -34,7 +34,7 @@ publishing {
             from(components["java"])
 
             pom {
-                name = project.name
+                name = "Problem4J Jackson3"
                 description = "Jackson3 integration for library implementing RFC7807"
                 url = "https://github.com/malczuuu/${rootProject.name}"
                 inceptionYear = "2025"
