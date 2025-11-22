@@ -1,26 +1,19 @@
-package io.github.malczuuu.problem4j.jackson3;
+package io.github.malczuuu.problem4j.jackson3.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import io.github.malczuuu.problem4j.core.Problem;
+import io.github.malczuuu.problem4j.jackson3.ProblemJacksonModule;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import tools.jackson.databind.json.JsonMapper;
 
-class ProblemSerializerTests extends AbstractProblemTests {
+class ProblemJsonSerializerTests extends AbstractProblemJsonTests {
 
-  @Test
-  void shouldSerializeProblem() {
-    JsonMapper mapper = JsonMapper.builder().findAndAddModules().build();
-
-    String problemJson = mapper.writeValueAsString(problem);
-
-    assertEquals(json, problemJson);
-  }
-
-  @Test
-  void givenManualRegisteredModules_whenSerializing_shouldSerialize() {
-    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
-
+  @ParameterizedTest
+  @MethodSource("variousJsonMapperConfigurations")
+  void givenVariousObjectMapper_whenSerializing_shouldSerialize(JsonMapper mapper) {
     String problemJson = mapper.writeValueAsString(problem);
 
     assertEquals(json, problemJson);

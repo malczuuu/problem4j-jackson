@@ -13,7 +13,9 @@ spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 [libraries]
 problem4j-core = { module = "io.github.malczuuu.problem4j:problem4j-core", version.ref = "problem4j-core" }
 jackson2-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson2" }
+jackson2-dataformat-xml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-xml", version.ref = "jackson2" }
 jackson3-databind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson3" }
+jackson3-dataformat-xml = { module = "tools.jackson.dataformat:jackson-dataformat-xml", version.ref = "jackson3" }
 
 # versions managed by junit-bom
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }

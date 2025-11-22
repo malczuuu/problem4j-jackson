@@ -1,42 +1,22 @@
-package io.github.malczuuu.problem4j.jackson3;
+package io.github.malczuuu.problem4j.jackson3.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.malczuuu.problem4j.core.Problem;
-import org.junit.jupiter.api.Test;
+import io.github.malczuuu.problem4j.jackson3.ProblemJacksonModule;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import tools.jackson.databind.json.JsonMapper;
 
-class ProblemDeserializerTests extends AbstractProblemTests {
+class ProblemJsonDeserializerTests extends AbstractProblemJsonTests {
 
-  @Test
-  void givenAutoRegisteredModules_whenDeserializing_shouldDeserialize() {
-    JsonMapper mapper = JsonMapper.builder().findAndAddModules().build();
-
-    Problem deserializedProblem = mapper.readValue(json, Problem.class);
-
-    assertEquals(problem.getType(), deserializedProblem.getType());
-    assertEquals(problem.getTitle(), deserializedProblem.getTitle());
-    assertEquals(problem.getStatus(), deserializedProblem.getStatus());
-    assertEquals(problem.getDetail(), deserializedProblem.getDetail());
-    assertEquals(problem.getInstance(), deserializedProblem.getInstance());
-
-    assertEquals(problem.getExtensions().size(), deserializedProblem.getExtensions().size());
-
-    for (String key : problem.getExtensions()) {
-      assertTrue(deserializedProblem.hasExtension(key));
-      assertEquals(problem.getExtensionValue(key), deserializedProblem.getExtensionValue(key));
-    }
-  }
-
-  @Test
-  void givenManualRegisteredModules_whenDeserializing_shouldDeserialize() {
-    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
-
+  @ParameterizedTest
+  @MethodSource("variousJsonMapperConfigurations")
+  void givenVariousObjectMapper_whenDeserializing_shouldDeserialize(JsonMapper mapper) {
     Problem deserializedProblem = mapper.readValue(json, Problem.class);
 
     assertEquals(problem.getType(), deserializedProblem.getType());

@@ -16,9 +16,11 @@ dependencies {
     api(libs.problem4j.core)
 
     compileOnly(libs.jackson3.databind)
+    compileOnly(libs.jackson3.dataformat.xml)
 
     // Test
     testImplementation(libs.jackson3.databind)
+    testImplementation(libs.jackson3.dataformat.xml)
 
     testImplementation(platform(libs.junit.bom))
     testImplementation(libs.junit.jupiter)

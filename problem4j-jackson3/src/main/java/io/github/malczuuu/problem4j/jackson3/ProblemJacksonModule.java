@@ -20,6 +20,6 @@ public class ProblemJacksonModule extends SimpleModule {
   public ProblemJacksonModule() {
     super(ProblemJacksonModule.class.getSimpleName());
 
-    setMixInAnnotation(Problem.class, ProblemMixIn.class);
+    setMixInAnnotation(Problem.class, ProblemJacksonMixIn.class);
   }
 }

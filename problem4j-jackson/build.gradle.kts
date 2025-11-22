@@ -29,9 +29,11 @@ dependencies {
     api(libs.problem4j.core)
 
     compileOnly(libs.jackson2.databind)
+    compileOnly(libs.jackson2.dataformat.xml)
 
     // Test
     testImplementation(libs.jackson2.databind)
+    testImplementation(libs.jackson2.dataformat.xml)
 
     testImplementation(platform(libs.junit.bom))
     testImplementation(libs.junit.jupiter)

@@ -1,6 +1,11 @@
 package io.github.malczuuu.problem4j.jackson;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
+import static io.github.malczuuu.problem4j.jackson.ProblemBridge.DETAIL;
+import static io.github.malczuuu.problem4j.jackson.ProblemBridge.INSTANCE;
+import static io.github.malczuuu.problem4j.jackson.ProblemBridge.STATUS;
+import static io.github.malczuuu.problem4j.jackson.ProblemBridge.TITLE;
+import static io.github.malczuuu.problem4j.jackson.ProblemBridge.TYPE;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -8,13 +13,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import io.github.malczuuu.problem4j.core.Problem;
 import io.github.malczuuu.problem4j.core.ProblemBuilder;
 import java.io.Serializable;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -25,17 +34,22 @@ import java.util.TreeMap;
  * This indirection ensures consistent JSON/XML output and full control over extension members and
  * namespaces.
  */
-@JsonPropertyOrder({
-  ProblemMember.TYPE,
-  ProblemMember.TITLE,
-  ProblemMember.STATUS,
-  ProblemMember.DETAIL,
-  ProblemMember.INSTANCE
-})
+@JsonPropertyOrder({TYPE, TITLE, STATUS, DETAIL, INSTANCE})
 @JsonInclude(NON_EMPTY)
 class ProblemBridge implements Serializable {
 
   private static final long serialVersionUID = 1L;
+
+  static final String NAMESPACE = "urn:ietf:rfc:7807";
+  static final String PROBLEM = "problem";
+
+  static final String TYPE = "type";
+  static final String TITLE = "title";
+  static final String STATUS = "status";
+  static final String DETAIL = "detail";
+  static final String INSTANCE = "instance";
+
+  static final Set<String> PROBLEM_MEMBERS = setOf(TYPE, TITLE, STATUS, DETAIL, INSTANCE);
 
   private URI type;
   private String title;
@@ -69,7 +83,7 @@ class ProblemBridge implements Serializable {
         .extension(extensions);
   }
 
-  @JsonProperty(ProblemMember.TYPE)
+  @JsonProperty(TYPE)
   void setType(JsonNode node) {
     if (node != null && node.isTextual()) {
       try {
@@ -80,12 +94,12 @@ class ProblemBridge implements Serializable {
     }
   }
 
-  @JsonProperty(ProblemMember.TITLE)
+  @JsonProperty(TITLE)
   void setTitle(String title) {
     this.title = title;
   }
 
-  @JsonProperty(ProblemMember.STATUS)
+  @JsonProperty(STATUS)
   void setStatus(JsonNode node) {
     // boolean values excluded because true is returned as 1
     if (node != null && !node.isBoolean()) {
@@ -93,12 +107,12 @@ class ProblemBridge implements Serializable {
     }
   }
 
-  @JsonProperty(ProblemMember.DETAIL)
+  @JsonProperty(DETAIL)
   void setDetail(String detail) {
     this.detail = detail;
   }
 
-  @JsonProperty(ProblemMember.INSTANCE)
+  @JsonProperty(INSTANCE)
   void setInstance(JsonNode node) {
     if (node != null && node.isTextual()) {
       try {
@@ -111,7 +125,7 @@ class ProblemBridge implements Serializable {
 
   @JsonAnySetter
   void setExtension(String name, Object value) {
-    if (name != null && value != null && !ProblemMember.PROBLEM_MEMBERS.contains(name)) {
+    if (name != null && value != null && !PROBLEM_MEMBERS.contains(name)) {
       if (!extensions.containsKey(name)) {
         extensions.put(name, value);
       } else if (extensions.get(name) instanceof List) {
@@ -127,33 +141,44 @@ class ProblemBridge implements Serializable {
     }
   }
 
-  @JsonProperty(ProblemMember.TYPE)
+  @JsonProperty(TYPE)
+  @JacksonXmlProperty(namespace = NAMESPACE, localName = TYPE)
   String getType() {
     return type != null ? type.toString() : null;
   }
 
-  @JsonProperty(ProblemMember.TITLE)
+  @JsonProperty(TITLE)
+  @JacksonXmlProperty(namespace = NAMESPACE, localName = TITLE)
   String getTitle() {
     return title;
   }
 
-  @JsonProperty(ProblemMember.STATUS)
+  @JsonProperty(STATUS)
+  @JacksonXmlProperty(namespace = NAMESPACE, localName = STATUS)
   int getStatus() {
     return status;
   }
 
-  @JsonProperty(ProblemMember.DETAIL)
+  @JsonProperty(DETAIL)
+  @JacksonXmlProperty(namespace = NAMESPACE, localName = DETAIL)
   String getDetail() {
     return detail;
   }
 
-  @JsonProperty(ProblemMember.INSTANCE)
+  @JsonProperty(INSTANCE)
+  @JacksonXmlProperty(namespace = NAMESPACE, localName = INSTANCE)
   String getInstance() {
     return instance != null ? instance.toString() : null;
   }
 
   @JsonAnyGetter
+  @JacksonXmlProperty(namespace = NAMESPACE)
   Map<String, Object> getExtensions() {
     return extensions;
+  }
+
+  /** Simulate {@code Set.of} from higher Java versions. */
+  private static Set<String> setOf(String... args) {
+    return new HashSet<>(Arrays.asList(args));
   }
 }

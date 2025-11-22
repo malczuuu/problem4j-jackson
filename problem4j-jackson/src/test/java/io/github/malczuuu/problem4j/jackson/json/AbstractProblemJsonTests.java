@@ -1,6 +1,9 @@
-package io.github.malczuuu.problem4j.jackson;
+package io.github.malczuuu.problem4j.jackson.json;
 
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.github.malczuuu.problem4j.core.Problem;
+import io.github.malczuuu.problem4j.jackson.ProblemMixIn;
+import io.github.malczuuu.problem4j.jackson.ProblemModule;
 import java.net.URI;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -8,6 +11,8 @@ import java.time.ZoneOffset;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.provider.Arguments;
 
 public abstract class AbstractProblemJsonTests {
 
@@ -45,5 +50,12 @@ public abstract class AbstractProblemJsonTests {
     object.put("id", 200);
     object.put("name", "test name");
     return object;
+  }
+
+  protected static Stream<Arguments> variousJsonMapperConfigurations() {
+    return Stream.of(
+        Arguments.of(new JsonMapper().findAndRegisterModules()),
+        Arguments.of(new JsonMapper().registerModule(new ProblemModule())),
+        Arguments.of(new JsonMapper().addMixIn(Problem.class, ProblemMixIn.class)));
   }
 }

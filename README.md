@@ -53,10 +53,11 @@ Problem parsed = mapper.readValue(json, Problem.class);
 ```
 
 Module is included in [`com.fasterxml.jackson.databind.Module`][com.fasterxml.jackson.databind.Module] for automatic
-service discovery. Registration can also be done with `findAndRegisterModules()` method.
+service discovery. Registration can also be done with `findAndRegisterModules()` method or by adding a `ProblemMixIn`.
 
 ```java
 ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+ObjectMapper mapper = new ObjectMapper().addMixIn(Problem.class, ProblemMixIn.class);
 ```
 
 ---
@@ -75,10 +76,11 @@ Problem parsed = mapper.readValue(json, Problem.class);
 ```
 
 Module is included in [`tools.jackson.databind.JacksonModule`][tools.jackson.databind.JacksonModule] for automatic
-service discovery. Registration can also be done with `findAndAddModules()` method.
+service discovery. Registration can also be done with `findAndAddModules()` method method or by adding a `ProblemJacksonMixIn`..
 
 ```java
 JsonMapper mapper = JsonMapper.builder().findAndAddModules().build();
+JsonMapper mapper = JsonMapper.builder().addMixIn(ProblemJacksonMixIn.class).build();
 ```
 
 ## Usage

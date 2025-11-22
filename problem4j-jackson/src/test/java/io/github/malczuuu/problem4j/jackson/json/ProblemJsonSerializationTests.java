@@ -1,4 +1,4 @@
-package io.github.malczuuu.problem4j.jackson;
+package io.github.malczuuu.problem4j.jackson.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -6,24 +6,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.github.malczuuu.problem4j.core.Problem;
+import io.github.malczuuu.problem4j.jackson.ProblemModule;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class ProblemJsonSerializationTests extends AbstractProblemJsonTests {
 
-  @Test
-  void shouldSerializeProblem() throws JsonProcessingException {
-    ObjectMapper mapper = new JsonMapper().findAndRegisterModules();
-
-    String problemJson = mapper.writeValueAsString(problem);
-
-    assertEquals(json, problemJson);
-  }
-
-  @Test
-  void givenManualRegisteredModules_whenSerializing_shouldSerialize()
+  @ParameterizedTest
+  @MethodSource("variousJsonMapperConfigurations")
+  void givenVariousObjectMapper_whenDeserializing_shouldSerializeProblem(ObjectMapper mapper)
       throws JsonProcessingException {
-    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
-
     String problemJson = mapper.writeValueAsString(problem);
 
     assertEquals(json, problemJson);
