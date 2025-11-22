@@ -10,6 +10,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ * Jackson MixIn that redirects serialization and deserialization of {@code Problem} through the
+ * {@link ProblemBridge} POJO.
+ */
 @JacksonXmlRootElement(localName = PROBLEM, namespace = NAMESPACE)
 @JsonRootName(value = PROBLEM, namespace = NAMESPACE)
 @JsonSerialize(converter = ConverterProblemToBridge.class)
