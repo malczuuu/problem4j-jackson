@@ -22,7 +22,6 @@ public class ProblemModule extends SimpleModule {
   public ProblemModule() {
     super(ProblemModule.class.getSimpleName());
 
-    addSerializer(Problem.class, new ProblemSerializer());
-    addDeserializer(Problem.class, new ProblemDeserializer());
+    setMixInAnnotation(Problem.class, ProblemMixIn.class);
   }
 }

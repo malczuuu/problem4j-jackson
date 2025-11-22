@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Constants for {@code Problem} field names.
+ * Constants for {@code Problem} type and field names.
  *
  * @see io.github.malczuuu.problem4j.core.Problem
  */

@@ -20,7 +20,6 @@ public class ProblemJacksonModule extends SimpleModule {
   public ProblemJacksonModule() {
     super(ProblemJacksonModule.class.getSimpleName());
 
-    addSerializer(Problem.class, new ProblemSerializer());
-    addDeserializer(Problem.class, new ProblemDeserializer());
+    setMixInAnnotation(Problem.class, ProblemMixIn.class);
   }
 }

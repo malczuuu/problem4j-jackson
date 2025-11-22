@@ -4,14 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.github.malczuuu.problem4j.core.Problem;
 import org.junit.jupiter.api.Test;
 
-class ProblemSerializerTests extends AbstractProblemTests {
+class ProblemJsonSerializationTests extends AbstractProblemJsonTests {
 
   @Test
   void shouldSerializeProblem() throws JsonProcessingException {
-    ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+    ObjectMapper mapper = new JsonMapper().findAndRegisterModules();
 
     String problemJson = mapper.writeValueAsString(problem);
 
@@ -21,7 +22,7 @@ class ProblemSerializerTests extends AbstractProblemTests {
   @Test
   void givenManualRegisteredModules_whenSerializing_shouldSerialize()
       throws JsonProcessingException {
-    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
+    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
 
     String problemJson = mapper.writeValueAsString(problem);
 
@@ -31,7 +32,7 @@ class ProblemSerializerTests extends AbstractProblemTests {
   @Test
   void givenOverlappingExtension_whenSerializing_shouldSkipExtension()
       throws JsonProcessingException {
-    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
+    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
 
     Problem problem =
         Problem.builder()
@@ -48,7 +49,7 @@ class ProblemSerializerTests extends AbstractProblemTests {
   @Test
   void givenExtensionWithNullValue_whenSerializing_shouldSkipExtension()
       throws JsonProcessingException {
-    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
+    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
 
     Problem problem =
         Problem.builder()

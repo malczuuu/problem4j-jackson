@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.github.malczuuu.problem4j.core.Problem;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
@@ -13,11 +14,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class ProblemDeserializerTests extends AbstractProblemTests {
+class ProblemJsonDeserializationTests extends AbstractProblemJsonTests {
 
   @Test
   void givenAutoRegisteredModules_whenDeserializing_shouldDeserialize() throws IOException {
-    ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+    ObjectMapper mapper = new JsonMapper().findAndRegisterModules();
 
     Problem deserializedProblem = mapper.readValue(json, Problem.class);
 
@@ -37,7 +38,7 @@ class ProblemDeserializerTests extends AbstractProblemTests {
 
   @Test
   void givenManualRegisteredModules_whenDeserializing_shouldDeserialize() throws IOException {
-    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
+    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
 
     Problem deserializedProblem = mapper.readValue(json, Problem.class);
 
@@ -60,7 +61,7 @@ class ProblemDeserializerTests extends AbstractProblemTests {
   @NullSource
   void givenTypeInvalidUri_whenDeserializing_shouldDeserialize(String type)
       throws JsonProcessingException {
-    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
+    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
 
     String json =
         "{ "
@@ -82,7 +83,7 @@ class ProblemDeserializerTests extends AbstractProblemTests {
   @NullSource
   void givenInvalidStatus_whenDeserializing_shouldDeserializeToZero(String status)
       throws JsonProcessingException {
-    ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
+    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
 
     String json =
         "{ "
