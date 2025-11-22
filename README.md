@@ -80,7 +80,7 @@ service discovery. Registration can also be done with `findAndAddModules()` meth
 
 ```java
 JsonMapper mapper = JsonMapper.builder().findAndAddModules().build();
-JsonMapper mapper = JsonMapper.builder().addMixIn(ProblemJacksonMixIn.class).build();
+JsonMapper mapper = JsonMapper.builder().addMixIn(Problem.class, ProblemJacksonMixIn.class).build();
 ```
 
 ## Usage
