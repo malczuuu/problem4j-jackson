@@ -156,7 +156,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
    }
    ```
 
-For using snapshot versions [**Snapshots** chapter of`PUBLISHING.md`](RELEASING.md#sonatype-snapshots).
+For using snapshot versions [**Snapshots** chapter of `RELEASING.md`](RELEASING.md#sonatype-snapshots).
 
 ## Problem4J Links
 
@@ -170,7 +170,7 @@ For using snapshot versions [**Snapshots** chapter of`PUBLISHING.md`](RELEASING.
 <details>
 <summary><b>Expand...</b></summary>
 
-To build the project from source you need **Java 17+**, because this is required by Gradle itself.
+Gradle **9.x+** requires **Java 17+** to run, but higher Java versions can also be used.
 
 - Module `problem4j-jackson` is compiled using a **Java 8 toolchain**, so the produced artifacts are compatible with
   **Java 8**.
