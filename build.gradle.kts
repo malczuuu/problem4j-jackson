@@ -7,10 +7,8 @@ plugins {
 subprojects {
     group = "io.github.malczuuu.problem4j"
 
-    /**
-     * In order to avoid hardcoding snapshot versions, we derive the version from the current Git commit hash. For CI/CD
-     * add -Pversion={releaseVersion} parameter to match Git tag.
-     */
+    // In order to avoid hardcoding snapshot versions, we derive the version from the current Git commit hash. For CI/CD
+    // add -Pversion={releaseVersion} parameter to match Git tag.
     version =
         if (version == "unspecified") {
             getSnapshotVersion(rootProject.rootDir)
@@ -18,10 +16,8 @@ subprojects {
             version
         }
 
-    /**
-     * Usage:
-     *   ./gradlew printVersion
-     */
+    // Usage:
+    //   ./gradlew printVersion
     tasks.register("printVersion") {
         description = "Prints the current project version to the console"
         group = "help"
@@ -50,9 +46,10 @@ spotless {
     java {
         target("**/src/**/*.java")
 
+        // NOTE: decided not to upgrade Google Java Format, as versions 1.29+ require running it on Java 21
         googleJavaFormat("1.28.0")
-        endWithNewline()
         forbidWildcardImports()
+        endWithNewline()
         lineEndings = LineEnding.UNIX
     }
 
@@ -67,7 +64,7 @@ spotless {
     kotlinGradle {
         target("**/*.gradle.kts")
 
-        ktlint("1.7.1").editorConfigOverride(mapOf("max_line_length" to "120"))
+        ktlint("1.8.0").editorConfigOverride(mapOf("max_line_length" to "120"))
         endWithNewline()
         lineEndings = LineEnding.UNIX
     }
