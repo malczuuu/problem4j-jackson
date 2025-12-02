@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
 /*
  * This module targets Java 8 for its main sources to maintain compatibility with older runtime environments used by
  * dependent systems.
@@ -121,15 +123,26 @@ tasks.withType<Javadoc>().configureEach {
     }
 }
 
-// JUnit 6 requires at least Java 17 to run tests.
+// JUnit 6 requires at Java 17+, main keeps Java 8.
 tasks.named<JavaCompile>("compileTestJava") {
     javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(17) }
 }
 
-// JUnit 6 requires at least Java 17 to run tests.
 tasks.withType<Test>().configureEach {
+    // JUnit 6 requires at Java 17+, main keeps Java 8.
     javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(17) }
+
     useJUnitPlatform()
+
+    testLogging {
+        events("passed", "skipped", "failed", "standardOut", "standardError")
+        exceptionFormat = TestExceptionFormat.SHORT
+        showStandardStreams = true
+    }
+
+    // For resolving warnings from mockito.
+    jvmArgs("-XX:+EnableDynamicAgentLoading")
+
     systemProperty("user.language", "en")
     systemProperty("user.country", "US")
 }
