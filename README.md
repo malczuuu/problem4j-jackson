@@ -156,8 +156,6 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
    }
    ```
 
-For using snapshot versions [**Snapshots** chapter of `RELEASING.md`](RELEASING.md#sonatype-snapshots).
-
 ## Problem4J Links
 
 - [`problem4j-core`][problem4j-core] - Core library defining `Problem` model and `ProblemException`.
@@ -181,8 +179,14 @@ Gradle **9.x+** requires **Java 17+** to run, but higher Java versions can also 
 ./gradlew clean build
 ```
 
+To execute tests use `test` task.
+
+```bash
+./gradlew clean test
+```
+
 To format the code according to the style defined in [`build.gradle.kts`](./build.gradle.kts) rules use `spotlessApply`
-task.
+task. **Note** that **building will fail** if code is not properly formatted.
 
 ```bash
 ./gradlew spotlessApply

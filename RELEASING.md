@@ -1,100 +1,17 @@
 # Publishing
 
-## Sonatype Snapshots
-
-See [`gradle-publish-snapshot.yml`](.github/workflows/gradle-publish-snapshot.yml) for publishing snapshot version
-instructions. Workflow requires manual trigger for snapshot build so it's not published regularly.
-
-Artifacts are published to Snapshot Repository, using following Gradle task.
-
-```bash
-./gradlew -Pversion=<version> problem4j-jackson:publishAllPublicationsToCentralPortalSnapshots
-./gradlew -Pversion=<version> problem4j-jackson3:publishAllPublicationsToCentralPortalSnapshots
-```
-
-### Accessing packages from Sonatype Snapshots
-
-Add snapshot repositories.
-
-1. Maven:
-   ```xml
-   <repositories>
-       <repository>
-           <id>sonatype-snapshots</id>
-           <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-           <releases>
-               <enabled>false</enabled>
-           </releases>
-           <snapshots>
-               <enabled>true</enabled>
-               <updatePolicy>always</updatePolicy>
-           </snapshots>
-       </repository>
-   </repositories>
-   ```
-2. Gradle (Kotlin DSL):
-   ```kotlin
-   repositories {
-       maven {
-           url = uri("https://central.sonatype.com/repository/maven-snapshots/")
-           content {
-               includeGroup("io.github.malczuuu.problem4j")
-           }
-           mavenContent {
-               snapshotsOnly()
-           }
-       }
-   }
-   ```
-
-For `problem4j-jackson` (**Jackson `2.x`**):
-
-1. Maven:
-   ```xml
-   <dependencies>
-       <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
-           <artifactId>problem4j-jackson</artifactId>
-           <version>1.3.0-SNAPSHOT</version>
-       </dependency>
-   </dependencies>
-   ```
-2. Gradle (Kotlin DSL):
-   ```groovy
-   dependencies {
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.3.0-SNAPSHOT")
-   }
-   ```
-
-For `problem4j-jackson3` (**Jackson `3.x`**):
-
-1. Maven:
-   ```xml
-   <dependencies>
-       <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
-           <artifactId>problem4j-jackson3</artifactId>
-           <version>1.2.0-SNAPSHOT</version>
-       </dependency>
-   </dependencies>
-   ```
-2. Gradle (Kotlin DSL):
-   ```groovy
-   dependencies {
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.2.0-SNAPSHOT")
-   }
-   ```
-
 ## Maven Central
+
+[![Publish Release Status](https://github.com/malczuuu/problem4j-core/actions/workflows/gradle-publish-release.yml/badge.svg)][gradle-publish-release]
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson?label=problem4j-jackson)][maven-central-problem4j-jackson]
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson3?label=problem4j-jackson3)][maven-central-problem4j-jackson3]
 
 1. Keep Git tags with `{moduleName}-vX.Y.Z-{suffix}` format. GitHub Actions job will only trigger on such tags and will
    evaluate module and version based on tag format.
-2. After publishing a release, update proper file in [`next_version/`](.github/utils/next_version) for snapshot builds
-   automation.
-3. The releasing procedure only uploads the artifacts to Sonatype repository. You need to manually log in to Sonatype to
+2. The releasing procedure only uploads the artifacts to Sonatype repository. You need to manually log in to Sonatype to
    push the artifacts to Maven Central.
 
-See [`gradle-publish-release.yml`](.github/workflows/gradle-publish-release.yml) for whole publishing procedure.
+See [`gradle-publish-release.yml`][gradle-publish-release.yml] for publishing release versions instructions.
 
 Set the following environment variables in your CI/CD (GitHub Actions, etc.):
 
@@ -116,3 +33,11 @@ Artifacts are published to Maven Central via Sonatype, using following Gradle ta
 ```
 
 This command uses `nmcp` Gradle plugin - [link](https://github.com/GradleUp/nmcp).
+
+[gradle-publish-release]: https://github.com/malczuuu/problem4j-jackson/actions/workflows/gradle-publish-release.yml
+
+[gradle-publish-release.yml]: .github/workflows/gradle-publish-release.yml
+
+[maven-central-problem4j-jackson]: https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson
+
+[maven-central-problem4j-jackson3]: https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson3
