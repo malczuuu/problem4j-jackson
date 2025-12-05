@@ -1,5 +1,5 @@
 [versions]
-problem4j-core = "1.2.1"
+problem4j-core = "1.2.2"
 jackson2 = "2.20.1"
 jackson3 = "3.0.3"
 junit = "6.0.1"
