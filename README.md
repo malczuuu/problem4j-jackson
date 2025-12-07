@@ -105,7 +105,7 @@ For `problem4j-jackson` (**Jackson `2.x`**):
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
            <artifactId>problem4j-core</artifactId>
-           <version>1.2.4</version>
+           <version>1.2.3</version>
        </dependency>
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
@@ -118,7 +118,7 @@ For `problem4j-jackson` (**Jackson `2.x`**):
    ```groovy
    dependencies {
        implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
-       implementation("io.github.malczuuu.problem4j:problem4j-core:1.2.4")
+       implementation("io.github.malczuuu.problem4j:problem4j-core:1.2.3")
        implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.2.4")
    }
    ```
@@ -143,7 +143,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
        <dependency>
            <groupId>io.github.malczuuu.problem4j</groupId>
            <artifactId>problem4j-jackson3</artifactId>
-           <version>1.1.3</version>
+           <version>1.1.4</version>
        </dependency>
    </dependencies>
    ```
@@ -152,7 +152,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
    dependencies {
        implementation("tools.jackson.core:jackson-databind:3.0.3")
        implementation("io.github.malczuuu.problem4j:problem4j-core:1.2.3")
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.1.3")
+       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.1.4")
    }
    ```
 
