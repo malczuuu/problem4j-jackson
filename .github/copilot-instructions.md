@@ -13,7 +13,7 @@
     - `problem4j-jackson` - Jackson 2.x integration
     - `problem4j-jackson3` - Jackson 3.x integration
 - **Java Version:** JVM (Java 8 for Jackson 2.x, Java 17 for Jackson 3.x, JDK 17 for build/CI)
-- **Repo Size:** Medium (two modules, core source, tests, build scripts, CI/CD workflows)
+- **Repo Size:** Small (two modules, core source, tests, build scripts, CI/CD workflows)
 
 ## Build, Test, Lint, and Validation Steps
 
