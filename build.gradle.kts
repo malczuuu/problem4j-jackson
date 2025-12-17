@@ -31,15 +31,6 @@ allprojects {
 }
 
 spotless {
-    format("misc") {
-        target("**/.gitattributes", "**/.gitignore")
-
-        trimTrailingWhitespace()
-        leadingTabsToSpaces(4)
-        endWithNewline()
-        lineEndings = LineEnding.UNIX
-    }
-
     java {
         target("**/src/**/*.java")
 
@@ -62,6 +53,24 @@ spotless {
         target("**/*.gradle.kts")
 
         ktlint("1.8.0").editorConfigOverride(mapOf("max_line_length" to "120"))
+        endWithNewline()
+        lineEndings = LineEnding.UNIX
+    }
+
+    format("yaml") {
+        target("**/*.yml", "**/*.yaml")
+
+        trimTrailingWhitespace()
+        leadingTabsToSpaces(2)
+        endWithNewline()
+        lineEndings = LineEnding.UNIX
+    }
+
+    format("misc") {
+        target("**/.gitattributes", "**/.gitignore")
+
+        trimTrailingWhitespace()
+        leadingTabsToSpaces(4)
         endWithNewline()
         lineEndings = LineEnding.UNIX
     }
