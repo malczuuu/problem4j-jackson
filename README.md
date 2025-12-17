@@ -176,13 +176,13 @@ Gradle **9.x+** requires **Java 17+** to run, but higher Java versions can also 
   **Java 17**.
 
 ```bash
-./gradlew clean build
+./gradlew build
 ```
 
 To execute tests use `test` task.
 
 ```bash
-./gradlew clean test
+./gradlew test
 ```
 
 To format the code according to the style defined in [`build.gradle.kts`](./build.gradle.kts) rules use `spotlessApply`
