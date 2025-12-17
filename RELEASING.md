@@ -12,8 +12,8 @@ See `./tools/tagrelease --help` for reference.
 [![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson?label=problem4j-jackson)][maven-central-problem4j-jackson]
 [![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson3?label=problem4j-jackson3)][maven-central-problem4j-jackson3]
 
-1. Keep Git tags with `{moduleName}-vX.Y.Z-{suffix}` format. GitHub Actions job will only trigger on such tags and will
-   evaluate module and version based on tag format.
+1. Keep Git tags with `vX.Y.Z-{suffix}` format. GitHub Actions job will only trigger on such tags and will evaluate
+   version based on tag format.
 2. The releasing procedure only uploads the artifacts to Sonatype repository. You need to manually log in to Sonatype to
    push the artifacts to Maven Central.
 

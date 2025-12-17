@@ -3,10 +3,8 @@ name: Gradle Publish [release]
 on:
   push:
     tags:
-      - "problem4j-jackson-v[0-9]*.[0-9]*.[0-9]*"
-      - "problem4j-jackson-v[0-9]*.[0-9]*.[0-9]*-*"
-      - "problem4j-jackson3-v[0-9]*.[0-9]*.[0-9]*"
-      - "problem4j-jackson3-v[0-9]*.[0-9]*.[0-9]*-*"
+      - "v[0-9]*.[0-9]*.[0-9]*"    # pattern for v1.2.3
+      - "v[0-9]*.[0-9]*.[0-9]*-*"  # pattern for v1.2.3-suffix
 
 jobs:
   publish:
@@ -29,24 +27,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
 
-      - name: Determine Module and Version
-        id: tag_info
-        run: |
-          TAG="${GITHUB_REF_NAME}"
-          echo "Tag: $TAG"
-
-          if [[ "$TAG" =~ ^(.*)-v([0-9]+\.[0-9]+\.[0-9]+.*)$ ]]; then
-            MODULE="${BASH_REMATCH[1]}"
-            VERSION="${BASH_REMATCH[2]}"
-          else
-            echo "::error::unrecognized tag format $TAG"
-            exit 1
-          fi
-
-          echo "::notice::evaluated module $MODULE version $VERSION"
-          echo "module=$MODULE" >> $GITHUB_OUTPUT
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
       - name: Publish Release
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
@@ -59,7 +39,7 @@ jobs:
             -Dorg.gradle.parallel=false
             -Dorg.gradle.workers.max=1
         run: |
-          MODULE=${{ steps.tag_info.outputs.module }}
-          VERSION=${{ steps.tag_info.outputs.version }}
-          echo "::notice::publishing $MODULE version $VERSION"
-          ./gradlew -Pversion="$VERSION" -Psign $MODULE:publishAllPublicationsToCentralPortal
+          VERSION="${GITHUB_REF_NAME#v}"  # removes leading 'v' from tag name
+          echo "::notice::publishing version $VERSION"
+          ./gradlew -Pversion="$VERSION" -Psign problem4j-jackson:publishAllPublicationsToCentralPortal
+          ./gradlew -Pversion="$VERSION" -Psign problem4j-jackson3:publishAllPublicationsToCentralPortal
