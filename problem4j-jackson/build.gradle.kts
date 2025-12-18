@@ -106,6 +106,7 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 tasks.withType<Jar>().configureEach {
+    dependsOn("cleanLibs")
     manifest {
         attributes(
             "Implementation-Title" to project.name,
