@@ -117,6 +117,7 @@ tasks.withType<Jar>().configureEach {
     }
     from("../LICENSE") {
         into("META-INF/")
+        rename { "LICENSE.txt" }
     }
 }
 

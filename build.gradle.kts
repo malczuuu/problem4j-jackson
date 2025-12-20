@@ -16,20 +16,20 @@ subprojects {
     // Utility to clean up old jars as they can clutter due to versioning by Git commit hashes.
     // Usage:
     //   ./gradlew cleanLibs
-    tasks.register("cleanLibs") {
-        description = "Deletes build/libs/ directory."
+    tasks.register<Delete>("cleanLibs") {
+        description = "Deletes build/libs directory."
         group = "build"
         delete(layout.buildDirectory.dir("libs"))
     }
 
     // Usage:
     //   ./gradlew printVersion
-    tasks.register("printVersion") {
-        description = "Prints the current project version to the console"
+    tasks.register<DefaultTask>("printVersion") {
+        description = "Prints the current project version to the console."
         group = "help"
 
         val projectName = project.name
-        val projectVersion = project.version
+        val projectVersion = project.version.toString()
 
         doLast {
             println("$projectName version: $projectVersion")
