@@ -31,15 +31,6 @@ internalPublishing {
     description = "Jackson integration for library implementing RFC7807"
 }
 
-nmcp {
-    publishAllPublicationsToCentralPortal {
-        username = System.getenv("PUBLISHING_USERNAME")
-        password = System.getenv("PUBLISHING_PASSWORD")
-
-        publishingType = "USER_MANAGED"
-    }
-}
-
 // This module targets Java 8 for its main sources to maintain compatibility with older runtime environments used by
 // dependent systems.
 //

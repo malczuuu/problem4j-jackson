@@ -2,7 +2,23 @@ import com.diffplug.spotless.LineEnding
 
 plugins {
     id("internal.convention-common")
+    alias(libs.plugins.nmcp).apply(false)
+    alias(libs.plugins.nmcp.aggregation)
     alias(libs.plugins.spotless)
+}
+
+dependencies {
+    nmcpAggregation(project(":problem4j-jackson"))
+    nmcpAggregation(project(":problem4j-jackson3"))
+}
+
+nmcpAggregation {
+    centralPortal {
+        username = System.getenv("PUBLISHING_USERNAME")
+        password = System.getenv("PUBLISHING_PASSWORD")
+
+        publishingType = "USER_MANAGED"
+    }
 }
 
 spotless {

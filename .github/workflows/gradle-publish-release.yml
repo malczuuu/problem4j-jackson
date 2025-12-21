@@ -7,7 +7,7 @@ on:
       - "v[0-9]*.[0-9]*.[0-9]*-*"  # pattern for v1.2.3-suffix
 
 jobs:
-  publish:
+  publish-release:
     name: Publish Release
     runs-on: ubuntu-latest
     permissions:
@@ -41,5 +41,4 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"  # removes leading 'v' from tag name
           echo "::notice::publishing version $VERSION"
-          ./gradlew -Pversion="$VERSION" -Psign problem4j-jackson:publishAllPublicationsToCentralPortal
-          ./gradlew -Pversion="$VERSION" -Psign problem4j-jackson3:publishAllPublicationsToCentralPortal
+          ./gradlew -Pversion="$VERSION" -Psign publishAggregationToCentralPortal
