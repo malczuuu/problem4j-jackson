@@ -1,5 +1,3 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-
 plugins {
     id("internal.convention-java-library")
     id("internal.convention-publishing")
@@ -27,6 +25,7 @@ dependencies {
     testRuntimeOnly(libs.junit.platform.launcher)
 }
 
+// see buildSrc/src/main/kotlin/internal.convention-publishing.gradle.kts
 internalPublishing {
     displayName = "Problem4J Jackson3"
     description = "Jackson3 integration for library implementing RFC7807"

@@ -6,7 +6,7 @@ plugins {
 
 java {
     toolchain.languageVersion =
-        providers.gradleProperty("internal.jackson.java.version").map { JavaLanguageVersion.of(it) }
+        providers.gradleProperty("internal.jackson2.java.version").map { JavaLanguageVersion.of(it) }
 }
 
 dependencies {
@@ -25,6 +25,7 @@ dependencies {
     testRuntimeOnly(libs.junit.platform.launcher)
 }
 
+// see buildSrc/src/main/kotlin/internal.convention-publishing.gradle.kts
 internalPublishing {
     displayName = "Problem4J Jackson"
     description = "Jackson integration for library implementing RFC7807"
@@ -39,18 +40,16 @@ nmcp {
     }
 }
 
-/*
- * This module targets Java 8 for its main sources to maintain compatibility with older runtime environments used by
- * dependent systems.
- *
- * Unit tests, however, are executed on Java 17 because JUnit 6 requires Java 17 or newer. The Gradle toolchain
- * configuration ensures that only the test compilation and execution use Java 17, while the main code remains compiled
- * for Java 8.
- *
- * In short:
- *   - src/main -> Java 8 (for compatibility)
- *   - src/test -> Java 17 (required by JUnit 6)
- */
+// This module targets Java 8 for its main sources to maintain compatibility with older runtime environments used by
+// dependent systems.
+//
+// Unit tests, however, are executed on Java 17 because JUnit 6 requires Java 17 or newer. The Gradle toolchain
+// configuration ensures that only the test compilation and execution use Java 17, while the main code remains compiled
+// for Java 8.
+//
+// In short:
+//   - src/main -> Java 8 (for compatibility)
+//   - src/test -> Java 17 (required by JUnit 6)
 
 // JUnit 6 requires at Java 17+, main keeps Java 8.
 tasks.named<JavaCompile>("compileTestJava") {
