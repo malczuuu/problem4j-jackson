@@ -1,20 +1,20 @@
 # Problem4J Jackson
 
 [![Build Status](https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml)
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson?label=problem4j-jackson)](https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson)
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson2?label=problem4j-jackson2)](https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson2)
 [![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3)](https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson3)
 [![License](https://img.shields.io/github/license/problem4j/problem4j-jackson)](https://github.com/problem4j/problem4j-jackson/blob/main/LICENSE)
 
 Jackson `2.x` and `3.x` integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing
 and deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
 
-Project contains two submodules, `problem4j-jackson` for Jackson `2.x` and `problem4j-jackson3` for Jackson `3.x`. Both
+Project contains two submodules, `problem4j-jackson2` for Jackson `2.x` and `problem4j-jackson3` for Jackson `3.x`. Both
 modules have the similar API and functionality, but are compiled against different versions of Jackson (and by extension
 against different versions of Java). Choose the one that matches the version of Jackson you are using in your project.
 
 | Module               | Jackson Version                                     | Java Baseline |
 |----------------------|-----------------------------------------------------|---------------|
-| `problem4j-jackson`  | `com.fasterxml.jackson.core:jackson-databind:2.x.y` | Java 8        |
+| `problem4j-jackson2` | `com.fasterxml.jackson.core:jackson-databind:2.x.y` | Java 8        |
 | `problem4j-jackson3` | `tools.jackson.core:jackson-databind:3.x.y`         | Java 17       |
 
 Instead of releasing version `2.0`, library was split into two modules, because `jackson-3.x` has different maven
@@ -40,7 +40,7 @@ versioned independently.
 
 ## Example
 
-For `problem4j-jackson` (Jackson `2.x`):
+For `problem4j-jackson2` (Jackson `2.x`):
 
 ```java
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -93,7 +93,7 @@ library.
 The `problem4j-jackson` modules does **not** declare `jackson-databind` as a transitive dependency. You should add
 `jackson-databind` explicitly as your main Jackson dependency.
 
-For `problem4j-jackson` (**Jackson `2.x`**):
+For `problem4j-jackson2` (**Jackson `2.x`**):
 
 1. Maven:
    ```xml
@@ -204,7 +204,7 @@ version. By default, the version is derived from git commit hash.
 
 [jackson]: https://github.com/FasterXML/jackson
 
-[maven-central]: https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson
+[maven-central]: https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson2
 
 [problem4j-core]: https://github.com/problem4j/problem4j-core
 

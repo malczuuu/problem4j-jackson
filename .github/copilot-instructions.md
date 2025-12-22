@@ -5,12 +5,12 @@
 - **Repository:** `problem4j-jackson`.
 - **Purpose:** Jackson integration modules for [problem4j-core](https://github.com/problem4j/problem4j-core), enabling
   seamless serialization and deserialization of RFC 7807 Problem objects. Contains:
-    - `problem4j-jackson`: For Jackson 2.x (Java 8 baseline),
+    - `problem4j-jackson2`: For Jackson 2.x (Java 8 baseline),
     - `problem4j-jackson3`: For Jackson 3.x (Java 17 baseline).
 - **Languages:** Java (main), Kotlin (build scripts).
 - **Frameworks/Tools:** Gradle (Kotlin DSL), Jackson (v2 & v3) JUnit Jupiter, AssertJ, Spotless, GitHub Actions CI.
 - **Modules:**
-    - `problem4j-jackson` - Jackson 2.x integration,
+    - `problem4j-jackson2` - Jackson 2.x integration,
     - `problem4j-jackson3` - Jackson 3.x integration.
 - **Java Version:** JVM (Java 8 for Jackson 2.x, Java 17 for Jackson 3.x, JDK 17 for build/CI).
 - **Repo Size:** Small (two modules, core source, tests, build scripts, CI/CD workflows).
@@ -25,7 +25,7 @@
 - **Test:**
     - Tests run automatically with `./gradlew build` or separately via `./gradlew test`.
     - Test files in `src/test/java` under each module.
-    - Tests for `problem4j-jackson` run on Java 17, even though code targets Java 8 bytecode (for JUnit 6).
+    - Tests for `problem4j-jackson2` run on Java 17, even though code targets Java 8 bytecode (for JUnit 6).
 - **Lint:**
     - Spotless check runs automatically on build. To manually lint/fix, use `./gradlew spotlessApply`.
     - Run `./gradlew spotlessCheck` to validate code style.
@@ -49,7 +49,7 @@
 - **Build Scripts:** All modules have `build.gradle.kts`.
 - **Build Utils:** Custom Gradle scripts in `buildSrc`.
 - **Module Directories:**
-    - `problem4j-jackson`: Jackson 2.x integration,
+    - `problem4j-jackson2`: Jackson 2.x integration,
     - `problem4j-jackson3`: Jackson 3.x integration.
 - **Jackson entry points**
     - Jackson 2.x: [`ProblemModule`](../problem4j-jackson2/src/main/java/io/github/problem4j/jackson2/ProblemModule.java),
