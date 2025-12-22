@@ -8,7 +8,7 @@ plugins {
 }
 
 dependencies {
-    nmcpAggregation(project(":problem4j-jackson"))
+    nmcpAggregation(project(":problem4j-jackson2"))
     nmcpAggregation(project(":problem4j-jackson3"))
 }
 
