@@ -1,9 +1,9 @@
 # Problem4J Jackson
 
-[![Build Status](https://github.com/malczuuu/problem4j-jackson/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/malczuuu/problem4j-jackson/actions/workflows/gradle-build.yml)
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson?label=problem4j-jackson)](https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson)
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson3?label=problem4j-jackson3)](https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson3)
-[![License](https://img.shields.io/github/license/malczuuu/problem4j-jackson)](https://github.com/malczuuu/problem4j-jackson/blob/main/LICENSE)
+[![Build Status](https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml)
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson?label=problem4j-jackson)](https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson)
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3)](https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson3)
+[![License](https://img.shields.io/github/license/problem4j/problem4j-jackson)](https://github.com/problem4j/problem4j-jackson/blob/main/LICENSE)
 
 Jackson `2.x` and `3.x` integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing
 and deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
@@ -104,12 +104,12 @@ For `problem4j-jackson` (**Jackson `2.x`**):
            <version>2.20.1</version>
        </dependency>
        <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
+           <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-core</artifactId>
            <version>1.2.5</version>
        </dependency>
        <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
+           <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-jackson</artifactId>
            <version>1.2.5</version>
        </dependency>
@@ -119,8 +119,8 @@ For `problem4j-jackson` (**Jackson `2.x`**):
    ```groovy
    dependencies {
        implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
-       implementation("io.github.malczuuu.problem4j:problem4j-core:1.2.5")
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson:1.2.5")
+       implementation("io.github.problem4j:problem4j-core:1.2.5")
+       implementation("io.github.problem4j:problem4j-jackson:1.2.5")
    }
    ```
 
@@ -137,12 +137,12 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
            <version>3.0.3</version>
        </dependency>
        <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
+           <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-core</artifactId>
            <version>1.2.5</version>
        </dependency>
        <dependency>
-           <groupId>io.github.malczuuu.problem4j</groupId>
+           <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-jackson3</artifactId>
            <version>1.2.5</version>
        </dependency>
@@ -152,8 +152,8 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
    ```groovy
    dependencies {
        implementation("tools.jackson.core:jackson-databind:3.0.3")
-       implementation("io.github.malczuuu.problem4j:problem4j-core:1.2.5")
-       implementation("io.github.malczuuu.problem4j:problem4j-jackson3:1.2.5")
+       implementation("io.github.problem4j:problem4j-core:1.2.5")
+       implementation("io.github.problem4j:problem4j-jackson3:1.2.5")
    }
    ```
 
@@ -204,13 +204,13 @@ version. By default, the version is derived from git commit hash.
 
 [jackson]: https://github.com/FasterXML/jackson
 
-[maven-central]: https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson
+[maven-central]: https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson
 
-[problem4j-core]: https://github.com/malczuuu/problem4j-core
+[problem4j-core]: https://github.com/problem4j/problem4j-core
 
-[problem4j-jackson]: https://github.com/malczuuu/problem4j-jackson
+[problem4j-jackson]: https://github.com/problem4j/problem4j-jackson
 
-[problem4j-spring]: https://github.com/malczuuu/problem4j-spring
+[problem4j-spring]: https://github.com/problem4j/problem4j-spring
 
 [com.fasterxml.jackson.databind.Module]: problem4j-jackson/src/main/resources/META-INF/services/com.fasterxml.jackson.databind.Module
 

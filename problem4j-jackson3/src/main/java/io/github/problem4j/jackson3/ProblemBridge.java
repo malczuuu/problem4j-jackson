@@ -40,7 +40,7 @@ import tools.jackson.databind.JsonNode;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 /**
- * Bridge POJO used to serialize and deserialize {@link io.github.malczuuu.problem4j.core.Problem}
+ * Bridge POJO used to serialize and deserialize {@link io.github.problem4j.core.Problem}
  * instances. It provides a concrete, Jackson-friendly representation of the otherwise
  * interface-based Problem model. During serialization the original Problem is mapped into this
  * class, and during deserialization this class is converted back into a full Problem instance using

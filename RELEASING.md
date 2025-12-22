@@ -8,9 +8,9 @@ See `./tools/tagrelease --help` for reference.
 
 ## Maven Central
 
-[![Publish Release Status](https://github.com/malczuuu/problem4j-core/actions/workflows/gradle-publish-release.yml/badge.svg)][gradle-publish-release]
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson?label=problem4j-jackson)][maven-central-problem4j-jackson]
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.malczuuu.problem4j/problem4j-jackson3?label=problem4j-jackson3)][maven-central-problem4j-jackson3]
+[![Publish Release Status](https://github.com/problem4j/problem4j-core/actions/workflows/gradle-publish-release.yml/badge.svg)][gradle-publish-release]
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson?label=problem4j-jackson)][maven-central-problem4j-jackson]
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3)][maven-central-problem4j-jackson3]
 
 1. Keep Git tags with `vX.Y.Z-{suffix}` format. GitHub Actions job will only trigger on such tags and will evaluate
    version based on tag format.
@@ -40,10 +40,10 @@ Artifacts are published to Maven Central via Sonatype, using following Gradle ta
 
 This command uses `nmcp` Gradle plugin - [link](https://github.com/GradleUp/nmcp).
 
-[gradle-publish-release]: https://github.com/malczuuu/problem4j-jackson/actions/workflows/gradle-publish-release.yml
+[gradle-publish-release]: https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-publish-release.yml
 
 [gradle-publish-release.yml]: .github/workflows/gradle-publish-release.yml
 
-[maven-central-problem4j-jackson]: https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson
+[maven-central-problem4j-jackson]: https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson
 
-[maven-central-problem4j-jackson3]: https://central.sonatype.com/artifact/io.github.malczuuu.problem4j/problem4j-jackson3
+[maven-central-problem4j-jackson3]: https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson3

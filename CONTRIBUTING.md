@@ -68,8 +68,8 @@ Please remain respectful, constructive, and considerate of others.
 
 [dco]: https://developercertificate.org/
 
-[discussions]: https://github.com/malczuuu/problem4j-jackson/discussions
+[discussions]: https://github.com/problem4j/problem4j-jackson/discussions
 
-[issues]: https://github.com/malczuuu/problem4j-jackson/issues
+[issues]: https://github.com/problem4j/problem4j-jackson/issues
 
 [mit]: https://opensource.org/license/MIT
