@@ -4,8 +4,7 @@
 
 The following version lines are actively supported:
 
-- `problem4j-jackson-v1.2.x` - supported versions line for Jackson 2,
-- `problem4j-jackson3-v1.1.x` - supported versions line for Jackson 3.
+- `v1.3.x` (`main` branch).
 
 ## Dependencies
 
