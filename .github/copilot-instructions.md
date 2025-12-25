@@ -20,7 +20,7 @@
 - **Bootstrap:** No special bootstrap steps required. All dependencies resolved via Gradle.
 - **Build:**
     - Run `./gradlew build` from the repository root (or `gradlew.bat build` on Windows).
-    - Java 17+ required (for Gradle; code for `problem4j-jackson`, Jackson 2.x integration is compiled to Java 8
+    - Java 17+ required (for Gradle; code for `problem4j-jackson2`, Jackson 2.x integration is compiled to Java 8
       bytecode).
 - **Test:**
     - Tests run automatically with `./gradlew build` or separately via `./gradlew test`.

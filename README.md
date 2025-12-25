@@ -18,8 +18,7 @@ against different versions of Java). Choose the one that matches the version of 
 | `problem4j-jackson3` | `tools.jackson.core:jackson-databind:3.x.y`         | Java 17       |
 
 Instead of releasing version `2.0`, library was split into two modules, because `jackson-3.x` has different maven
-`groupId` so it's technically possible to have both versions included in the same project. **Note** that each module is
-versioned independently.
+`groupId` so it's technically possible to have both versions of `ObjectMapper` included in the same project.
 
 ## Table of Contents
 
@@ -34,9 +33,9 @@ versioned independently.
 - ✅ Seamless JSON serialization of `Problem` objects.
 - ✅ Accurate deserialization into immutable `Problem` instances.
 - ✅ Compatible with standard Jackson `ObjectMapper`.
-- ✅ Pluggable via Jackson's `Module` system.
+- ✅ Pluggable via Jackson's `Module` system or predefined `MixIn` interface.
 - ✅ Lightweight, with no external dependencies beyond Jackson and `problem4j-core`.
-- ✅ Support for both Jackson2 and Jackson3.
+- ✅ Support for both Jackson2 (`com.fasterxml.jackson`) and Jackson3 (`tools.jackson`).
 
 ## Example
 
@@ -87,7 +86,7 @@ JsonMapper mapper = JsonMapper.builder().addMixIn(Problem.class, ProblemJacksonM
 ## Usage
 
 Add library as dependency to Maven or Gradle. See the actual versions on [Maven Central][maven-central]. **Java 8** or
-higher is required to use `problem4j-jackson` library. **Java 17** or higher is required to use `problem4j-jackson3`
+higher is required to use `problem4j-jackson2` library. **Java 17** or higher is required to use `problem4j-jackson3`
 library.
 
 The `problem4j-jackson` modules does **not** declare `jackson-databind` as a transitive dependency. You should add
@@ -171,7 +170,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
 
 Gradle **9.x+** requires **Java 17+** to run, but higher Java versions can also be used.
 
-- Module `problem4j-jackson` is compiled using a **Java 8 toolchain**, so the produced artifacts are compatible with
+- Module `problem4j-jackson2` is compiled using a **Java 8 toolchain**, so the produced artifacts are compatible with
   **Java 8**.
 - Module `problem4j-jackson3` is compiled using a **Java 17 toolchain**, so the produced artifacts are compatible with
   **Java 17**.
@@ -212,6 +211,6 @@ version. By default, the version is derived from git commit hash.
 
 [problem4j-spring]: https://github.com/problem4j/problem4j-spring
 
-[com.fasterxml.jackson.databind.Module]: problem4j-jackson/src/main/resources/META-INF/services/com.fasterxml.jackson.databind.Module
+[com.fasterxml.jackson.databind.Module]: problem4j-jackson2/src/main/resources/META-INF/services/com.fasterxml.jackson.databind.Module
 
 [tools.jackson.databind.JacksonModule]: problem4j-jackson3/src/main/resources/META-INF/services/tools.jackson.databind.JacksonModule
