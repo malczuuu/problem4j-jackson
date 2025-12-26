@@ -51,8 +51,9 @@ publishing {
             from(components["java"])
 
             pom {
-                name = "Problem4J Jackson"
-                description = "Jackson integration for library implementing RFC7807"
+                name = "[Deprecated] Problem4J Jackson"
+                description =
+                    "[Deprecated] Jackson integration for library implementing RFC7807. Migrated to {@code io.github.problem4j:problem4j-jackson3} namespace."
                 url = "https://github.com/malczuuu/${rootProject.name}"
                 inceptionYear = "2025"
                 licenses {
@@ -70,12 +71,12 @@ publishing {
                 }
                 issueManagement {
                     system = "GitHub Issues"
-                    url = "https://github.com/malczuuu/${rootProject.name}/issues"
+                    url = "https://github.com/problem4j/${rootProject.name}/issues"
                 }
                 scm {
-                    connection = "scm:git:https://github.com/malczuuu/${rootProject.name}.git"
-                    developerConnection = "scm:git:git@github.com:malczuuu/${rootProject.name}.git"
-                    url = "https://github.com/malczuuu/${rootProject.name}"
+                    connection = "scm:git:https://github.com/problem4j/${rootProject.name}.git"
+                    developerConnection = "scm:git:git@github.com:problem4j/${rootProject.name}.git"
+                    url = "https://github.com/problem4j/${rootProject.name}"
                 }
             }
         }

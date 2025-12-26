@@ -46,9 +46,12 @@ import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
  * class is converted back into a full Problem instance using the appropriate builder or factory.
  * This indirection ensures consistent JSON/XML output and full control over extension members and
  * namespaces.
+ *
+ * @deprecated migrated to {@code io.github.problem4j:problem4j-jackson3} namespace.
  */
 @JsonPropertyOrder({TYPE, TITLE, STATUS, DETAIL, INSTANCE})
 @JsonInclude(NON_EMPTY)
+@Deprecated(since = "1.2.6")
 class ProblemBridge implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;

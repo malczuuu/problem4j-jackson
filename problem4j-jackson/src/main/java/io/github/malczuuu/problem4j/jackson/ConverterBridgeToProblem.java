@@ -17,6 +17,10 @@ package io.github.malczuuu.problem4j.jackson;
 import com.fasterxml.jackson.databind.util.StdConverter;
 import io.github.malczuuu.problem4j.core.Problem;
 
+/**
+ * @deprecated migrated to {@code io.github.problem4j:problem4j-jackson2} namespace.
+ */
+@Deprecated
 class ConverterBridgeToProblem extends StdConverter<ProblemBridge, Problem> {
 
   @Override

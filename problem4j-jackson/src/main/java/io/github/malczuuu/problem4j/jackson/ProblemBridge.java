@@ -47,9 +47,12 @@ import java.util.TreeMap;
  * class is converted back into a full Problem instance using the appropriate builder or factory.
  * This indirection ensures consistent JSON/XML output and full control over extension members and
  * namespaces.
+ *
+ * @deprecated migrated to {@code io.github.problem4j:problem4j-jackson2} namespace.
  */
 @JsonPropertyOrder({TYPE, TITLE, STATUS, DETAIL, INSTANCE})
 @JsonInclude(NON_EMPTY)
+@Deprecated
 class ProblemBridge implements Serializable {
 
   private static final long serialVersionUID = 1L;

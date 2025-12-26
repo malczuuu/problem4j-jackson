@@ -28,7 +28,9 @@ import tools.jackson.databind.module.SimpleModule;
  * @see tools.jackson.databind.JacksonModule
  * @see tools.jackson.databind.ObjectMapper
  * @see tools.jackson.databind.json.JsonMapper
+ * @deprecated migrated to {@code io.github.problem4j:problem4j-jackson3} namespace.
  */
+@Deprecated(since = "1.2.6")
 public class ProblemJacksonModule extends SimpleModule {
 
   public ProblemJacksonModule() {

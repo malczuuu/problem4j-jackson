@@ -28,7 +28,9 @@ import io.github.malczuuu.problem4j.core.Problem;
  * @see com.fasterxml.jackson.databind.Module
  * @see com.fasterxml.jackson.databind.ObjectMapper
  * @see com.fasterxml.jackson.databind.json.JsonMapper
+ * @deprecated migrated to {@code io.github.problem4j:problem4j-jackson2} namespace.
  */
+@Deprecated
 public class ProblemModule extends SimpleModule {
 
   private static final long serialVersionUID = 1L;
