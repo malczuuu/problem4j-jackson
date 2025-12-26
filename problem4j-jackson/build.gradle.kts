@@ -53,7 +53,7 @@ publishing {
             pom {
                 name = "[Deprecated] Problem4J Jackson"
                 description =
-                    "[Deprecated] Jackson integration for library implementing RFC7807. Migrated to {@code io.github.problem4j:problem4j-jackson3} namespace."
+                    "[Deprecated] Jackson integration for library implementing RFC7807. Migrated to io.github.problem4j:problem4j-jackson3 namespace."
                 url = "https://github.com/malczuuu/${rootProject.name}"
                 inceptionYear = "2025"
                 licenses {
