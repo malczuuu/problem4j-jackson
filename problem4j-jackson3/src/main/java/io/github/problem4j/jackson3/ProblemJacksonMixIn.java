@@ -25,7 +25,7 @@ import tools.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Jackson MixIn that redirects serialization and deserialization of {@code Problem} through the
- * {@link io.github.problem4j.jackson3.ProblemBridge} POJO.
+ * {@link ProblemBridge} POJO.
  */
 @JsonRootName(value = PROBLEM, namespace = NAMESPACE)
 @JsonSerialize(converter = ConverterProblemToBridge.class)

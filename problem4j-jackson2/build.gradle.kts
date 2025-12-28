@@ -27,8 +27,8 @@ dependencies {
 
 // see buildSrc/src/main/kotlin/internal.convention-publishing.gradle.kts
 internalPublishing {
-    displayName = "Problem4J Jackson"
-    description = "Jackson integration for library implementing RFC7807"
+    displayName = "Problem4J Jackson2"
+    description = "Jackson2 integration for library implementing RFC7807 (aka RFC9457)."
 }
 
 // This module targets Java 8 for its main sources to maintain compatibility with older runtime environments used by

@@ -19,7 +19,7 @@ import io.github.problem4j.core.Problem;
 
 /**
  * Jackson 2 module for Problem. Register this module in your {@code ObjectMapper} to enable
- * serialization and deserialization of {@link io.github.problem4j.core.Problem} instances.
+ * serialization and deserialization of {@link Problem} instances.
  *
  * <p>Named differently than in Jackson 3 to avoid classpath conflicts when both versions are used
  * in the same project. Name comes from top level class being {@code Module} instead of {@code

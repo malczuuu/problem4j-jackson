@@ -1,9 +1,9 @@
 [versions]
-problem4j-core = "1.3.0"
 jackson2 = "2.20.1"
 jackson3 = "3.0.3"
 junit = "6.0.1"
 nmcp = "1.4.0"
+problem4j-core = "1.3.0"
 spotless = "8.1.0"
 
 [plugins]
@@ -12,13 +12,16 @@ nmcp-aggregation = { id = "com.gradleup.nmcp.aggregation", version.ref = "nmcp" 
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 
 [libraries]
-problem4j-core = { module = "io.github.problem4j:problem4j-core", version.ref = "problem4j-core" }
+# BOMs
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+
+# direct versions
 jackson2-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson2" }
 jackson2-dataformat-xml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-xml", version.ref = "jackson2" }
 jackson3-databind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson3" }
 jackson3-dataformat-xml = { module = "tools.jackson.dataformat:jackson-dataformat-xml", version.ref = "jackson3" }
+problem4j-core = { module = "io.github.problem4j:problem4j-core", version.ref = "problem4j-core" }
 
 # versions managed by junit-bom
-junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
