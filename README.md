@@ -46,6 +46,7 @@ For `problem4j-jackson2` (Jackson `2.x`):
 ```java
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.problem4j.core.Problem;
+import io.github.problem4j.jackson2.ProblemModule;
 
 ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
 
@@ -79,6 +80,7 @@ For `problem4j-jackson3` (Jackson `3.x`):
 ```java
 import io.github.problem4j.core.Problem;
 import tools.jackson.databind.json.JsonMapper;
+import io.github.problem4j.jackson3.ProblemJacksonModule;
 
 JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
 
