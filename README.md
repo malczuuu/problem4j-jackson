@@ -8,6 +8,8 @@
 Jackson `2.x` and `3.x` integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing
 and deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
 
+> Note that [RFC 7807][rfc7807] was later extended in [RFC 9457][rfc9457], however core concepts remain the same.
+
 Project contains two submodules, `problem4j-jackson2` for Jackson `2.x` and `problem4j-jackson3` for Jackson `3.x`. Both
 modules have the similar API and functionality, but are compiled against different versions of Jackson (and by extension
 against different versions of Java). Choose the one that matches the version of Jackson you are using in your project.
@@ -43,10 +45,16 @@ For `problem4j-jackson2` (Jackson `2.x`):
 
 ```java
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.problem4j.core.Problem;
 
 ObjectMapper mapper = new ObjectMapper().registerModule(new ProblemModule());
 
-Problem problem = Problem.builder().title("Bad Request").status(400).detail("not a valid json").build();
+Problem problem = 
+    Problem.builder()
+        .title("Bad Request")
+        .status(400)
+        .detail("not a valid json")
+        .build();
 
 String json = mapper.writeValueAsString(problem);
 Problem parsed = mapper.readValue(json, Problem.class);
@@ -56,6 +64,10 @@ Module is included in [`com.fasterxml.jackson.databind.Module`][com.fasterxml.ja
 service discovery. Registration can also be done with `findAndRegisterModules()` method or by adding a `ProblemMixIn`.
 
 ```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.problem4j.core.Problem;
+import io.github.problem4j.jackson2.ProblemMixIn;
+
 ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
 ObjectMapper mapper = new ObjectMapper().addMixIn(Problem.class, ProblemMixIn.class);
 ```
@@ -65,11 +77,17 @@ ObjectMapper mapper = new ObjectMapper().addMixIn(Problem.class, ProblemMixIn.cl
 For `problem4j-jackson3` (Jackson `3.x`):
 
 ```java
+import io.github.problem4j.core.Problem;
 import tools.jackson.databind.json.JsonMapper;
 
 JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
 
-Problem problem = Problem.builder().title("Bad Request").status(400).detail("not a valid json").build();
+Problem problem = 
+    Problem.builder()
+        .title("Bad Request")
+        .status(400)
+        .detail("not a valid json")
+        .build();
 
 String json = mapper.writeValueAsString(problem);
 Problem parsed = mapper.readValue(json, Problem.class);
@@ -79,6 +97,10 @@ Module is included in [`tools.jackson.databind.JacksonModule`][tools.jackson.dat
 service discovery. Registration can also be done with `findAndAddModules()` method or by adding a `ProblemJacksonMixIn`.
 
 ```java
+import io.github.problem4j.core.Problem;
+import io.github.problem4j.jackson3.ProblemJacksonMixIn;
+import tools.jackson.databind.json.JsonMapper;
+
 JsonMapper mapper = JsonMapper.builder().findAndAddModules().build();
 JsonMapper mapper = JsonMapper.builder().addMixIn(Problem.class, ProblemJacksonMixIn.class).build();
 ```
@@ -214,3 +236,7 @@ version. By default, the version is derived from git commit hash.
 [com.fasterxml.jackson.databind.Module]: problem4j-jackson2/src/main/resources/META-INF/services/com.fasterxml.jackson.databind.Module
 
 [tools.jackson.databind.JacksonModule]: problem4j-jackson3/src/main/resources/META-INF/services/tools.jackson.databind.JacksonModule
+
+[rfc7807]: https://datatracker.ietf.org/doc/html/rfc7807
+
+[rfc9457]: https://datatracker.ietf.org/doc/html/rfc9457
