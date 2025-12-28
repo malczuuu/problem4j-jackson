@@ -12,7 +12,8 @@
 - **Modules:**
     - `problem4j-jackson2` - Jackson 2.x integration,
     - `problem4j-jackson3` - Jackson 3.x integration.
-- **Java Version:** JVM (Java 8 for Jackson 2.x, Java 17 for Jackson 3.x, JDK 17 for build/CI).
+- **Java Version:** JVM (Java 8 for Jackson 2.x, Java 17 for Jackson 3.x, JDK 17 for build/CI due to Gradle 9+ runtime
+  requirements).
 - **Repo Size:** Small (two modules, core source, tests, build scripts, CI/CD workflows).
 
 ## Build, Test, Lint, and Validation Steps
@@ -31,6 +32,7 @@
     - Run `./gradlew spotlessCheck` to validate code style.
     - Run `./gradlew spotlessApply` to auto-format code.
     - Lint config in `build.gradle.kts`.
+    - For limiting failures and noise, prefer running `./gradlew spotlessApply build` instead of just `./gradlew build`.
 - **Clean:**
     - Run `./gradlew clean` to remove build artifacts.
 - **Validation:**
@@ -58,6 +60,8 @@
 ## Coding Guidelines
 
 - Do not add self-explaining comments. Use comments only for clarity/context.
+- Do not use wildcard imports.
+- Always rely on `spotlessApply` task from Gradle for code formatting.
 - Follow existing code patterns and naming conventions.
 - Use Gradle tasks for build, test, and lint. Do not attempt manual compilation or test running.
 
