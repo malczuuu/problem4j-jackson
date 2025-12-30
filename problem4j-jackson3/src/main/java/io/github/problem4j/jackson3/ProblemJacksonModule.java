@@ -31,11 +31,22 @@ import tools.jackson.databind.module.SimpleModule;
  */
 public class ProblemJacksonModule extends SimpleModule {
 
+  /**
+   * Creates and initializes the {@code ProblemJacksonModule}.
+   *
+   * <p>The module is registered under its simple class name and configures Jackson mix-in
+   * annotations required for correct {@link Problem} serialization and deserialization.
+   */
   public ProblemJacksonModule() {
     super(ProblemJacksonModule.class.getSimpleName());
     setupProblemJacksonMixIn();
   }
 
+  /**
+   * Configures Jackson mix-in annotations for the {@link Problem} type.
+   *
+   * <p>Subclasses may override this method to customize or extend the mix-in configuration.
+   */
   protected void setupProblemJacksonMixIn() {
     setMixInAnnotation(Problem.class, ProblemJacksonMixIn.class);
   }

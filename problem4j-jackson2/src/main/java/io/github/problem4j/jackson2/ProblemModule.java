@@ -33,11 +33,22 @@ public class ProblemModule extends SimpleModule {
 
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Creates and initializes the {@code ProblemModule}.
+   *
+   * <p>The module is registered under its simple class name and configures Jackson mix-in
+   * annotations required for correct {@link Problem} serialization and deserialization.
+   */
   public ProblemModule() {
     super(ProblemModule.class.getSimpleName());
     setupProblemMixIn();
   }
 
+  /**
+   * Configures Jackson mix-in annotations for the {@link Problem} type.
+   *
+   * <p>Subclasses may override this method to customize or extend the mix-in configuration.
+   */
   protected void setupProblemMixIn() {
     setMixInAnnotation(Problem.class, ProblemMixIn.class);
   }
