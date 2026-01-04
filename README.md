@@ -79,8 +79,8 @@ For `problem4j-jackson3` (Jackson `3.x`):
 
 ```java
 import io.github.problem4j.core.Problem;
-import tools.jackson.databind.json.JsonMapper;
 import io.github.problem4j.jackson3.ProblemJacksonModule;
+import tools.jackson.databind.json.JsonMapper;
 
 JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
 
