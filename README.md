@@ -26,7 +26,11 @@ Instead of releasing version `2.0`, library was split into two modules, because 
 
 - [Features](#features)
 - [Example](#example)
+    - [Example for `problem4j-jackson2` (Jackson `2.x`)](#example-for-problem4j-jackson2-jackson-2x)
+    - [Example for `problem4j-jackson3` (Jackson `3.x`)](#example-for-problem4j-jackson3-jackson-3x)
 - [Usage](#usage)
+    - [Maven dependency for `problem4j-jackson2` (Jackson `2.x`)](#maven-dependency-for-problem4j-jackson2-jackson-2x)
+    - [Maven dependency for `problem4j-jackson3` (Jackson `3.x`)](#maven-dependency-for-problem4j-jackson3-jackson-3x)
 - [Problem4J Links](#problem4j-links)
 - [Building from source](#building-from-source)
 
@@ -41,7 +45,7 @@ Instead of releasing version `2.0`, library was split into two modules, because 
 
 ## Example
 
-For `problem4j-jackson2` (Jackson `2.x`):
+### Example for `problem4j-jackson2` (Jackson `2.x`)
 
 ```java
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -73,9 +77,7 @@ ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
 ObjectMapper mapper = new ObjectMapper().addMixIn(Problem.class, ProblemMixIn.class);
 ```
 
----
-
-For `problem4j-jackson3` (Jackson `3.x`):
+### Example for `problem4j-jackson3` (Jackson `3.x`)
 
 ```java
 import io.github.problem4j.core.Problem;
@@ -116,7 +118,7 @@ library.
 The `problem4j-jackson` modules does **not** declare `jackson-databind` as a transitive dependency. You should add
 `jackson-databind` explicitly as your main Jackson dependency.
 
-For `problem4j-jackson2` (**Jackson `2.x`**):
+### Maven dependency for `problem4j-jackson2` (Jackson `2.x`)
 
 1. Maven:
    ```xml
@@ -138,7 +140,7 @@ For `problem4j-jackson2` (**Jackson `2.x`**):
        </dependency>
    </dependencies>
    ```
-2. Gradle (Kotlin DSL):
+2. Gradle (Groovy or Kotlin DSL):
    ```groovy
    dependencies {
        implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
@@ -147,9 +149,7 @@ For `problem4j-jackson2` (**Jackson `2.x`**):
    }
    ```
 
----
-
-For `problem4j-jackson3` (**Jackson `3.x`**):
+### Maven dependency for `problem4j-jackson3` (Jackson `3.x`)
 
 1. Maven:
    ```xml
@@ -171,7 +171,7 @@ For `problem4j-jackson3` (**Jackson `3.x`**):
        </dependency>
    </dependencies>
    ```
-2. Gradle (Kotlin DSL):
+2. Gradle (Groovy or Kotlin DSL):
    ```groovy
    dependencies {
        implementation("tools.jackson.core:jackson-databind:3.0.3")
