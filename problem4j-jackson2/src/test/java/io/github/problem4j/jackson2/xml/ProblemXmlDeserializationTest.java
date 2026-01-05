@@ -35,7 +35,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class ProblemXmlDeserializationTests extends AbstractProblemXmlTests {
+class ProblemXmlDeserializationTest extends AbstractProblemXmlTest {
 
   @ParameterizedTest
   @MethodSource("variousXmlMapperConfigurations")

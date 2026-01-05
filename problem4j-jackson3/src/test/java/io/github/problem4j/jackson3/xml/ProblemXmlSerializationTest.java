@@ -30,7 +30,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.dataformat.xml.XmlMapper;
 
-class ProblemXmlSerializationTests extends AbstractProblemXmlTests {
+class ProblemXmlSerializationTest extends AbstractProblemXmlTest {
 
   @ParameterizedTest
   @MethodSource("variousXmlMapperConfigurations")

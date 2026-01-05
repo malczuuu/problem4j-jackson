@@ -18,11 +18,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.github.problem4j.jackson3.xml;
+package io.github.problem4j.jackson2.xml;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import io.github.problem4j.core.Problem;
-import io.github.problem4j.jackson3.ProblemJacksonMixIn;
-import io.github.problem4j.jackson3.ProblemJacksonModule;
+import io.github.problem4j.jackson2.ProblemMixIn;
+import io.github.problem4j.jackson2.ProblemModule;
 import java.net.URI;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -32,9 +33,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
-import tools.jackson.dataformat.xml.XmlMapper;
 
-public abstract class AbstractProblemXmlTests {
+abstract class AbstractProblemXmlTest {
 
   protected final String xml =
       "<problem xmlns=\"urn:ietf:rfc:7807\">"
@@ -99,9 +99,8 @@ public abstract class AbstractProblemXmlTests {
 
   protected static Stream<Arguments> variousXmlMapperConfigurations() {
     return Stream.of(
-        Arguments.of(XmlMapper.builder().findAndAddModules().build()),
-        Arguments.of(XmlMapper.builder().addModule(new ProblemJacksonModule()).build()),
-        Arguments.of(
-            XmlMapper.builder().addMixIn(Problem.class, ProblemJacksonMixIn.class).build()));
+        Arguments.of(new XmlMapper().findAndRegisterModules()),
+        Arguments.of(new XmlMapper().registerModule(new ProblemModule())),
+        Arguments.of(new XmlMapper().addMixIn(Problem.class, ProblemMixIn.class)));
   }
 }

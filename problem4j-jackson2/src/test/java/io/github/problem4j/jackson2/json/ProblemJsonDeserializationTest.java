@@ -35,7 +35,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class ProblemJsonDeserializationTests extends AbstractProblemJsonTests {
+class ProblemJsonDeserializationTest extends AbstractProblemJsonTest {
 
   @ParameterizedTest
   @MethodSource("variousJsonMapperConfigurations")

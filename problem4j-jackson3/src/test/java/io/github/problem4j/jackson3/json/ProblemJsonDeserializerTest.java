@@ -18,7 +18,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.github.problem4j.jackson3.xml;
+package io.github.problem4j.jackson3.json;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -30,47 +30,47 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import tools.jackson.databind.ObjectMapper;
-import tools.jackson.dataformat.xml.XmlMapper;
+import tools.jackson.databind.json.JsonMapper;
 
-class ProblemXmlDeserializationTests extends AbstractProblemXmlTests {
+class ProblemJsonDeserializerTest extends AbstractProblemJsonTest {
 
   @ParameterizedTest
-  @MethodSource("variousXmlMapperConfigurations")
-  void givenVariousObjectMapper_whenDeserializing_shouldDeserialize(XmlMapper mapper) {
-    Problem deserializedProblem = mapper.readValue(xml, Problem.class);
+  @MethodSource("variousJsonMapperConfigurations")
+  void givenVariousObjectMapper_whenDeserializing_shouldDeserialize(JsonMapper mapper) {
+    Problem deserializedProblem = mapper.readValue(json, Problem.class);
 
-    assertEquals(expectedProblem.getType(), deserializedProblem.getType());
-    assertEquals(expectedProblem.getTitle(), deserializedProblem.getTitle());
-    assertEquals(expectedProblem.getStatus(), deserializedProblem.getStatus());
-    assertEquals(expectedProblem.getDetail(), deserializedProblem.getDetail());
-    assertEquals(expectedProblem.getInstance(), deserializedProblem.getInstance());
+    assertEquals(problem.getType(), deserializedProblem.getType());
+    assertEquals(problem.getTitle(), deserializedProblem.getTitle());
+    assertEquals(problem.getStatus(), deserializedProblem.getStatus());
+    assertEquals(problem.getDetail(), deserializedProblem.getDetail());
+    assertEquals(problem.getInstance(), deserializedProblem.getInstance());
 
-    assertEquals(
-        expectedProblem.getExtensions().size(), deserializedProblem.getExtensions().size());
+    assertEquals(problem.getExtensions().size(), deserializedProblem.getExtensions().size());
 
-    for (String key : expectedProblem.getExtensions()) {
+    for (String key : problem.getExtensions()) {
       assertTrue(deserializedProblem.hasExtension(key));
-      assertEquals(
-          expectedProblem.getExtensionValue(key), deserializedProblem.getExtensionValue(key));
+      assertEquals(problem.getExtensionValue(key), deserializedProblem.getExtensionValue(key));
     }
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"http://exa mple.com", "http://example.com/&lt;&gt;", "http://[::1"})
+  @ValueSource(strings = {"http://exa mple.com", "http://example.com/<>", "http://[::1"})
   @NullSource
   void givenTypeInvalidUri_whenDeserializing_shouldDeserialize(String type) {
-    ObjectMapper mapper = XmlMapper.builder().addModule(new ProblemJacksonModule()).build();
+    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
 
-    String xml =
-        "<problem>"
-            + (type != null ? "<type>" + type + "</type>" : "")
-            + "<title>Hello World</title>"
-            + "<status>99</status>"
-            + (type != null ? "<instance>" + type + "</instance>" : "")
-            + "</problem>";
+    String json =
+        """
+        {
+            "type"     : %s,
+            "title"    : "Hello World",
+            "status"   : 99,
+            "instance" : %s
+        }
+        """
+            .formatted(quoteIfNotNull(type), quoteIfNotNull(type));
 
-    Problem problem = mapper.readValue(xml, Problem.class);
+    Problem problem = mapper.readValue(json, Problem.class);
     assertEquals(Problem.BLANK_TYPE, problem.getType());
     assertEquals("Hello World", problem.getTitle());
     assertEquals(99, problem.getStatus());
@@ -81,17 +81,21 @@ class ProblemXmlDeserializationTests extends AbstractProblemXmlTests {
   @ValueSource(strings = {"\"string\"", "false", "true"})
   @NullSource
   void givenInvalidStatus_whenDeserializing_shouldDeserializeToZero(String status) {
-    ObjectMapper mapper = XmlMapper.builder().addModule(new ProblemJacksonModule()).build();
+    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
 
-    String xml =
-        "<problem>"
-            + "<type>http://example.com/type</type>"
-            + "<title>Hello World</title>"
-            + (status != null ? ("<status>" + status + "</status>") : "")
-            + "<instance>http://example.com/instance</instance>"
-            + "</problem>";
+    String json =
+        "{ "
+            + ("\"type\"     : " + quoteIfNotNull("http://example.com/type") + ", ")
+            + ("\"title\"    : \"Hello World\", ")
+            + ("\"status\"   : " + status + ", ")
+            + ("\"instance\" : " + quoteIfNotNull("http://example.com/instance"))
+            + " }";
 
-    Problem problem = mapper.readValue(xml, Problem.class);
+    Problem problem = mapper.readValue(json, Problem.class);
     assertEquals(0, problem.getStatus());
+  }
+
+  private String quoteIfNotNull(String type) {
+    return type != null ? "\"" + type + "\"" : "null";
   }
 }

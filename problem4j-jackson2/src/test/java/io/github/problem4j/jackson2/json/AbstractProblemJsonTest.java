@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
 
-public abstract class AbstractProblemJsonTests {
+abstract class AbstractProblemJsonTest {
 
   protected final String json =
       "{"
