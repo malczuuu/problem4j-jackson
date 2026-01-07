@@ -31,6 +31,7 @@ Instead of releasing version `2.0`, library was split into two modules, because 
 - [Usage](#usage)
     - [Maven dependency for `problem4j-jackson2` (Jackson `2.x`)](#maven-dependency-for-problem4j-jackson2-jackson-2x)
     - [Maven dependency for `problem4j-jackson3` (Jackson `3.x`)](#maven-dependency-for-problem4j-jackson3-jackson-3x)
+- [Project Status](#project-status)
 - [Problem4J Links](#problem4j-links)
 - [Building from source](#building-from-source)
 
@@ -45,7 +46,11 @@ Instead of releasing version `2.0`, library was split into two modules, because 
 
 ## Example
 
+Examples differ, depending on baseline **Jackson** version.
+
 ### Example for `problem4j-jackson2` (Jackson `2.x`)
+
+Serialize and deserialize object using `ObjectMapper` from **Jackson `2.x`**.
 
 ```java
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -78,6 +83,8 @@ ObjectMapper mapper = new ObjectMapper().addMixIn(Problem.class, ProblemMixIn.cl
 ```
 
 ### Example for `problem4j-jackson3` (Jackson `3.x`)
+
+Serialize and deserialize object using `JsonMapper` from **Jackson `3.x`**.
 
 ```java
 import io.github.problem4j.core.Problem;
@@ -180,8 +187,17 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
    }
    ```
 
+## Project Status
+
+[![Status: Feature Complete](https://img.shields.io/badge/feature%20complete-darkblue?label=status)](#project-status)
+
+**Problem4J Jackson** is considered *feature complete*. Only **bug fixes** will be added. New features may be included
+only if there is a strong justification for them; otherwise, future projects are expected to build on this one as a
+dependency.
+
 ## Problem4J Links
 
+- [`problem4j.github.io`](https://problem4j.github.io) - Full documentation of all projects from Problem4J family.
 - [`problem4j-core`][problem4j-core] - Core library defining `Problem` model and `ProblemException`.
 - [`problem4j-jackson`][problem4j-jackson] - Jackson module for serializing and deserializing `Problem` objects.
 - [`problem4j-spring`][problem4j-spring] - Spring modules extending `ResponseEntityExceptionHandler` for handling
