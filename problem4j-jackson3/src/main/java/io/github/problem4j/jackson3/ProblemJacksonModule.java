@@ -21,6 +21,7 @@
 package io.github.problem4j.jackson3;
 
 import io.github.problem4j.core.Problem;
+import java.io.Serial;
 import tools.jackson.databind.module.SimpleModule;
 
 /**
@@ -36,6 +37,8 @@ import tools.jackson.databind.module.SimpleModule;
  * @see tools.jackson.databind.json.JsonMapper
  */
 public class ProblemJacksonModule extends SimpleModule {
+
+  @Serial private static final long serialVersionUID = 1L;
 
   /**
    * Creates and initializes the {@code ProblemJacksonModule}.
