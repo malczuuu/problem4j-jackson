@@ -32,7 +32,9 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 /**
  * Jackson MixIn that redirects serialization and deserialization of {@code Problem} through the
- * {@link ProblemBridge} POJO.
+ * internal {@link ProblemBridge} POJO.
+ *
+ * @see io.github.problem4j.core.Problem
  */
 @JacksonXmlRootElement(localName = PROBLEM, namespace = NAMESPACE)
 @JsonRootName(value = PROBLEM, namespace = NAMESPACE)
