@@ -162,16 +162,19 @@ class ProblemBridge implements Serializable {
    *   <li>multiple values are accumulated into a {@link List}.
    * </ul>
    *
+   * <p>Warnings are suppressed for unchecked operations on raw types, as full knowledge about types
+   * of extension values is not available at this point.
+   *
    * @param name the JSON property name
    * @param value the JSON property value
    */
   @JsonAnySetter
+  @SuppressWarnings({"unchecked", "rawtypes"})
   void setExtension(String name, Object value) {
     if (name != null && value != null && !MEMBERS.contains(name)) {
       if (!extensions.containsKey(name)) {
         extensions.put(name, value);
       } else if (extensions.get(name) instanceof List) {
-        // full knowledge about types of these list items is irrelevant
         ((List) extensions.get(name)).add(value);
       } else {
         List<Object> list = new ArrayList<>();

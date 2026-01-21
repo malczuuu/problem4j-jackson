@@ -1,11 +1,12 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
-    id("internal.convention-common")
+    id("internal.common-convention")
     id("java-library")
 }
 
 java {
+    toolchain.languageVersion = providers.gradleProperty("internal.java.version").map { JavaLanguageVersion.of(it) }
     withSourcesJar()
     withJavadocJar()
 }
@@ -38,9 +39,6 @@ tasks.withType<Test>().configureEach {
         exceptionFormat = TestExceptionFormat.SHORT
         showStandardStreams = true
     }
-
-    // For resolving warnings from mockito.
-    jvmArgs("-XX:+EnableDynamicAgentLoading")
 
     systemProperty("user.language", "en")
     systemProperty("user.country", "US")
