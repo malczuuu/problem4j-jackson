@@ -1,6 +1,6 @@
 [versions]
 jackson2 = "2.21.0"
-jackson3 = "3.0.3"
+jackson3 = "3.0.4"
 junit = "6.0.2"
 nmcp = "1.4.3"
 problem4j-core = "1.3.1"
