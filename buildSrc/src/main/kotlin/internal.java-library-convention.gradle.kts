@@ -5,8 +5,11 @@ plugins {
     id("java-library")
 }
 
+//
+// Not assigning java.toolchain.languageVersion as submodules have different Java version requirements.
+//
+
 java {
-    toolchain.languageVersion = providers.gradleProperty("internal.java.version").map { JavaLanguageVersion.of(it) }
     withSourcesJar()
     withJavadocJar()
 }
