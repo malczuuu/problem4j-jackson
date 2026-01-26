@@ -28,24 +28,24 @@
 #
 ###############################################################################
 
-echo '===================================================='
-echo 'Verifying Java version for classes within JAR files.'
-echo ''
-echo '  problem4j-jackson2 must be 52 (Java 8)'
-echo '  problem4j-jackson3 must be 61 (Java 17)'
-echo ''
-echo 'Note that JAR files must exist (./gradlew build).'
-echo ''
+echo "===================================================="
+echo "Verifying Java version for classes within JAR files."
+echo ""
+echo "  problem4j-jackson2 must be 52 (Java 8)"
+echo "  problem4j-jackson3 must be 61 (Java 17)"
+echo ""
+echo "Note that JAR files must exist (./gradlew build)."
+echo ""
 
-echo '===== problem4j-jackson2 ===='
+echo "===== problem4j-jackson2 ====="
 javap \
     -verbose \
     -classpath problem4j-jackson2/build/libs/problem4j-jackson2.jar \
     io.github.problem4j.jackson2.ProblemModule \
     | grep "major version"
 
-echo ''
-echo '===== problem4j-jackson3 ====='
+echo ""
+echo "===== problem4j-jackson3 ====="
 javap \
     -verbose \
     -classpath problem4j-jackson3/build/libs/problem4j-jackson3.jar \
