@@ -138,12 +138,12 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-core</artifactId>
-           <version>1.3.1</version>
+           <version>1.3.2</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-jackson2</artifactId>
-           <version>1.3.1</version>
+           <version>1.3.2</version>
        </dependency>
    </dependencies>
    ```
@@ -151,8 +151,8 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
    ```groovy
    dependencies {
        implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
-       implementation("io.github.problem4j:problem4j-core:1.3.1")
-       implementation("io.github.problem4j:problem4j-jackson2:1.3.1")
+       implementation("io.github.problem4j:problem4j-core:1.3.2")
+       implementation("io.github.problem4j:problem4j-jackson2:1.3.2")
    }
    ```
 
@@ -169,12 +169,12 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-core</artifactId>
-           <version>1.3.1</version>
+           <version>1.3.2</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-jackson3</artifactId>
-           <version>1.3.1</version>
+           <version>1.3.2</version>
        </dependency>
    </dependencies>
    ```
@@ -182,8 +182,8 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
    ```groovy
    dependencies {
        implementation("tools.jackson.core:jackson-databind:3.0.3")
-       implementation("io.github.problem4j:problem4j-core:1.3.1")
-       implementation("io.github.problem4j:problem4j-jackson3:1.3.1")
+       implementation("io.github.problem4j:problem4j-core:1.3.2")
+       implementation("io.github.problem4j:problem4j-jackson3:1.3.2")
    }
    ```
 
