@@ -92,6 +92,15 @@ class ProblemBridge implements Serializable {
     problem.getExtensionMembers().forEach(this::setExtension);
   }
 
+  /**
+   * Deprecation of {@link ProblemBuilder#extension(Map)} is ignored, as this library is supposed to
+   * work with {@code problem4j-core:1.3.x} (any version from {@code 1.3.x} generation).
+   *
+   * <p>TODO: resolve deprecation while releasing {@code problem4j-jackson3:1.4.0}
+   *
+   * @return a {@link ProblemBuilder} initialized with data from this bridge
+   */
+  @SuppressWarnings("deprecation")
   ProblemBuilder toProblemBuilder() {
     return Problem.builder()
         .type(type)
