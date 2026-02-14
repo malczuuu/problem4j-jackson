@@ -48,7 +48,7 @@ Instead of releasing version `2.0`, library was split into two modules, because 
   to support Java 8 and Java 9+ module system, while artifact for `problem4j-jackson3` is compiled with Java 17 and
   supports module system out of the box.
   ```java
-  module org.exmple.project {
+  module org.example.project {
     // pick the one for your project
     requires io.github.problem4j.jackson2;
     requires io.github.problem4j.jackson3;
