@@ -1,11 +1,6 @@
-group = property("internal.group") as String
-
-//
-// Not assigning version as it is assigned in CI/CD using -Pversion=X.Y.Z parameter.
-//
-
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 // Usage:

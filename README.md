@@ -239,6 +239,28 @@ version. By default, the version is `unspecified` (Gradle's default).
 ./gradlew -Pversion=XXXX publishToMavenLocal
 ```
 
+---
+
+**Note** that following warnings are to be ignored, as they are caused by the module names containing terminal digits,
+which is not recommended but is necessary in this case to differentiate between Jackson 2 and Jackson 3 modules. 
+Inclusion of digit is a part of the **module name**, not a versioning scheme.
+
+```txt
+> Task :problem4j-jackson2:compileMain9Java
+./problem4j-jackson2/src/main9/java/module-info.java:25: warning: [module] module name component jackson2 should avoid terminal digits
+module io.github.problem4j.jackson2 {
+^
+1 warning
+```
+
+```txt
+> Task :problem4j-jackson3:compileJava
+./problem4j-jackson3/src/main/java/module-info.java:25: warning: [module] module name component jackson3 should avoid terminal digits
+module io.github.problem4j.jackson3 {
+^
+1 warning
+```
+
 </details>
 
 [jackson]: https://github.com/FasterXML/jackson

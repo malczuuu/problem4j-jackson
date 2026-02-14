@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import org.jspecify.annotations.Nullable;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -70,20 +71,17 @@ class ProblemBridge implements Serializable {
 
   static final Set<String> MEMBERS = Set.of(TYPE, TITLE, STATUS, DETAIL, INSTANCE);
 
-  private URI type;
-  private String title;
+  private @Nullable URI type;
+  private @Nullable String title;
   private int status = 0;
-  private String detail;
-  private URI instance;
+  private @Nullable String detail;
+  private @Nullable URI instance;
   private final Map<String, Object> extensions = new TreeMap<>();
 
   ProblemBridge() {}
 
   ProblemBridge(Problem problem) {
-    type =
-        problem.getType() != null && !problem.getType().equals(Problem.BLANK_TYPE)
-            ? problem.getType()
-            : null;
+    type = problem.isTypeNonBlank() ? problem.getType() : null;
     title = problem.getTitle();
     status = problem.getStatus();
     detail = problem.getDetail();
@@ -92,15 +90,6 @@ class ProblemBridge implements Serializable {
     problem.getExtensionMembers().forEach(this::setExtension);
   }
 
-  /**
-   * Deprecation of {@link ProblemBuilder#extension(Map)} is ignored, as this library is supposed to
-   * work with {@code problem4j-core:1.3.x} (any version from {@code 1.3.x} generation).
-   *
-   * <p>TODO: resolve deprecation while releasing {@code problem4j-jackson3:1.4.0}
-   *
-   * @return a {@link ProblemBuilder} initialized with data from this bridge
-   */
-  @SuppressWarnings("deprecation")
   ProblemBuilder toProblemBuilder() {
     return Problem.builder()
         .type(type)
@@ -108,11 +97,11 @@ class ProblemBridge implements Serializable {
         .status(status)
         .detail(detail)
         .instance(instance)
-        .extension(extensions);
+        .extensions(extensions);
   }
 
   @JsonProperty(TYPE)
-  void setType(JsonNode node) {
+  void setType(@Nullable JsonNode node) {
     if (node != null && node.isString()) {
       try {
         this.type = URI.create(node.asString());
@@ -123,12 +112,12 @@ class ProblemBridge implements Serializable {
   }
 
   @JsonProperty(TITLE)
-  void setTitle(String title) {
+  void setTitle(@Nullable String title) {
     this.title = title;
   }
 
   @JsonProperty(STATUS)
-  void setStatus(JsonNode node) {
+  void setStatus(@Nullable JsonNode node) {
     if (node != null) {
       if (node.isIntegralNumber()) {
         this.status = node.intValue();
@@ -143,12 +132,12 @@ class ProblemBridge implements Serializable {
   }
 
   @JsonProperty(DETAIL)
-  void setDetail(String detail) {
+  void setDetail(@Nullable String detail) {
     this.detail = detail;
   }
 
   @JsonProperty(INSTANCE)
-  void setInstance(JsonNode node) {
+  void setInstance(@Nullable JsonNode node) {
     if (node != null && node.isString()) {
       try {
         this.instance = URI.create(node.asString());
@@ -179,7 +168,7 @@ class ProblemBridge implements Serializable {
    */
   @JsonAnySetter
   @SuppressWarnings({"unchecked", "rawtypes"})
-  void setExtension(String name, Object value) {
+  void setExtension(@Nullable String name, @Nullable Object value) {
     if (name != null && value != null && !MEMBERS.contains(name)) {
       if (!extensions.containsKey(name)) {
         extensions.put(name, value);
@@ -196,13 +185,13 @@ class ProblemBridge implements Serializable {
 
   @JsonProperty(TYPE)
   @JacksonXmlProperty(namespace = NAMESPACE, localName = TYPE)
-  String getType() {
+  @Nullable String getType() {
     return type != null ? type.toString() : null;
   }
 
   @JsonProperty(TITLE)
   @JacksonXmlProperty(namespace = NAMESPACE, localName = TITLE)
-  String getTitle() {
+  @Nullable String getTitle() {
     return title;
   }
 
@@ -214,13 +203,13 @@ class ProblemBridge implements Serializable {
 
   @JsonProperty(DETAIL)
   @JacksonXmlProperty(namespace = NAMESPACE, localName = DETAIL)
-  String getDetail() {
+  @Nullable String getDetail() {
     return detail;
   }
 
   @JsonProperty(INSTANCE)
   @JacksonXmlProperty(namespace = NAMESPACE, localName = INSTANCE)
-  String getInstance() {
+  @Nullable String getInstance() {
     return instance != null ? instance.toString() : null;
   }
 

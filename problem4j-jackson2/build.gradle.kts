@@ -1,16 +1,17 @@
 plugins {
     id("internal.java-library-convention")
+    id("internal.mrjar-module-info-convention")
     id("internal.publishing-convention")
     alias(libs.plugins.nmcp)
 }
 
 java {
-    toolchain.languageVersion =
-        providers.gradleProperty("internal.jackson2.java.version").map { JavaLanguageVersion.of(it) }
+    toolchain.languageVersion = JavaLanguageVersion.of(8)
 }
 
 dependencies {
     // Main
+    api(libs.jspecify)
     api(libs.problem4j.core)
 
     compileOnly(libs.jackson2.databind)

@@ -5,12 +5,12 @@ plugins {
 }
 
 java {
-    toolchain.languageVersion =
-        providers.gradleProperty("internal.jackson3.java.version").map { JavaLanguageVersion.of(it) }
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
 dependencies {
     // Main
+    api(libs.jspecify)
     api(libs.problem4j.core)
 
     compileOnly(libs.jackson3.databind)
