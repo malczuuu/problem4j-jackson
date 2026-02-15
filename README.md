@@ -47,13 +47,6 @@ Instead of releasing version `2.0`, library was split into two modules, because 
 - ✅ Supports **Java Platform Module System** (since `v1.4.0`). Artifact for `problem4j-jackson2` uses multi-release JAR
   to support Java 8 and Java 9+ module system, while artifact for `problem4j-jackson3` is compiled with Java 17 and
   supports module system out of the box.
-  ```java
-  module org.example.project {
-    // pick the one for your project
-    requires io.github.problem4j.jackson2;
-    requires io.github.problem4j.jackson3;
-  }
-  ```
 
 ## Example
 
@@ -93,6 +86,14 @@ ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
 ObjectMapper mapper = new ObjectMapper().addMixIn(Problem.class, ProblemMixIn.class);
 ```
 
+If using Java module system, add the following `requires` directive to your `module-info.java` file.
+
+```java
+module org.example.project {
+    requires io.github.problem4j.jackson2;
+}
+```
+
 ### Example for `problem4j-jackson3` (Jackson `3.x`)
 
 Serialize and deserialize object using `JsonMapper` from **Jackson `3.x`**.
@@ -125,6 +126,14 @@ import tools.jackson.databind.json.JsonMapper;
 
 JsonMapper mapper = JsonMapper.builder().findAndAddModules().build();
 JsonMapper mapper = JsonMapper.builder().addMixIn(Problem.class, ProblemJacksonMixIn.class).build();
+```
+
+If using Java module system, add the following `requires` directive to your `module-info.java` file.
+
+```java
+module org.example.project {
+    requires io.github.problem4j.jackson3;
+}
 ```
 
 ## Usage
