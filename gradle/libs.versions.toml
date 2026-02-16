@@ -4,7 +4,7 @@ jackson3 = "3.0.4"
 jspecify = "1.0.0"
 junit = "6.0.2"
 nmcp = "1.4.4"
-problem4j-core = "1.4.0-RC1"
+problem4j-core = "1.4.0"
 spotless = "8.2.1"
 
 [plugins]
