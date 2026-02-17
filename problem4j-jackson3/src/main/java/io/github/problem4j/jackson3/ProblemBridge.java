@@ -18,6 +18,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 package io.github.problem4j.jackson3;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;

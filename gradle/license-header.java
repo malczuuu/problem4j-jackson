@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025-2026 The Problem4J Authors
+ * Copyright (c) 2025-$YEAR The Problem4J Authors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,15 +19,3 @@
  * SOFTWARE.
  */
 
-package io.github.problem4j.jackson3;
-
-import io.github.problem4j.core.Problem;
-import tools.jackson.databind.util.StdConverter;
-
-class ConverterBridgeToProblem extends StdConverter<ProblemBridge, Problem> {
-
-  @Override
-  public Problem convert(ProblemBridge pojo) {
-    return pojo.toProblemBuilder().build();
-  }
-}

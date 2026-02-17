@@ -18,6 +18,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 package io.github.problem4j.jackson2.xml;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
