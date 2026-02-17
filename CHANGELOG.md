@@ -13,9 +13,15 @@ The format is based on [Keep a Changelog][keepachangelog], and this project adhe
   artifacts.
   ```java
   module org.example.project {
-      requires io.github.problem4j.core;
+      // pick what you need for your project
+      requires io.github.problem4j.jackson2;
+      requires io.github.problem4j.jackson3;
   }
   ```
+  
+### Changed
+
+- Bump `problem4j-core` to `1.4.0`.
 
 ## [1.3.3] - 2026-02-12
 
