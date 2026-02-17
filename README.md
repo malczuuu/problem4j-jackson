@@ -153,17 +153,17 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
        <dependency>
            <groupId>com.fasterxml.jackson.core</groupId>
            <artifactId>jackson-databind</artifactId>
-           <version>2.20.1</version>
+           <version>2.21.0</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-core</artifactId>
-           <version>1.4.0</version>
+           <version>1.4.1</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-jackson2</artifactId>
-           <version>1.4.0</version>
+           <version>1.4.1</version>
        </dependency>
    </dependencies>
    ```
@@ -171,8 +171,8 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
    ```groovy
    dependencies {
        implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
-       implementation("io.github.problem4j:problem4j-core:1.4.0")
-       implementation("io.github.problem4j:problem4j-jackson2:1.4.0")
+       implementation("io.github.problem4j:problem4j-core:1.4.1")
+       implementation("io.github.problem4j:problem4j-jackson2:1.4.1")
    }
    ```
 
@@ -184,17 +184,17 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
        <dependency>
            <groupId>tools.jackson.core</groupId>
            <artifactId>jackson-databind</artifactId>
-           <version>3.0.3</version>
+           <version>3.0.4</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-core</artifactId>
-           <version>1.4.0</version>
+           <version>1.4.1</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-jackson3</artifactId>
-           <version>1.4.0</version>
+           <version>1.4.1</version>
        </dependency>
    </dependencies>
    ```
@@ -202,8 +202,8 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
    ```groovy
    dependencies {
        implementation("tools.jackson.core:jackson-databind:3.0.3")
-       implementation("io.github.problem4j:problem4j-core:1.4.0")
-       implementation("io.github.problem4j:problem4j-jackson3:1.4.0")
+       implementation("io.github.problem4j:problem4j-core:1.4.1")
+       implementation("io.github.problem4j:problem4j-jackson3:1.4.1")
    }
    ```
 
