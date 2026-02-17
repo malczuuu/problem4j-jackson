@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog][keepachangelog], and this project adhe
 
 ## [Unreleased]
 
+### Changed
+
+- Bump `problem4j-core` to `1.4.1`.
+
 ## [1.4.0] - 2026-02-17
 
 ### Added
