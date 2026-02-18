@@ -19,11 +19,9 @@
  * SOFTWARE.
  */
 
-package io.github.problem4j.jackson3.json;
+package io.github.problem4j.jackson3;
 
 import io.github.problem4j.core.Problem;
-import io.github.problem4j.jackson3.ProblemJacksonMixIn;
-import io.github.problem4j.jackson3.ProblemJacksonModule;
 import java.net.URI;
 import java.time.Instant;
 import java.time.LocalDateTime;

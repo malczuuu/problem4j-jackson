@@ -19,31 +19,29 @@
  * SOFTWARE.
  */
 
-package io.github.problem4j.jackson3.xml;
+package io.github.problem4j.jackson3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import io.github.problem4j.core.Problem;
-import io.github.problem4j.jackson3.ProblemJacksonModule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import tools.jackson.databind.ObjectMapper;
-import tools.jackson.dataformat.xml.XmlMapper;
+import tools.jackson.databind.json.JsonMapper;
 
-class ProblemXmlSerializationTest extends AbstractProblemXmlTest {
+class ProblemJsonSerializerTest extends AbstractProblemJsonTest {
 
   @ParameterizedTest
-  @MethodSource("variousXmlMapperConfigurations")
-  void givenVariousObjectMapper_whenSerializing_shouldSerialize(XmlMapper mapper) {
-    String problemXml = mapper.writeValueAsString(problem);
+  @MethodSource("variousJsonMapperConfigurations")
+  void givenVariousObjectMapper_whenSerializing_shouldSerialize(JsonMapper mapper) {
+    String problemJson = mapper.writeValueAsString(problem);
 
-    assertEquals(xml, problemXml);
+    assertEquals(json, problemJson);
   }
 
   @Test
   void givenOverlappingExtension_whenSerializing_shouldSkipExtension() {
-    ObjectMapper mapper = XmlMapper.builder().addModule(new ProblemJacksonModule()).build();
+    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
 
     Problem problem =
         Problem.builder()
@@ -52,16 +50,14 @@ class ProblemXmlSerializationTest extends AbstractProblemXmlTest {
             .extension(Problem.extension("title", "extTitle"))
             .build();
 
-    String problemXml = mapper.writeValueAsString(problem);
+    String problemJson = mapper.writeValueAsString(problem);
 
-    assertEquals(
-        "<problem xmlns=\"urn:ietf:rfc:7807\"><title>Hello World</title><status>99</status></problem>",
-        problemXml);
+    assertEquals("{\"title\":\"Hello World\",\"status\":99}", problemJson);
   }
 
   @Test
   void givenExtensionWithNullValue_whenSerializing_shouldSkipExtension() {
-    ObjectMapper mapper = XmlMapper.builder().addModule(new ProblemJacksonModule()).build();
+    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
 
     Problem problem =
         Problem.builder()
@@ -70,10 +66,8 @@ class ProblemXmlSerializationTest extends AbstractProblemXmlTest {
             .extension(Problem.extension("extension", null))
             .build();
 
-    String problemXml = mapper.writeValueAsString(problem);
+    String problemJson = mapper.writeValueAsString(problem);
 
-    assertEquals(
-        "<problem xmlns=\"urn:ietf:rfc:7807\"><title>Hello World</title><status>99</status></problem>",
-        problemXml);
+    assertEquals("{\"title\":\"Hello World\",\"status\":99}", problemJson);
   }
 }

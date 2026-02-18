@@ -19,26 +19,28 @@
  * SOFTWARE.
  */
 
-package io.github.problem4j.jackson3.xml;
+package io.github.problem4j.jackson2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import io.github.problem4j.core.Problem;
-import io.github.problem4j.jackson3.ProblemJacksonModule;
+import java.io.IOException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import tools.jackson.databind.ObjectMapper;
-import tools.jackson.dataformat.xml.XmlMapper;
 
 class ProblemXmlDeserializationTest extends AbstractProblemXmlTest {
 
   @ParameterizedTest
   @MethodSource("variousXmlMapperConfigurations")
-  void givenVariousObjectMapper_whenDeserializing_shouldDeserialize(XmlMapper mapper) {
+  void givenVariousObjectMapper_whenDeserializing_shouldDeserialize(ObjectMapper mapper)
+      throws IOException {
     Problem deserializedProblem = mapper.readValue(xml, Problem.class);
 
     assertEquals(expectedProblem.getType(), deserializedProblem.getType());
@@ -60,15 +62,16 @@ class ProblemXmlDeserializationTest extends AbstractProblemXmlTest {
   @ParameterizedTest
   @ValueSource(strings = {"http://exa mple.com", "http://example.com/&lt;&gt;", "http://[::1"})
   @NullSource
-  void givenTypeInvalidUri_whenDeserializing_shouldDeserialize(String type) {
-    ObjectMapper mapper = XmlMapper.builder().addModule(new ProblemJacksonModule()).build();
+  void givenTypeInvalidUri_whenDeserializing_shouldDeserialize(String type)
+      throws JsonProcessingException {
+    ObjectMapper mapper = new XmlMapper().registerModule(new ProblemModule());
 
     String xml =
         "<problem>"
-            + (type != null ? "<type>" + type + "</type>" : "")
+            + (type != null ? ("<type>" + type + "</type>") : "")
             + "<title>Hello World</title>"
             + "<status>99</status>"
-            + (type != null ? "<instance>" + type + "</instance>" : "")
+            + (type != null ? ("<instance>" + type + "</instance>") : "")
             + "</problem>";
 
     Problem problem = mapper.readValue(xml, Problem.class);
@@ -81,8 +84,9 @@ class ProblemXmlDeserializationTest extends AbstractProblemXmlTest {
   @ParameterizedTest
   @ValueSource(strings = {"\"string\"", "false", "true"})
   @NullSource
-  void givenInvalidStatus_whenDeserializing_shouldDeserializeToZero(String status) {
-    ObjectMapper mapper = XmlMapper.builder().addModule(new ProblemJacksonModule()).build();
+  void givenInvalidStatus_whenDeserializing_shouldDeserializeToZero(String status)
+      throws JsonProcessingException {
+    ObjectMapper mapper = new XmlMapper().registerModule(new ProblemModule());
 
     String xml =
         "<problem>"

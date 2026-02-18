@@ -228,24 +228,36 @@ dependency.
 <details>
 <summary><b>Expand...</b></summary>
 
-Gradle **9.x+** requires **Java 17+** to run, but higher Java versions can also be used.
+Gradle **9.x+** requires **Java 17** or higher to run. For building the project, Gradle automatically picks up **Java
+25** via **toolchains** and the `foojay-resolver-convention` plugin. This Java version is needed because the project
+uses **ErrorProne** and **NullAway** for static nullness analysis.
 
-- Module `problem4j-jackson2` is compiled using a **Java 8 toolchain**, so the produced artifacts are compatible with
+The produced artifacts are compatible with **Java 8** thanks to `options.release = 8/17` in Gradle `JavaCompile` tasks.
+This means that regardless of the Java version used to run Gradle, the resulting bytecode remains compatible.
+
+- Module `problem4j-jackson2` is compiled with `options.release = 8`, so the produced artifacts are compatible with
   **Java 8**.
-- Module `problem4j-jackson3` is compiled using a **Java 17 toolchain**, so the produced artifacts are compatible with
+- Module `problem4j-jackson3` is compiled with `options.release = 17`, so the produced artifacts are compatible with
   **Java 17**.
 
+The **default Gradle tasks** include `spotlessApply` (for code formatting) and `build` (for compilation and tests).The
+simplest way to build the project is to run:
+
 ```bash
-./gradlew build
+./gradlew
 ```
 
-To execute tests use `test` task.
+---
+
+To **execute tests** use `test` task. Tests do not change `options.release` so newer Java API can be used.
 
 ```bash
 ./gradlew test
 ```
 
-To format the code according to the style defined in [`build.gradle.kts`](./build.gradle.kts) rules use `spotlessApply`
+---
+
+To **format the code** according to the style defined in [`build.gradle.kts`](./build.gradle.kts) rules use `spotlessApply`
 task. **Note** that **building will fail** if code is not properly formatted.
 
 ```bash
@@ -260,8 +272,9 @@ for local development and builds you can choose to skip it and update the year l
 ./gradlew spotlessApply -Pspotless.license-year-enabled
 ```
 
-To publish the built artifacts to local Maven repository, use `publishToMavenLocal` task. It produces artifacts with
-`0.0.0-SNAPSHOT` version placeholder, so they won't conflict with any released versions in your local repository.
+---
+
+To **publish** the built artifacts to **local Maven repository**, use `publishToMavenLocal` task.
 
 ```bash
 ./gradlew publishToMavenLocal

@@ -19,30 +19,33 @@
  * SOFTWARE.
  */
 
-package io.github.problem4j.jackson3.json;
+package io.github.problem4j.jackson2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.github.problem4j.core.Problem;
-import io.github.problem4j.jackson3.ProblemJacksonModule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import tools.jackson.databind.json.JsonMapper;
 
-class ProblemJsonSerializerTest extends AbstractProblemJsonTest {
+class ProblemJsonSerializationTest extends AbstractProblemJsonTest {
 
   @ParameterizedTest
   @MethodSource("variousJsonMapperConfigurations")
-  void givenVariousObjectMapper_whenSerializing_shouldSerialize(JsonMapper mapper) {
+  void givenVariousObjectMapper_whenDeserializing_shouldSerializeProblem(ObjectMapper mapper)
+      throws JsonProcessingException {
     String problemJson = mapper.writeValueAsString(problem);
 
     assertEquals(json, problemJson);
   }
 
   @Test
-  void givenOverlappingExtension_whenSerializing_shouldSkipExtension() {
-    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
+  void givenOverlappingExtension_whenSerializing_shouldSkipExtension()
+      throws JsonProcessingException {
+    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
 
     Problem problem =
         Problem.builder()
@@ -57,8 +60,9 @@ class ProblemJsonSerializerTest extends AbstractProblemJsonTest {
   }
 
   @Test
-  void givenExtensionWithNullValue_whenSerializing_shouldSkipExtension() {
-    JsonMapper mapper = JsonMapper.builder().addModule(new ProblemJacksonModule()).build();
+  void givenExtensionWithNullValue_whenSerializing_shouldSkipExtension()
+      throws JsonProcessingException {
+    ObjectMapper mapper = new JsonMapper().registerModule(new ProblemModule());
 
     Problem problem =
         Problem.builder()

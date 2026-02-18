@@ -19,14 +19,13 @@
  * SOFTWARE.
  */
 
-package io.github.problem4j.jackson3.json;
+package io.github.problem4j.jackson3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.problem4j.core.Problem;
-import io.github.problem4j.jackson3.ProblemJacksonModule;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;

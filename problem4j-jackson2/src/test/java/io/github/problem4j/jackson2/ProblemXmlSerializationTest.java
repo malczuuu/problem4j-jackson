@@ -19,7 +19,7 @@
  * SOFTWARE.
  */
 
-package io.github.problem4j.jackson2.xml;
+package io.github.problem4j.jackson2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -27,7 +27,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import io.github.problem4j.core.Problem;
-import io.github.problem4j.jackson2.ProblemModule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
