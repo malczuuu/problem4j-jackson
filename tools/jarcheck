@@ -19,7 +19,7 @@ echo ""
 echo "===== problem4j-jackson2 ====="
 javap \
     -verbose \
-    -classpath problem4j-jackson2/build/libs/problem4j-jackson2.jar \
+    -classpath problem4j-jackson2/build/libs/problem4j-jackson2-*-SNAPSHOT.jar \
     io.github.problem4j.jackson2.ProblemModule \
     | grep "major version"
 
@@ -27,6 +27,6 @@ echo ""
 echo "===== problem4j-jackson3 ====="
 javap \
     -verbose \
-    -classpath problem4j-jackson3/build/libs/problem4j-jackson3.jar \
+    -classpath problem4j-jackson3/build/libs/problem4j-jackson3-*-SNAPSHOT.jar \
     io.github.problem4j.jackson3.ProblemJacksonModule \
     | grep "major version"
