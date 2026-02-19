@@ -37,5 +37,5 @@ tasks.named<JavaCompile>("compileJava") {
 }
 
 tasks.withType<Javadoc>().configureEach {
-    javadocTool = javaToolchains.javadocToolFor { languageVersion.set(JavaLanguageVersion.of(8)) }
+    javadocTool = javaToolchains.javadocToolFor { languageVersion = JavaLanguageVersion.of(8) }
 }
