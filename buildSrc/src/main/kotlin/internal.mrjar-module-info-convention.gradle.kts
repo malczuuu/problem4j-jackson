@@ -19,7 +19,7 @@ configurations.named(main9SourceSet.runtimeClasspathConfigurationName) {
 }
 
 tasks.named<JavaCompile>("compileMain9Java") {
-    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(9) }
+    options.release = 9
 }
 
 tasks.named<Jar>("jar") {
