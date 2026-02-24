@@ -21,13 +21,13 @@ spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 
 # direct versions
-errorprone-core = { group = "com.google.errorprone", name = "error_prone_core", version.ref = "errorprone" }
+errorprone-core = { module = "com.google.errorprone:error_prone_core", version.ref = "errorprone" }
 jackson2-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson2" }
 jackson2-dataformat-xml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-xml", version.ref = "jackson2" }
 jackson3-databind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson3" }
 jackson3-dataformat-xml = { module = "tools.jackson.dataformat:jackson-dataformat-xml", version.ref = "jackson3" }
 jspecify = { module = "org.jspecify:jspecify", version.ref = "jspecify" }
-nullaway = { group = "com.uber.nullaway", name = "nullaway", version.ref = "nullaway" }
+nullaway = { module = "com.uber.nullaway:nullaway", version.ref = "nullaway" }
 problem4j-core = { module = "io.github.problem4j:problem4j-core", version.ref = "problem4j-core" }
 
 # versions managed by junit-bom
