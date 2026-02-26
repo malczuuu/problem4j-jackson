@@ -3,6 +3,7 @@ import internal.getBooleanProperty
 
 plugins {
     id("internal.common-convention")
+    id("jacoco-report-aggregation")
     alias(libs.plugins.nmcp).apply(false)
     alias(libs.plugins.nmcp.aggregation)
     alias(libs.plugins.spotless)
@@ -11,6 +12,9 @@ plugins {
 dependencies {
     nmcpAggregation(project(":problem4j-jackson2"))
     nmcpAggregation(project(":problem4j-jackson3"))
+
+    jacocoAggregation(project(":problem4j-jackson2"))
+    jacocoAggregation(project(":problem4j-jackson3"))
 }
 
 nmcpAggregation {
@@ -19,6 +23,14 @@ nmcpAggregation {
         password = System.getenv("PUBLISHING_PASSWORD")
 
         publishingType = "USER_MANAGED"
+    }
+}
+
+reporting {
+    reports {
+        register<JacocoCoverageReport>("testCodeCoverageReport") {
+            testSuiteName = "test"
+        }
     }
 }
 
@@ -87,6 +99,10 @@ spotless {
         endWithNewline()
         lineEndings = LineEnding.UNIX
     }
+}
+
+tasks.named<Task>("check") {
+    dependsOn(tasks.named<JacocoReport>("testCodeCoverageReport"))
 }
 
 defaultTasks("spotlessApply", "build")
