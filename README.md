@@ -1,8 +1,8 @@
 # Problem4J Jackson
 
 [![Build Status](https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml)
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson2?label=problem4j-jackson2)](https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson2)
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3)](https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson3)
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson2?label=problem4j-jackson2)][maven-central-jackson2]
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3)][maven-central-jackson3]
 [![License](https://img.shields.io/github/license/problem4j/problem4j-jackson)](https://github.com/problem4j/problem4j-jackson/blob/main/LICENSE)
 
 Jackson `2.x` and `3.x` integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing
@@ -138,14 +138,15 @@ module org.example.project {
 
 ## Usage
 
-Add library as dependency to Maven or Gradle. See the actual versions on [Maven Central][maven-central]. **Java 8** or
-higher is required to use `problem4j-jackson2` library. **Java 17** or higher is required to use `problem4j-jackson3`
-library.
+Add library as dependency to Maven or Gradle. **Java 8** or higher is required to use `problem4j-jackson2` library.
+**Java 17** or higher is required to use `problem4j-jackson3` library.
 
 The `problem4j-jackson` modules does **not** declare `jackson-databind` as a transitive dependency. You should add
 `jackson-databind` explicitly as your main Jackson dependency.
 
 ### Maven dependency for `problem4j-jackson2` (Jackson `2.x`)
+
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson2?label=problem4j-jackson2)][maven-central-jackson2]
 
 1. Maven:
    ```xml
@@ -157,26 +158,22 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
-           <artifactId>problem4j-core</artifactId>
-           <version>1.4.2</version>
-       </dependency>
-       <dependency>
-           <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-jackson2</artifactId>
-           <version>1.4.2</version>
+           <version>{version}</version>
        </dependency>
    </dependencies>
    ```
 2. Gradle (Groovy or Kotlin DSL):
    ```groovy
    dependencies {
-       implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
-       implementation("io.github.problem4j:problem4j-core:1.4.2")
-       implementation("io.github.problem4j:problem4j-jackson2:1.4.2")
+       implementation("com.fasterxml.jackson.core:jackson-databind:2.21.0")
+       implementation("io.github.problem4j:problem4j-jackson2:{version}")
    }
    ```
 
 ### Maven dependency for `problem4j-jackson3` (Jackson `3.x`)
+
+[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3)][maven-central-jackson3]
 
 1. Maven:
    ```xml
@@ -184,26 +181,20 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
        <dependency>
            <groupId>tools.jackson.core</groupId>
            <artifactId>jackson-databind</artifactId>
-           <version>3.0.4</version>
-       </dependency>
-       <dependency>
-           <groupId>io.github.problem4j</groupId>
-           <artifactId>problem4j-core</artifactId>
-           <version>1.4.2</version>
+           <version>3.1.0</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
            <artifactId>problem4j-jackson3</artifactId>
-           <version>1.4.2</version>
+           <version>{version}</version>
        </dependency>
    </dependencies>
    ```
 2. Gradle (Groovy or Kotlin DSL):
    ```groovy
    dependencies {
-       implementation("tools.jackson.core:jackson-databind:3.0.3")
-       implementation("io.github.problem4j:problem4j-core:1.4.2")
-       implementation("io.github.problem4j:problem4j-jackson3:1.4.2")
+       implementation("tools.jackson.core:jackson-databind:3.1.0")
+       implementation("io.github.problem4j:problem4j-jackson3:{version}")
    }
    ```
 
@@ -315,7 +306,9 @@ module io.github.problem4j.jackson3 {
 
 [jackson]: https://github.com/FasterXML/jackson
 
-[maven-central]: https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson2
+[maven-central-jackson2]: https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson2
+
+[maven-central-jackson3]: https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson3
 
 [problem4j-core]: https://github.com/problem4j/problem4j-core
 
