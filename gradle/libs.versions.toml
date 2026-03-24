@@ -1,7 +1,7 @@
 [versions]
 errorprone = "2.48.0"
 errorprone-plugin = "5.1.0"
-jackson2 = "2.21.1"
+jackson2 = "2.21.2"
 jackson3 = "3.1.0"
 jspecify = "1.0.0"
 junit = "6.0.3"
