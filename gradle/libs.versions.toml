@@ -1,6 +1,7 @@
 [versions]
 errorprone = "2.48.0"
 errorprone-plugin = "5.1.0"
+idea-ext = "1.4.1"
 jackson2 = "2.21.2"
 jackson3 = "3.1.0"
 jspecify = "1.0.0"
@@ -12,6 +13,7 @@ spotless = "8.4.0"
 
 [plugins]
 errorprone = { id = "net.ltgt.errorprone", version.ref = "errorprone-plugin" }
+idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version.ref = "idea-ext" }
 nmcp = { id = "com.gradleup.nmcp", version.ref = "nmcp" }
 nmcp-aggregation = { id = "com.gradleup.nmcp.aggregation", version.ref = "nmcp" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
