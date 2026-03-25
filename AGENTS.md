@@ -5,10 +5,10 @@ deserialization of RFC 7807 Problem objects.
 
 ## Modules
 
-| Module               | Jackson | Java target | Entry point                                                                                                          |
-|----------------------|---------|-------------|----------------------------------------------------------------------------------------------------------------------|
-| `problem4j-jackson2` | 2.x     | 8           | [`ProblemModule`](../problem4j-jackson2/src/main/java/io/github/problem4j/jackson2/ProblemModule.java)               |
-| `problem4j-jackson3` | 3.x     | 17          | [`ProblemJacksonModule`](../problem4j-jackson3/src/main/java/io/github/problem4j/jackson3/ProblemJacksonModule.java) |
+| Module               | Jackson | Java target | Entry point                                                                                                       |
+|----------------------|---------|-------------|-------------------------------------------------------------------------------------------------------------------|
+| `problem4j-jackson2` | 2.x     | 8           | [`ProblemModule`](problem4j-jackson2/src/main/java/io/github/problem4j/jackson2/ProblemModule.java)               |
+| `problem4j-jackson3` | 3.x     | 17          | [`ProblemJacksonModule`](problem4j-jackson3/src/main/java/io/github/problem4j/jackson3/ProblemJacksonModule.java) |
 
 Prioritize changes in the submodule matching the Jackson version in context.
 
@@ -26,6 +26,9 @@ Requires **JDK 17+**. Dependencies managed in `gradle/libs.versions.toml`. Custo
 ## Agent Rules
 
 - Do not use terminal commands (e.g., `cat`, `find`, `ls`) to read or list project files - use IDE/agent tools instead.
+- Run tests once, save output to `build/test-run.log` inside the repo (`> build/test-run.log 2>&1`), then read from that
+  file to extract errors. Never run the same test command multiple times, without changes in sources. Store test output
+  in multiple files if you want to compare before/after changes (ex. `build/test-run-{i}.log`).
 
 ## Coding Rules
 
