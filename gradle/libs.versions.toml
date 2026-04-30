@@ -8,7 +8,7 @@ jspecify = "1.0.0"
 junit = "6.0.3"
 nmcp = "1.4.4"
 nullaway = "0.13.4"
-problem4j-core = "1.4.3"
+problem4j-core = "2.0.0-RC1"
 spotless = "8.4.0"
 
 [plugins]

@@ -1,22 +1,17 @@
 /*
- * Copyright (c) 2025-2026 The Problem4J Authors
+ * Copyright 2025-2026 The Problem4J Authors
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, subject to the following conditions:
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package io.github.problem4j.jackson3;
@@ -29,13 +24,14 @@ import tools.jackson.databind.module.SimpleModule;
  * Jackson 3 module for Problem. Register this module in your {@code ObjectMapper} to enable
  * serialization and deserialization of {@link Problem} instances.
  *
- * <p>Named differently than in Jackson 2 to avoid classpath conflicts when both versions are used
- * in the same project. Name comes from top level class being {@code JacksonModule} instead of
- * {@code Module} as in Jackson 2.
+ * <p>Named differently than in Jackson 2 to avoid accidental misuses when both versions are used in
+ * the same project. Name comes from top level class being {@code JacksonModule} instead of {@code
+ * Module} as in Jackson 2.
  *
  * @see tools.jackson.databind.JacksonModule
  * @see tools.jackson.databind.ObjectMapper
  * @see tools.jackson.databind.json.JsonMapper
+ * @since 1.3.0
  */
 public class ProblemJacksonModule extends SimpleModule {
 
@@ -46,6 +42,8 @@ public class ProblemJacksonModule extends SimpleModule {
    *
    * <p>The module is registered under its simple class name and configures Jackson mix-in
    * annotations required for correct {@link Problem} serialization and deserialization.
+   *
+   * @since 1.3.0
    */
   public ProblemJacksonModule() {
     super(ProblemJacksonModule.class.getSimpleName());
@@ -56,6 +54,8 @@ public class ProblemJacksonModule extends SimpleModule {
    * Configures Jackson mix-in annotations for the {@link Problem} type.
    *
    * <p>Subclasses may override this method to customize or extend the mix-in configuration.
+   *
+   * @since 1.3.0
    */
   protected void setupProblemJacksonMixIn() {
     setMixInAnnotation(Problem.class, ProblemJacksonMixIn.class);

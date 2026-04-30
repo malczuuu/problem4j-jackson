@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog][keepachangelog], and this project adhe
 
 ## [Unreleased]
 
+### Changed
+
+- Bump `problem4j-core` to `2.0.0`.
+- Drop usages of deprecated methods.
+
 ## [1.4.3] - 2026-03-14
 
 ### Changed
