@@ -29,7 +29,7 @@ dependencies {
 // see buildSrc/src/main/kotlin/internal.publishing-convention.gradle.kts
 internalPublishing {
     displayName = "Problem4J Jackson3"
-    description = "Jackson3 integration for library implementing RFC7807 (aka RFC9457)."
+    description = "Jackson3 integration for library implementing RFC7807 (and RFC9457)"
 }
 
 tasks.named<JavaCompile>("compileJava") {
