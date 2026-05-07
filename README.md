@@ -146,6 +146,9 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
 
 ### Maven dependency for `problem4j-jackson2` (Jackson `2.x`)
 
+> [!IMPORTANT]
+> Note that since version `2.0.0`, you must include `problem4j-core` as a dependency in your project.
+
 [![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson2?label=problem4j-jackson2)][maven-central-jackson2]
 
 1. Maven:
@@ -154,7 +157,12 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
        <dependency>
            <groupId>com.fasterxml.jackson.core</groupId>
            <artifactId>jackson-databind</artifactId>
-           <version>2.21.0</version>
+           <version>2.21.3</version>
+       </dependency>
+       <dependency>
+           <groupId>io.github.problem4j</groupId>
+           <artifactId>problem4j-core</artifactId>
+           <version>2.0.0</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
@@ -166,12 +174,16 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
 2. Gradle (Groovy or Kotlin DSL):
    ```groovy
    dependencies {
-       implementation("com.fasterxml.jackson.core:jackson-databind:2.21.0")
+       implementation("com.fasterxml.jackson.core:jackson-databind:2.21.3")
+       implementation("io.github.problem4j:problem4j-core:2.0.0")
        implementation("io.github.problem4j:problem4j-jackson2:{version}")
    }
    ```
 
 ### Maven dependency for `problem4j-jackson3` (Jackson `3.x`)
+
+> [!IMPORTANT]
+> Note that since version `2.0.0`, you must include `problem4j-core` as a dependency in your project.
 
 [![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3)][maven-central-jackson3]
 
@@ -181,7 +193,12 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
        <dependency>
            <groupId>tools.jackson.core</groupId>
            <artifactId>jackson-databind</artifactId>
-           <version>3.1.0</version>
+           <version>3.1.2</version>
+       </dependency>
+       <dependency>
+           <groupId>io.github.problem4j</groupId>
+           <artifactId>problem4j-core</artifactId>
+           <version>2.0.0</version>
        </dependency>
        <dependency>
            <groupId>io.github.problem4j</groupId>
@@ -193,7 +210,8 @@ The `problem4j-jackson` modules does **not** declare `jackson-databind` as a tra
 2. Gradle (Groovy or Kotlin DSL):
    ```groovy
    dependencies {
-       implementation("tools.jackson.core:jackson-databind:3.1.0")
+       implementation("tools.jackson.core:jackson-databind:3.1.2")
+       implementation("io.github.problem4j:problem4j-core:2.0.0")
        implementation("io.github.problem4j:problem4j-jackson3:{version}")
    }
    ```
