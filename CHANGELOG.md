@@ -11,6 +11,11 @@ The format is based on [Keep a Changelog][keepachangelog], and this project adhe
 - Bump `problem4j-core` to `2.0.0`.
 - Drop usages of deprecated methods.
 
+### Removed
+
+- Remove `problem4j-core` from transitive dependencies - consumers must explicitly add `problem4j-core` as a dependency
+  to use this library.
+
 ## [1.4.3] - 2026-03-14
 
 ### Changed
