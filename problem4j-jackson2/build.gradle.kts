@@ -9,13 +9,14 @@ plugins {
 
 dependencies {
     // Main
-    api(libs.jspecify)
-    api(libs.problem4j.core)
-
+    compileOnly(libs.jspecify)
+    compileOnly(libs.problem4j.core)
     compileOnly(libs.jackson2.databind)
     compileOnly(libs.jackson2.dataformat.xml)
 
     // Test
+    testImplementation(libs.jspecify)
+    testImplementation(libs.problem4j.core)
     testImplementation(libs.jackson2.databind)
     testImplementation(libs.jackson2.dataformat.xml)
 
