@@ -27,13 +27,13 @@ dependencies {
     errorprone(libs.nullaway)
 }
 
-// see buildSrc/src/main/kotlin/internal.publishing-convention.gradle.kts
+// see build-logic/src/main/kotlin/internal.publishing-convention.gradle.kts
 internalPublishing {
     displayName = "Problem4J Jackson2"
     description = "Jackson2 integration for library implementing RFC7807 (aka RFC9457)."
 }
 
-tasks.named<JavaCompile>("compileJava") {
+tasks.named<JavaCompile>("compileJava").configure {
     options.release = 8
 }
 

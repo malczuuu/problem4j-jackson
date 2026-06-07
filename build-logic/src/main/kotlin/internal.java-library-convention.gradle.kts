@@ -2,8 +2,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    id("internal.common-convention")
-    id("java")
+    id("java-library")
 }
 
 // The project is built using a JDK 25 toolchain. The configuration of --release is defined in build.gradle.kts files in
@@ -18,7 +17,11 @@ plugins {
 // consumers.
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+    withSourcesJar()
+    withJavadocJar()
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -49,4 +52,22 @@ tasks.withType<Jar>().configureEach {
         into("META-INF/")
         rename { "LICENSE.txt" }
     }
+}
+
+// Usage:
+//   ./gradlew printVersion
+tasks.register<DefaultTask>("printVersion") {
+    description = "Prints the current project version to the console."
+    group = "help"
+
+    val projectName = project.name
+    val projectVersion = project.version.toString()
+
+    doLast {
+        println("$projectName version: $projectVersion")
+    }
+}
+
+tasks.withType<PublishToMavenLocal>().configureEach {
+    finalizedBy("printVersion")
 }
