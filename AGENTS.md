@@ -14,7 +14,7 @@ Prioritize changes in the submodule matching the Jackson version in context.
 
 ## Build & Validate
 
-Requires **JDK 17+**. Dependencies managed in `gradle/libs.versions.toml`. Custom Gradle plugins live in `buildSrc`.
+Requires **JDK 17+**. Dependencies managed in `gradle/libs.versions.toml`. Custom Gradle plugins live in `build-logic`.
 
 ```shell
 ./gradlew                  # default: spotlessApply build (preferred)
