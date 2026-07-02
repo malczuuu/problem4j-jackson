@@ -9,7 +9,7 @@ junit = "6.1.1"
 nmcp = "1.6.0"
 nullaway = "0.13.4"
 problem4j-core = "2.0.0"
-spotless = "8.7.0"
+spotless = "8.8.0"
 
 [plugins]
 errorprone = { id = "net.ltgt.errorprone", version.ref = "errorprone-plugin" }
