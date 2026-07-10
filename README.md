@@ -38,15 +38,15 @@ Instead of releasing version `2.0`, library was split into two modules, because 
 
 ## Features
 
-- ✅ Seamless JSON serialization of `Problem` objects.
-- ✅ Accurate deserialization into immutable `Problem` instances.
-- ✅ Compatible with standard Jackson `ObjectMapper`.
-- ✅ Pluggable via Jackson's `Module` system or predefined `MixIn` interface.
-- ✅ Lightweight, with no external dependencies beyond Jackson and `problem4j-core`.
-- ✅ Support for both Jackson2 (`com.fasterxml.jackson`) and Jackson3 (`tools.jackson`).
-- ✅ Integrated with JSpecify annotations for nullability and Kotlin interop (since `v1.4.0`).
-- ✅ Supports **Java Platform Module System** (since `v1.4.0`). Artifact for `problem4j-jackson2` uses multi-release JAR
-  to support Java 8 and Java 9+ module system, while artifact for `problem4j-jackson3` is compiled with Java 17 and
+- Seamless JSON serialization of `Problem` objects.
+- Accurate deserialization into immutable `Problem` instances.
+- Compatible with standard Jackson `ObjectMapper`.
+- Pluggable via Jackson's `Module` system or predefined `MixIn` interface.
+- Lightweight, with no external dependencies beyond Jackson and `problem4j-core`.
+- Support for both Jackson2 (`com.fasterxml.jackson`) and Jackson3 (`tools.jackson`).
+- Integrated with JSpecify annotations for nullability and Kotlin interop (since `v1.4.0`).
+- Supports **Java Platform Module System** (since `v1.4.0`). Artifact for `problem4j-jackson2` uses multi-release JAR to
+  support Java 8 and Java 9+ module system, while artifact for `problem4j-jackson3` is compiled with Java 17 and
   supports module system out of the box.
 
 ## Example
