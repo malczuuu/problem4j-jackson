@@ -1,10 +1,12 @@
-# Problem4J Jackson
+<h1 align="center">Problem4J Jackson</h1>
 
-[![Codecov](https://codecov.io/gh/problem4j/problem4j-jackson/graph/badge.svg?token=MIDI7OEIPQ)](https://codecov.io/gh/problem4j/problem4j-jackson)
-[![Build Status](https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml)
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson2?label=problem4j-jackson2)][maven-central-jackson2]
-[![Sonatype](https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3)][maven-central-jackson3]
-[![License](https://img.shields.io/badge/license-Apache%202.0-green)](https://github.com/problem4j/problem4j-jackson/blob/main/LICENSE)
+<p align="center">
+  <a href="https://codecov.io/gh/problem4j/problem4j-jackson"><img src="https://codecov.io/gh/problem4j/problem4j-jackson/graph/badge.svg?token=MIDI7OEIPQ" alt="Codecov"></a>
+  <a href="https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml"><img src="https://github.com/problem4j/problem4j-jackson/actions/workflows/gradle-build.yml/badge.svg" alt="Build Status"></a>
+  <a href="https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson2"><img src="https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson2?label=problem4j-jackson2" alt="Sonatype"></a>
+  <a href="https://central.sonatype.com/artifact/io.github.problem4j/problem4j-jackson3"><img src="https://img.shields.io/maven-central/v/io.github.problem4j/problem4j-jackson3?label=problem4j-jackson3" alt="Sonatype"></a>
+  <a href="https://github.com/problem4j/problem4j-jackson/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green" alt="License"></a>
+</p>
 
 Jackson `2.x` and `3.x` integration module for [`problem4j-core`][problem4j-core]. Provides easy support for serializing
 and deserializing the `Problem` model using [Jackson's `ObjectMapper`][jackson].
